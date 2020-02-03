@@ -16,43 +16,35 @@ int main()
     int choixMenuPrincipal = 1 ;
     Menu1:
     printf("Menu principal\n1)Nouvelle croisade\n2)Continuer une croisade\n3)A propos\n4)Quitter\n");
+    Partie partieEnCours = {0,0,0,0,0,0,0,0};
     choixMenuPrincipal = menu(4);
 
     if (choixMenuPrincipal == 1)
     {
-        int chance = 0 ;
-        int pdA = 0 ;
-        int pdV = 0 ;
-        int difficulte = 0 ;
-        int XP = 0 ;
-        int XPMax = 0;
-
-        initJeu(&chance, &pdA, &pdV, &difficulte, &XP, &XPMax);
-        bouillonJerusalem(&chance, &pdA, &pdV, &difficulte, &XP, &XPMax);
+        initJeu(& partieEnCours);
+MarqueP1:
+        bouillonJerusalem(&partieEnCours);
     }
     else if (choixMenuPrincipal == 2)
     {
-        sauvegardes = fopen("sauvegardes.txt", "r");
-        if (sauvegardes != NULL)
-        {
+        FILE* sauvegarde1 = fopen("sauvegarde1.txt", "r");
+        FILE* sauvegarde2 = fopen("sauvegarde2.txt", "r");
+        FILE* sauvegarde3 = fopen("sauvegarde3.txt", "r");
 
+        if (sauvegarde1 == NULL || sauvegarde2 == NULL || sauvegarde3 == NULL)
+        {
+            printf("impossible d'accéder aux fichiers de sauvegarde\n");
+            goto Menu1;
         }
         else
         {
-            printf("impossible d'ouvrir le fichier de sauvegardes\n");
-            goto Menu1;
+            lectureSauvegarde(sauvegarde1, sauvegarde2, sauvegarde3);
         }
 
-
-
-
-
-
-        //trouver un moyen de charger des parties enregistrées
     }
     else if (choixMenuPrincipal == 3)
     {
-        printf("Cette croisade a ete concue par Raphael Oester Ier du nom, Luka Mangano, Mahdi quelque chose.\n");
+        printf("Cette croisade a ete concue par Raphael Oester Ier du nom, Luka Mangano, Mahdi Nasser.\n");
         getch();
         goto Menu1;
     }

@@ -2,18 +2,18 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <conio.h>
+#include "fonctionsDeBase.h"
 #define ENTREE 13
 #define MIN 1
 #define MAX 100
 
-int initJeu(int *chance, int *pdA, int *pdV, int *difficulte, int *XP, int *XPMax)
+int initJeu(Partie* partieEnCours)
 {
-    int niveau = 0;
     int secMax = 0;
     int appuyages = 0;
-    printf("Bienvenue chevalier !\nChoisis un niveau de testosterone\n");
+    printf("Bienvenue chevalier !\nChoisis un niveau de difficulte\n");
     printf("1)Francois Hollande\n2)Bernard Tapie\n3)Louis VI le gros\n4)Saddam Hussein\n");
-    *difficulte = menu(4);
+    partieEnCours->difficulte = menu(4);
 
     system("cls");
     printf("En l'an de grace 1096, Godefroy de Bouillon, duc de Basse-Lotharingie, prend les armes aux cotes de son frere ");
@@ -36,7 +36,7 @@ int initJeu(int *chance, int *pdA, int *pdV, int *difficulte, int *XP, int *XPMa
     printf("ostende.\nO Clemens, o Pia, o Dulcis Virgo Maria !\"\n\n");
     getch();
 
-    secMax = 7;
+    //secMax = 7;
     printf("Quand je dis \"C'est parti\", appuyez frenetiquement et le plus vite possible sur la touche entree : \n");
     //compteTouche(ENTREE, 2);
     printf("3... \n");
@@ -49,8 +49,8 @@ int initJeu(int *chance, int *pdA, int *pdV, int *difficulte, int *XP, int *XPMa
     //appuyages = compteTouche(ENTREE, secMax);
     printf("\nSTOOOOP ! Vous avez appuye %d fois en %d secondes\n", appuyages, secMax);
     //compteTouche(ENTREE, 3);
-    *pdV = (appuyages*25)+100;
-    printf("Vous avez donc %d points de vie !", *pdV);
+    partieEnCours->pdV = (appuyages*25)+100;
+    printf("Vous avez donc %d points de vie !", partieEnCours->pdV);
 
     printf("\n\nRebelote pour les points d'attaque :\n");
     secMax = 5;
@@ -62,35 +62,36 @@ int initJeu(int *chance, int *pdA, int *pdV, int *difficulte, int *XP, int *XPMa
     printf("1...\n");
     //compteTouche(ENTREE, 1);
     printf("C'EST PARTI ! \n");
-    //appuyages = compteTouche(ENTREE, secMax);
+    appuyages = compteTouche(ENTREE, secMax);
     printf("\nSTOOOOP ! Vous avez appuye %d fois en %d secondes\n", appuyages, secMax);
     //compteTouche(ENTREE, 3);
-    *pdA = appuyages + 15;
-    printf("Vous obtenez %d points d'attaque !\n", *pdA);
+    partieEnCours->pdA = appuyages + 15;
+    printf("Vous obtenez %d points d'attaque !\n", partieEnCours->pdA);
     getch();
 
     printf("Maintenant, voyons voir si tu as de la chance... (c'est fait au hasard, tu n'as rien a faire)\n");
     //compteTouche(ENTREE, 2);
     srand(time(NULL));
-    *chance = (rand() % (MAX - MIN + 1)) + MIN;
-    printf("Ton indice de chance est de  %d !\n\n", *chance);
+    partieEnCours->chance = (rand() % (MAX - MIN + 1)) + MIN;
+    printf("Ton indice de chance est de  %d !\n\n", partieEnCours->chance);
     getch();
 
     printf("Chevalier, tu es fin pret. Equipe toi, Jerusalem t'attend.\n");
-    *XPMax = XPMaximum(*XP, &niveau);
-    affichageStats(pdA, pdV, XP, XPMax);
+    XPMaximum(&partieEnCours);
+    affichageStats(*partieEnCours);
     getch();
     system("cls");
-
+    partieEnCours->marquePage = 1;
+    sauvegarde(*partieEnCours);
     return 0 ;
 }
 
-int bouillonJerusalem(int *chance, int *pdA, int *pdV, int *difficulte, int *XP, int* XPMax)
+int bouillonJerusalem(Partie *partieEnCours)
 {
     int choix = 0;
     printf("Juche sur votre brave destrier Demosthene, Vous partez du chateau sous hypotheque le 15 aout 1096 au petit matin.\n");
     getch();
-    printf("Maints serviteurs, esclaves et vassaux t'accompagnent. \n");
+    printf("Maints serviteurs, esclaves et vassaux vous accompagnent. \n");
     getch();
     printf("Demosthene, qui d'ordinaire parle, se tait pour n'effrayer personne.\n");
     getch();
@@ -99,7 +100,7 @@ int bouillonJerusalem(int *chance, int *pdA, int *pdV, int *difficulte, int *XP,
     printf("Vous etes parvenu a proximite d'un petit bourg en lisiere de foret, Reville-aux-Bois. \n");
     getch();
     printf("Que faire ?\n1)Ordonner un arret de l'expedition\n2)Continuer la marche\n");
-    affichageStats(pdA, pdV, XP, XPMax);
+    affichageStats(*partieEnCours);
     choix = menu(2);
 
     if (choix == 1)
@@ -125,10 +126,10 @@ Campement:
                 getch();
                 printf("Apres quelque cheminement, vous tombez nez a nez sur avec un sanglier sauvage !\n");
                 printf("Il a l'air agressif et ne vous laisse pas le choix : il faut combattre.\n");
-                affichageStats(pdA, pdV, XP, XPMax);
+                affichageStats(*partieEnCours);
                 combat("le sanglier sauvage", 300, 15);
                 printf("\nVous avez vaincu le sanglier, felicitations !\n");
-                recompensesMonstre("Cadavre de sanglier", 30, &XP);
+                recompensesMonstre("Cadavre de sanglier", 30, partieEnCours);
                 printf("Que voulez vous faire maintenant ?\n1)Rentrer au campement\n2)Tout manger tout seul\n");
                 choix = menu(2);
                 if (choix == 1)
@@ -152,9 +153,9 @@ Campement:
                         printf("Ce comportement est indigne d'un bon chretien. Vous ne gagnez aucun XP pour cette pietre victoire.\n");
                         getch();
                         printf("Le poids de votre conscience vous torture. Vous perdez 50 points de vie et 10 points d'attaque.\n");
-                        *pdV -=50;
-                        *pdA -=10;
-                        affichageStats(pdA, pdV, XP, XPMax);
+                        partieEnCours->pdV -=50;
+                        partieEnCours->pdA -=10;
+                        affichageStats(*partieEnCours);
                     }
                     else if (choix == 3)
                     {
