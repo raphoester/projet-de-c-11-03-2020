@@ -16,7 +16,7 @@ int main()
     int choixMenuPrincipal = 1 ;
     Menu1:
     printf("Menu principal\n1)Nouvelle croisade\n2)Continuer une croisade\n3)A propos\n4)Quitter\n");
-    Partie partieEnCours = {0,0,0,0,0,0,0,0};
+    Partie partieEnCours = {0,0,0,0,0,0,0,1};
     choixMenuPrincipal = menu(4);
 
     if (choixMenuPrincipal == 1)
@@ -27,18 +27,26 @@ MarqueP1:
     }
     else if (choixMenuPrincipal == 2)
     {
-        FILE* sauvegarde1 = fopen("sauvegarde1.txt", "r");
-        FILE* sauvegarde2 = fopen("sauvegarde2.txt", "r");
-        FILE* sauvegarde3 = fopen("sauvegarde3.txt", "r");
+        FILE* sauvegarde = fopen("sauvegarde.txt", "r");
 
-        if (sauvegarde1 == NULL || sauvegarde2 == NULL || sauvegarde3 == NULL)
+
+        if (sauvegarde == NULL )
         {
-            printf("impossible d'accéder aux fichiers de sauvegarde\n");
+            printf("Erreur : impossible d'acceder au fichier de sauvegarde\n");
             goto Menu1;
         }
         else
         {
-            lectureSauvegarde(sauvegarde1, sauvegarde2, sauvegarde3);
+            chargementSauvegarde(sauvegarde, &partieEnCours);
+            if (partieEnCours.marquePage == 1)
+            {
+                goto MarqueP1;
+            }
+            else
+            {
+                printf("Sauvegarde corrompue. Veuillez lancer une nouvelle partie.\n");
+                goto Menu1;
+            }
         }
 
     }

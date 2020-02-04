@@ -8,13 +8,20 @@ void XPMaximum(Partie* partieEnCours) //fonction qui met à jour le niveau du jou
 {
     int jauge = 0;
     int augmentation = 0;
-    while (jauge<=partieEnCours->XP)
+    if (partieEnCours->XP >= 50)
     {
-        augmentation += 50;
-        jauge += augmentation;
+
+        while (jauge <= partieEnCours->XP)
+        {
+            augmentation += 50;
+            jauge += augmentation;
+        }
+        partieEnCours->XPMax = jauge;
     }
-    partieEnCours->niveau = augmentation/50;
-    partieEnCours->XPMax = jauge;
+    else
+    {
+        partieEnCours->XPMax = 50;
+    }
 }
 
 void affichageStats(Partie partieEnCours)
@@ -22,7 +29,7 @@ void affichageStats(Partie partieEnCours)
 //le niveau du joueur.
 {
     printf("Points de vie : %d\nPoints d'attaque : %d\n", partieEnCours.pdV, partieEnCours.pdA);
-    printf("Experience : %d/%d\nNiveau %d", partieEnCours.XP, partieEnCours.XPMax, partieEnCours.niveau);
+    printf("Experience : %d/%d\nNiveau %d\n", partieEnCours.XP, partieEnCours.XPMax, partieEnCours.niveau);
     //Afficher ici le niveau en fonction de l'XP actuelle obtenue.
 }
 
@@ -64,18 +71,30 @@ int compteTouche(int touche, int secondesMax)
     return compteur ;
 }
 
-int sauvegarde(Partie partieEnCours)
+void sauvegarde(Partie partieEnCours)
 { // EN COURS DE CONSTRUCTION / NON OPERATIONNEL
     int choix = 0 ;
     printf("Voulez vous sauvegarder votre partie ?\n1)oui\n2)non\n");
     choix = menu(2);
-    if (choix = 1)
+    if (choix == 1)
     {
-        //SAUVEGARDER
+        FILE* sauvegarde = fopen("sauvegarde.txt", "w");
+        if (sauvegarde == NULL)
+        {
+            printf("Erreur d'ouverture du fichier de sauvegarde. Vous continuez sans sauvegarder.");
+        }
+        else
+        {
+            printf("Sauvegarde en cours...\n");
+            fprintf(sauvegarde, "%d %d %d %d %d %d %d %d", partieEnCours.pdV, partieEnCours.pdA, partieEnCours.chance, partieEnCours.difficulte, partieEnCours.XP, partieEnCours.XPMax, partieEnCours.marquePage, partieEnCours.niveau);
+            printf("Fait !\n");
+            getch();
+        }
     }
-    else if (choix = 2)
+    else if (choix == 2)
     {
         printf("A vos risques et perils.\n");
+        getch();
     }
     else
     {
@@ -84,13 +103,7 @@ int sauvegarde(Partie partieEnCours)
 
 }
 
-int lectureSauvegarde(FILE* sauvegarde1, FILE* sauvegarde2, FILE* sauvegarde3)
+void chargementSauvegarde(FILE* sauvegarde, Partie* partieEnCours)
 {
-    struct dirent *lecture ;
-    DIR *dossier = opendir("./sauvegardes" );
-    while ((lecture = readdir(dossier)))
-    {
-        printf("%s\n", lecture->d_name);
-    }
-    closedir(dossier);
+    fscanf(sauvegarde, "%d %d %d %d %d %d %d %d", &partieEnCours->pdV, &partieEnCours->pdA, &partieEnCours->chance, &partieEnCours->difficulte, &partieEnCours->XP, &partieEnCours->XPMax, &partieEnCours->marquePage, &partieEnCours->niveau);
 }

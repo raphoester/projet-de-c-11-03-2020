@@ -19,4 +19,5 @@ void XPMaximum(Partie *partieEnCours) ;
 void affichageStats(Partie partieEnCours) ;
 int menu(nbreChoix);
 int compteTouche(int touche, int secondesMax);
-int lectureSauvegarde(FILE* sauvegarde1, FILE* sauvegarde2, FILE* sauvegarde3);
+void chargementSauvegarde(FILE* sauvegarde, Partie* partieEnCours);
+void sauvegarde(Partie partieEnCours);

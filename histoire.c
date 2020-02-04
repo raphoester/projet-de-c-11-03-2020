@@ -62,7 +62,7 @@ int initJeu(Partie* partieEnCours)
     printf("1...\n");
     //compteTouche(ENTREE, 1);
     printf("C'EST PARTI ! \n");
-    appuyages = compteTouche(ENTREE, secMax);
+    //appuyages = compteTouche(ENTREE, secMax);
     printf("\nSTOOOOP ! Vous avez appuye %d fois en %d secondes\n", appuyages, secMax);
     //compteTouche(ENTREE, 3);
     partieEnCours->pdA = appuyages + 15;
@@ -77,7 +77,7 @@ int initJeu(Partie* partieEnCours)
     getch();
 
     printf("Chevalier, tu es fin pret. Equipe toi, Jerusalem t'attend.\n");
-    XPMaximum(&partieEnCours);
+    XPMaximum(partieEnCours);
     affichageStats(*partieEnCours);
     getch();
     system("cls");
