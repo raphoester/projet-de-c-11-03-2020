@@ -4,7 +4,8 @@
 #include <dirent.h>
 #include <time.h>
 #include <conio.h>
-#include "fonctionsDeBase.h"
+#include "Structs.h"
+
 
 void XPMaximum(Partie* partieEnCours) //fonction qui met à jour le niveau du joueur en fonction de son xp actuelle.
 {

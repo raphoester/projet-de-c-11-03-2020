@@ -49,7 +49,7 @@ void initJeu(Partie* partieEnCours)
     //appuyages = compteTouche(ENTREE, secMax);
     printf("\nSTOOOOP ! Vous avez appuye %d fois en %d secondes\n", appuyages, secMax);
     //compteTouche(ENTREE, 3);
-    partieEnCours->pdV = (appuyages*25)+100;
+    partieEnCours->pdV = (appuyages*27)+100;
     printf("Vous avez donc %d points de vie !", partieEnCours->pdV);
 
     printf("\n\nRebelote pour les points d'attaque :\n");
@@ -89,6 +89,7 @@ void initJeu(Partie* partieEnCours)
 void bouillonJerusalem(Partie *partieEnCours)
 {
     int choix = 0;
+    int de = 0;
     printf("Juche sur votre brave destrier Demosthene, Vous partez du chateau sous hypotheque le 15 aout 1096 au petit matin.\n");
     getch();
     printf("Maints serviteurs, esclaves et vassaux vous accompagnent. \n");
@@ -260,14 +261,14 @@ CarrefourForet :
                     recompensesMonstre("10 cadavres de castor", 50, partieEnCours);
                     printf("Que faire maintenant ?\n1)Demolir le reste du barrage\n2)Manger les castors\n");
                     printf("3)Retourner au carrefour precedent\n4)Rentrer au campement");
-                    choix = menu();
+                    choix = menu(2);
                     if (choix == 1)
                     {
                         printf("Vous continuez de deferler votre haine sur le barrage.\n");
                         getch();
                         printf("Au bout de quelques minutes, une nouvelle bande de castors, d'une allure plus pacifiste ");
                         printf("que la precedente, en sort.\n");
-                        getc();
+                        getch();
                         printf("Il semblerait qu'ils veulent se rendre !\nQue faire ?\n1)Les goumer quand meme\n");
                         printf("2)Leur laisser la vie sauve et leur barrage\n3)Leur laisser la vie sauve mais pas leur barrage\n");
                         choix = menu(3);
@@ -276,7 +277,7 @@ CarrefourForet :
                             printf("Vous genocidez la population de castors dans la joie et la bonne humeur.\n");
                             recompensesMonstre("20 cadavres de castor", 0, partieEnCours);
                             getch();
-                            printf("Que faire maintenant ?\n")
+                            printf("Que faire maintenant ?\n");
                         }
                         else if (choix == 2)
                         {
@@ -323,7 +324,7 @@ CarrefourForet :
                 printf("Vous vous enfoncez dans le bois obscur et tombez sur un petit cours d'eau.\n");
                 getch();
                 printf("Vous etes fourbu par le long trajet que vous venez de faire.\n");
-                getch()
+                getch();
                 printf("Que faire ?\n1)Se baigner dans la riviere\n2)Essayer de pecher\n");
                 printf("3)Retourner au campement\n");
                 choix = menu(3);
@@ -346,7 +347,7 @@ CarrefourForet :
                     de = lancerDeDes();
                     printf("Vous obtenez %d.\n", de);
                     getch();
-                    if (de * chance > 130)
+                    if (de * partieEnCours->chance > 130)
                     {
                         printf("Victoire ! vous reussisez a vous extraire de la rivire.\n");
                     }
