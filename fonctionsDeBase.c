@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <dirent.h>
+#include <time.h>
+#include <conio.h>
 #include "fonctionsDeBase.h"
 
 void XPMaximum(Partie* partieEnCours) //fonction qui met à jour le niveau du joueur en fonction de son xp actuelle.
@@ -34,7 +36,7 @@ void affichageStats(Partie partieEnCours)
 }
 
 
-int menu(nbreChoix)
+int menu(int nbreChoix)
 {
     int choix ;
     while(1)
@@ -106,4 +108,12 @@ void sauvegarde(Partie partieEnCours)
 void chargementSauvegarde(FILE* sauvegarde, Partie* partieEnCours)
 {
     fscanf(sauvegarde, "%d %d %d %d %d %d %d %d", &partieEnCours->pdV, &partieEnCours->pdA, &partieEnCours->chance, &partieEnCours->difficulte, &partieEnCours->XP, &partieEnCours->XPMax, &partieEnCours->marquePage, &partieEnCours->niveau);
+}
+
+int lancerDeDes()
+{
+    const int MAXI = 6;
+    const int MINI = 1;
+    srand(time(NULL));
+    return (rand() % (MAXI - MINI + 1)) + MINI ;
 }

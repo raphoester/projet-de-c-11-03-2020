@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <windows.h>
 #include <conio.h>
+#include <time.h>
 #include "fonctionsDeBase.h"
 #include "histoire.h"
 #include "combat.h"
@@ -12,7 +13,6 @@
 
 int main()
 {
-    FILE* sauvegardes = NULL ;
     int choixMenuPrincipal = 1 ;
     Menu1:
     printf("Menu principal\n1)Nouvelle croisade\n2)Continuer une croisade\n3)A propos\n4)Quitter\n");

@@ -1,4 +1,4 @@
 
 
-int initJeu(Partie* partieEnCours);
-int bouillonJerusalem(Partie* partieEnCours);
+void initJeu(Partie* partieEnCours);
+void bouillonJerusalem(Partie* partieEnCours);
