@@ -471,36 +471,103 @@ CarrefourForet :
                     }
                     else if (choix == 2)
                     {
-                        printf("!\n");
+                        printf("Sans perdre de temps vous ramer progressivement vers le manger.\n");
                         getch();
-                        printf("*** jeu du lancer de fliet ! ***\n");
+                        printf("Arrive a proximite, vous vous appretez a lancer le filet.\n");
                         getch();
-                        printf("Dans trois secondes, appuyez sur Alt-F4 !\n");
+                        printf("\n");
+                        printf("*** jeu du lancer de filet ! ***\n");
+                        getch();
+                        /*printf("Dans trois secondes, appuyez sur Alt-F4 !\n");
                         compteTouche(ENTREE, 5);
                         printf("C'etait un piege, hohohoho\n");
                         getch();
-                        printf("Pour vraiment avoir votre poisson, appuyez sur M comme Maman : M-A-M-A-N.");
+                        printf("Pour vraiment avoir votre poisson, appuyez sur M comme Maman : M-A-M-A-N.\n");
                         compteTouche(ENTREE, 1);
-                        printf("3...");
+                        printf("3...\n");
                         compteTouche(ENTREE, 1);
-                        printf("2...");
+                        printf("2...\n");
                         compteTouche(ENTREE, 1);
-                        printf("3...");
+                        printf("3...\n");
                         compteTouche(ENTREE, 1);
-                        printf("5...");
+                        printf("5...\n");
                         compteTouche(ENTREE, 1);
-                        printf("12...");
+                        printf("12...\n");
                         compteTouche(ENTREE, 1);
-                        printf("40000...");
+                        printf("40000...\n");
                         compteTouche(ENTREE, 1);
-                        printf("GO !");
-                        if (compteTouche(109 , "5") >= 1)
+                        printf("GO !\n");
+                        if (compteTouche(109 , 5) >= 1)
                         {
-                            printf("C'etait un piege, mdrrrrrrrrrrrrr");
-                            compteTouche(ENTREE, 1);
+                            printf("C'etait un piege, mdrrrrrrrrrrrrr\n");
+                            getch();
                             exit(EXIT_SUCCESS);
+                        */}
+                        printf("Bravo vous avez chope de la poiscaille. Vous rentrez sur la berge\n");
+                        getch();
+                        printf("Que faire maintenant ?\n1)Rentrer au campement\n2)Rebrousser chemin\n3)Manger le poissonet\n");
+                        choix = menu(3);
+                        if (choix == 1)
+                        {
+                            printf("Vous etes de retour au campement.\n");
+                            goto Campement;
                         }
-
+                        else if (choix == 2)
+                        {
+                            printf("Vous etes de retour au carrefour dans la foret\n");
+                            goto CarrefourForet;
+                        }
+                        else if (choix == 3)
+                        {
+                            printf("Heureux comme un poisson dans un l'eau, vous retournez sur la berge.\n");
+                            getch();
+                            printf("Tous vos serviteurs vous contemple comme un messi.\n");
+                            getch();
+                            printf("Ils ne savent peut-etre pas encore qu'ils vont seulement vous regarder manger !\n");
+                            getch();
+                            printf("Vous commencez a vous enfiler quelques poissons dans le cornet\n");
+                            getch();
+                            printf("Cette collation vous rapport 70 points de vie et 15 points d'attaque\n");
+                            getch();
+                            partieEnCours->pdV += 70;
+                            partieEnCours->pdA += 15;
+                            printf("Quand un pouilleux vient vers vous quemander du poisson\n");
+                            getch();
+                            printf("Que faire ?\n1)Partager son casse croute\n2)L'inviter a prendre la porte\n");
+                            choix = menu(2);
+                            if (choix == 1)
+                            {
+                                printf("Votre generosite à pris le dessus.\n");
+                                getch();
+                                printf("Votre bonne action vous rapporte 30 points d'XP\n");
+                                getch();
+                                // changer
+                                partieEnCours->XP += 30;
+                                affichageStats(*partieEnCours);
+                                getch();
+                                printf("\n");
+                            }
+                            else if (choix == 2)
+                            {
+                                printf("Vous continuez a manger, le regardant droit dans les yeux.\n");
+                                getch();
+                                printf("Le silence en dit long.\n");
+                                getch();
+                                printf("Il repart bredouille, la boule au ventre.\n");
+                                getch();
+                                printf("Cette mauvaise action vous retourne le cerveau\n");
+                                getch();
+                                printf("Vous perdez 10% de chance.\n");
+                                getch();
+                                partieEnCours->chance -= 10;
+                                printf("\n");
+                            }
+                        }
+                        else
+                        {
+                            printf("Renvoi de la fonction menu() invalide");
+                        }
+                        printf("Suite a ces aventures, vous rebroussez chemin vers le carrefour precedent.\n");
                         goto CarrefourForet;
                     }
                 }
@@ -547,7 +614,7 @@ CarrefourForet :
             getch();
             printf("Que faire ?\n1)Le provoquer en duel car ses bottes sont plus brillantes que les votres\n");
             printf("\n2)Aller dormir comme c'etait initialement prevu\n");
-            choix = menu(2);
+            choix = menu(1);
             if (choix == 1)
             {
                 printf("D'un pas decide, vous avancez vers Cousin Hubert.\n");
@@ -559,29 +626,20 @@ CarrefourForet :
                 printf("En GAAAAARDE !!!");
                 //combat(cousin hubert etc
                 getch();
-                goto Dodo;
-            }
-            else if (choix == 2)
-            {
-Dodo:
-                printf("Vous rentrez dans votre tente, et vous vous affalez dans votre lit.\n");
-                getch();
-                printf("Vous vous endormez comme un bebe...\n");
-                getch();
-                printf(".\n");
-                getch();
-                printf(".\n");
-                getch();
-                printf(".\n");
-                getch();
-                printf("Vous vous reveillez le lendemain, pret a casser des gueules !\n");
-                getch();
-            }
 
-            else
-            {
-                printf("Renvoi de la fonction menu() invalide.");
             }
+            printf("Vous rentrez dans votre tente, et vous vous affalez dans votre lit.\n");
+            getch();
+            printf("Vous vous endormez comme un bebe...\n");
+            getch();
+            printf(".\n");
+            getch();
+            printf(".\n");
+            getch();
+            printf(".\n");
+            getch();
+            printf("Vous vous reveillez le lendemain, pret a casser des gueules !\n");
+            getch();
         }
     else if (choix == 2)
     {
@@ -627,5 +685,4 @@ Dodo:
     {
         printf("Renvoi de la fonction menu() invalide.");
     }
-}
 }
