@@ -4,7 +4,7 @@
 
 int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
 //fonction combat qui s'arrête quand le mob meurt ou qui interrompt le programme en cas de mort
-{
+{/*
     int choix;
     int crit = 0;
     Monstre monstre;
@@ -12,10 +12,10 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
     monstre.critique = 10 + goumage*0.5;
     monstre.pdA = goumage*4 + 30;
     monstre.xp = 50*goumage;
-    for (int i=0;i<100;i++)
-    {
-        monstre.nom[i] = nomMonstre[i];
-    }
+    //for (int i=0;i<100;i++)
+    //{
+    //    monstre.nom[i] = nomMonstre[i];
+    //}
     int affrontement = 0;
 
     while (affrontement = 1)
@@ -86,4 +86,5 @@ int recompensesMonstre(char nomRecompense[100], int XPGagnee, Partie *partieEnCo
 
 
 // boss pv = 20k puis 10k puis 5k
-//ad joueur à la fin du game : 1000 env.
+//ad joueur à la fin du game : 1000 env.*/
+}
