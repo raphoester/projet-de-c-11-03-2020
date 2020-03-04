@@ -6,7 +6,7 @@
 #include "fonctionsDeBase.h"
 #include "histoire.h"
 #include "combat.h"
-//#include "Structs.h"
+
 #define ENTREE 13
 #define MIN 1
 #define MAX 100

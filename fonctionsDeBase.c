@@ -27,6 +27,20 @@ void XPMaximum(Partie* partieEnCours) //fonction qui met à jour le niveau du jou
     }
 }
 
+void experiencePlus(Partie* partieEnCours, int experienceBonus)
+{
+    partieEnCours->XP += experienceBonus ;
+    if (partieEnCours->XP >= partieEnCours->XPMax)
+    {
+        printf("Felicitations, vous gagnez un niveau !\n");
+        getch();
+        partieEnCours->niveau += 1;
+        printf("Vous etes desormais niveau %d\n", partieEnCours->niveau);
+        partieEnCours.pdV *= 2;
+        partieEnCours.pdA *= 2;
+    }
+}
+
 void affichageStats(Partie partieEnCours)
 //fonction qui affiche (dans l'ordre) les points de vie, les points d'attaque, l'expérience obtenie / l'expérience requise,
 //le niveau du joueur.
@@ -52,7 +66,7 @@ int menu(int nbreChoix)
             printf("Valeur incorrecte\nReessayez svp\n");
         }
     }
-    return 404 ;
+    return EXIT_FAILURE ;
 }
 
 
@@ -75,7 +89,7 @@ int compteTouche(int touche, int secondesMax)
 }
 
 void sauvegarde(Partie partieEnCours)
-{ // EN COURS DE CONSTRUCTION / NON OPERATIONNEL
+{
     int choix = 0 ;
     printf("Voulez vous sauvegarder votre partie ?\n1)oui\n2)non\n");
     choix = menu(2);

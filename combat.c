@@ -100,14 +100,3 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
         }
     }
 }
-int recompensesMonstre(char nomRecompense[100], int XPGagnee, Partie *partieEnCours)
-//fonction qui génère le texte de récompense
-//après avoir vaincu un mob
-{
-
-}
-
-
-// boss pv = 20k puis 10k puis 5k
-//ad joueur à la fin du game : 1000 env.
-
