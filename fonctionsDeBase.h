@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "Structs.h"
 
 void XPMaximum(Partie *partieEnCours) ;
 void affichageStats(Partie partieEnCours) ;

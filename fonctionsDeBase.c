@@ -1,11 +1,8 @@
+#include "Structs.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <windows.h>
-#include <dirent.h>
 #include <time.h>
-#include <conio.h>
-#include "Structs.h"
-
+#include <windows.h>
 
 void XPMaximum(Partie* partieEnCours) //fonction qui met à jour le niveau du joueur en fonction de son xp actuelle.
 {
@@ -36,8 +33,8 @@ void experiencePlus(Partie* partieEnCours, int experienceBonus)
         getch();
         partieEnCours->niveau += 1;
         printf("Vous etes desormais niveau %d\n", partieEnCours->niveau);
-        partieEnCours.pdV *= 2;
-        partieEnCours.pdA *= 2;
+        partieEnCours->pdV *= 2;
+        partieEnCours->pdA *= 2;
     }
 }
 

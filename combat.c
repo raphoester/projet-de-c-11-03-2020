@@ -1,6 +1,7 @@
-#include "fonctionsDeBase.h"
 #define MIN 1
 #define MAX 100
+#include "Structs.h"
+#include <stdlib.h>
 
 int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
 //fonction combat qui retourne 0 quand le mob meurt, 1 quand le joueur prend la fuite ou qui interrompt le programme en cas de mort
@@ -11,7 +12,7 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
     monstre.pdV = ((goumage*goumage)/5)+100;
     monstre.critique = 3;
     monstre.pdA = goumage*4 + 30;
-    monstre.XP = 50*goumage;
+    monstre.xp = 50*goumage;
     int reduction = 1;
     for (int i=0;i<100;i++)
     {
@@ -70,7 +71,7 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
             getch();
             printf("Vous avez vaincu %s !\n", monstre.nom);
             getch();
-            printf("Vous remportez %d points d'experience.\n", monstre.XP);
+            printf("Vous remportez %d points d'experience.\n", monstre.xp);
             return 0;
         }
         getch();
@@ -105,4 +106,9 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
             exit(EXIT_FAILURE);
         }
     }
+}
+
+int recompensesMonstre(char nomRecompense[100], int XPGagnee, Partie *partieEnCours)
+{
+
 }

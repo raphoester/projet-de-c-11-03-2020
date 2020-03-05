@@ -1,11 +1,10 @@
-#include <stdlib.h>
-#include <stdlib.h>
-#include <windows.h>
-#include <conio.h>
-#include "fonctionsDeBase.h"
 #define ENTREE 13
 #define MIN 1
 #define MAX 100
+#include "Structs.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "combat.h"
 
 void initJeu(Partie* partieEnCours)
 {
@@ -129,10 +128,13 @@ CarrefourForet :
                 printf("Vous prenez la direction du Nord avec vos serviteurs.\n");
                 getch();
                 printf("Apres quelque cheminement, vous tombez nez a nez sur avec un sanglier sauvage !\n");
-                printf("Il a l'air agressif et ne vous laisse pas le choix : il faut combattre.\n");
+                getch();
+                printf("Il a l'air agressif et ne vous laisse pas le choix : il faut combattre !\n");
+                getch();
                 affichageStats(*partieEnCours);
-//                combat("le sanglier sauvage", 300, 15, partieEnCours);
-                //recompensesMonstre("Cadavre de sanglier", 30, partieEnCours);
+                getch();
+                combat("le sanglier sauvage", 10, partieEnCours);
+                recompensesMonstre("Cadavre de sanglier", 30, partieEnCours);
                 printf("Que voulez vous faire maintenant ?\n1)Rentrer au campement\n2)Tout manger tout seul\n");
                 choix = menu(2);
                 if (choix == 1)
@@ -163,7 +165,7 @@ CarrefourForet :
                     else if (choix == 3)
                     {
                         printf("Vous provoquez cousin Hubert en duel pour sa mauvaise grace\n");
-                        combat("Cousin Hubert", 500, 45, partieEnCours);
+                        combat("Cousin Hubert", 17, partieEnCours);
                         //recompensesMonstre("Epee de fragile", 50, partieEnCours);
                         affichageStats(*partieEnCours);
                     }
@@ -262,8 +264,8 @@ CarrefourForet :
                         printf("Immediatement, une bande de dix castors d'elite en sort pour defendre leur foyer.\n");
                         getch();
                         printf("Ces castors sont vraiment feroces et il vous faut les combattre !\n");
-                        combat("Castors d'elite", 120, 40, partieEnCours);
-                        //recompensesMonstre("10 cadavres de castor", 50, partieEnCours);
+                        combat("Castors d'elite", 20, partieEnCours);
+                        recompensesMonstre("10 cadavres de castor", 50, partieEnCours);
                         printf("Que faire maintenant ?\n1)Demolir le reste du barrage\n2)Manger les castors\n");
                         printf("3)Retourner au carrefour precedent\n");
                         choix = menu(4);
@@ -280,7 +282,7 @@ CarrefourForet :
                             if (choix == 1)
                             {
                                 printf("Vous genocidez la population de castors dans la joie et la bonne humeur.\n");
-                                //recompensesMonstre("20 cadavres de castor", 0, partieEnCours);
+                                recompensesMonstre("20 cadavres de castor", 30, partieEnCours);
                                 getch();
                                 printf("Il n'y a plus rien a faire ici. Appuyez sur une touche pour rebrousser chemin.\n");
                                 getch();
