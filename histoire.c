@@ -132,6 +132,7 @@ CarrefourForet :
                 getch();
                 affichageStats(*partieEnCours);
                 getch();
+                printf("\n");
                 combat("le sanglier sauvage", 10, partieEnCours);
                 recompensesMonstre("Cadavre de sanglier", 30, partieEnCours);
                 printf("Que voulez vous faire maintenant ?\n1)Rentrer au campement\n2)Tout manger tout seul\n");
@@ -165,7 +166,7 @@ CarrefourForet :
                     {
                         printf("Vous provoquez cousin Hubert en duel pour sa mauvaise grace\n");
                         combat("Cousin Hubert", 17, partieEnCours);
-                        //recompensesMonstre("Epee de fragile", 50, partieEnCours);
+                        recompensesMonstre("Epee de fragile", 50, partieEnCours);
                         affichageStats(*partieEnCours);
                     }
                     else
@@ -184,6 +185,9 @@ CarrefourForet :
                         partieEnCours->pdV += 90;
                         affichageStats(*partieEnCours);
                         getch();
+                        printf("Il ne reste plus qu'a retourner au carrefour precedent.\n");
+                        getch();
+                        goto CarrefourForet;
                     }
                 }
                 else if (choix == 2)
@@ -213,9 +217,9 @@ CarrefourForet :
                     {
                         printf("Vous vous montrez clement envers la Fiotte.\n");
                         getch();
-                        printf("10 points d'XP recompensent ce comportement digne.\n");
+                        printf("50 points d'XP recompensent ce comportement digne.\n");
                         getch();
-                        partieEnCours->XP += 10;
+                        experiencePlus(partieEnCours, 50);
                         affichageStats(*partieEnCours);
                     }
                     else
@@ -257,7 +261,7 @@ CarrefourForet :
                 {
                     printf("Vous vous approchez de la riviere et les castors rentrent tous se cacher dans leur barrage.\n");
                     getch();
-                    printf("Que faire ?\n1)Demolir le barrage2)Renoncer\n");
+                    printf("Que faire ?\n1)Demolir le barrage\n2)Renoncer\n");
                     choix = menu(2);
                     if (choix == 1)
                     {
@@ -284,7 +288,8 @@ CarrefourForet :
                             if (choix == 1)
                             {
                                 printf("Vous genocidez la population de castors dans la joie et la bonne humeur.\n");
-                                recompensesMonstre("20 cadavres de castor", 30, partieEnCours);
+                                combat("Castors pacifistes", 5, partieEnCours);
+                                recompensesMonstre("10 cadavres de castor", 30, partieEnCours);
                                 getch();
                                 printf("Il n'y a plus rien a faire ici. Appuyez sur une touche pour rebrousser chemin.\n");
                                 getch();
@@ -294,10 +299,10 @@ CarrefourForet :
                             {
                                 printf("Les castors retournent dans leur barrage en paix.\n");
                                 getch();
-                                printf("Cette bonne action vous rapporte 15 points d'XP.");
-                                partieEnCours->XP+=15;
+                                printf("Cette bonne action vous rapporte 20 points d'XP.");
+                                experiencePlus(partieEnCours, 20);
                                 getch();
-                                printf("il n'y a plus rien a faire ici. Appuyez sur une touche pour rebrousser chemin.\n");
+                                printf("Il n'y a plus rien a faire ici. Appuyez sur une touche pour rebrousser chemin.\n");
                                 getch();
                                 goto CarrefourForet;
                             }
@@ -307,7 +312,7 @@ CarrefourForet :
                                 getch();
                                 printf("Le barrage redevient un petit tas de bois informe qui flotte.\n");
                                 getch();
-                                printf("Cette action peu ecologique reveille la conscience de gauchiste de la Fiotte");
+                                printf("Cette action peu ecologique reveille la conscience de gauchiste de la Fiotte.\n");
                                 getch();
                                 printf("Il se met a chouiner comme un journaliste de Liberation.\n");
                                 getch();
@@ -319,7 +324,7 @@ CarrefourForet :
                                 getch();
                                 printf("Tout revigore, vous reprenez le cours de votre expedition.\n");
                                 getch();
-                                printf("il n'y a plus rien a faire ici. Appuyez sur une touche pour rebrousser chemin.\n");
+                                printf("Il n'y a plus rien a faire ici. Appuyez sur une touche pour rebrousser chemin.\n");
                                 getch();
                                 goto CarrefourForet;
                             }
@@ -340,6 +345,9 @@ CarrefourForet :
                             printf("Ce repas vous a redonne des forces, vous gagnez 70 points de vie et 15 points d'attaque.\n");
                             partieEnCours->pdV += 50;
                             partieEnCours->pdA += 15;
+                            printf("Il n'y a plus rien a faire ici, vous rebroussez chemin vers le carrefour precedent.\n");
+                            getch();
+                            goto CarrefourForet;
                         }
                         else if (choix == 3)
                         {
@@ -355,8 +363,8 @@ CarrefourForet :
                     {
                         printf("Vous etes un bon chretien et laissez tranquilles les malheureux castors.\n");
                         getch();
-                        printf("Vous recuperez 30 XP pour la peine");
-                        partieEnCours->XP += 30;
+                        printf("Vous recuperez 30 XP pour la peine\n");
+                        experiencePlus(partieEnCours, 30);
                         printf("Il n'y a plus rien a faire ici. Appuyez sur une touche pour rebrousser chemin.\n");
                         getch();
                         goto CarrefourForet;
@@ -407,25 +415,25 @@ CarrefourForet :
                     getch();
                     if (de * partieEnCours->chance > 130)
                     {
-                        printf("Victoire ! vous reussisez a vous extraire de la rivire.\n");
+                        printf("Victoire ! vous reussisez a vous extraire de la riviere.\n");
                         printf("Que faire ?\n1)Botter le cul a ces inutiles serviteurs\n2)Rebrousser chemin\n");
                         choix = menu(2);
                         if (choix == 1)
                         {
                             printf("Vous fixez ces gredins et l'un d'entre eux-vous devisage avec son air hautain.\n");
                             getch();
-                            printf("Il ne vous reste plus qu'a lui donner une leçon de vie.\n");
+                            printf("Il ne vous reste plus qu'a lui donner une lecon de vie.\n");
                             getch();
                             printf("Vous engagez le duel !\n");
                             getch();
                             affichageStats(*partieEnCours);
-                            //combat("Le gueux", 200, 10, partieEnCours);
-                            //recompensesMonstre("1 pièce d'or", 50, partieEnCours);
+                            combat("Le gueux", 10, partieEnCours);
+                            recompensesMonstre("1 pièce d'or", 50, partieEnCours);
                             printf("Vous faites maintenant demi-tour. Vous etes de retour au carrefour.\n");
                             getch();
                             goto CarrefourForet;
                         }
-                        else if (choix == 3)
+                        else if (choix == 2)
                         {
                             printf("Vous faites demi-tour. Vous etes de retour au carrefour.\n");
                             getch();
@@ -470,7 +478,7 @@ CarrefourForet :
                         partieEnCours->pdV-=20;
                         printf("Vous et vos compagnons vous sentez faible, vous faites demi-tour.\n");
                         getch();
-                        printf("De retour au carrefour dans la foret, que voulez-vous faire ?\n");
+                        printf("De retour au carrefour, que voulez-vous faire ?\n");
                         goto CarrefourForet;
                     }
                     else if (choix == 2)
@@ -506,7 +514,7 @@ CarrefourForet :
                             printf("C'etait un piege, mdrrrrrrrrrrrrr\n");
                             getch();
                             exit(EXIT_SUCCESS);
-                        */}
+                        */
                         printf("Bravo vous avez chope de la poiscaille. Vous rentrez sur la berge\n");
                         getch();
                         printf("Que faire maintenant ?\n1)Rentrer au campement\n2)Rebrousser chemin\n3)Manger le poissonet\n");
@@ -535,7 +543,7 @@ CarrefourForet :
                             getch();
                             partieEnCours->pdV += 70;
                             partieEnCours->pdA += 15;
-                            printf("Quand un pouilleux vient vers vous quemander du poisson\n");
+                            printf("Quand, un pouilleux vient vers vous quemander du poisson\n");
                             getch();
                             printf("Que faire ?\n1)Partager son casse croute\n2)L'inviter a prendre la porte\n");
                             choix = menu(2);
@@ -543,10 +551,9 @@ CarrefourForet :
                             {
                                 printf("Votre generosite à pris le dessus.\n");
                                 getch();
-                                printf("Votre bonne action vous rapporte 30 points d'XP\n");
+                                printf("Votre bonne action vous rapporte 50 points d'XP\n");
                                 getch();
-                                // changer
-                                partieEnCours->XP += 30;
+                                experiencePlus(partieEnCours, 50);
                                 affichageStats(*partieEnCours);
                                 getch();
                                 printf("\n");
@@ -561,7 +568,7 @@ CarrefourForet :
                                 getch();
                                 printf("Cette mauvaise action vous retourne le cerveau\n");
                                 getch();
-                                printf("Vous perdez 10% de chance.\n");
+                                printf("Vous perdez 10 pourcent de chance.\n");
                                 getch();
                                 partieEnCours->chance -= 10;
                                 printf("\n");
@@ -577,14 +584,22 @@ CarrefourForet :
                 }
                 else if (choix == 3)
                 {
-                    printf("Vous changez d'avis et faites demi-tour. Vous etes de retour au campement.\n");
+                    printf("Vous changez d'avis et faites demi-tour. De retour au campement, que voulez vous faire ?.\n");
                     goto Campement;
                 }
-                else
-                {
-                    printf("Renvoi de la fonction menu() invalide");
-                }
             }
+            else if (choix == 4)
+            {
+                printf("Vous changez d'avis et faites demi-tour. De retour au campement, que voulez vous faire ?.\n");
+                goto Campement;
+            }
+
+            else
+            {
+                printf("Renvoi de la fonction menu() invalide");
+            }
+
+        }
         else if (choix == 2)
         {
             printf("Vous ordonnez a vos serviteur d'aller chasser le gibier\n");
@@ -620,7 +635,7 @@ CarrefourForet :
             printf("Assis au loin en train de cirer ses bottes, vous voyez Cousin Hubert.\n");
             getch();
             printf("Que faire ?\n1)Le provoquer en duel car ses bottes sont plus brillantes que les votres\n");
-            printf("\n2)Aller dormir comme c'etait initialement prevu\n");
+            printf("2)Aller dormir comme c'etait initialement prevu\n");
             choix = menu(1);
             if (choix == 1)
             {
@@ -632,25 +647,26 @@ CarrefourForet :
                 getch();
                 printf("En GAAAAARDE !!!\n");
                 combat("Cousin hubert", 19, partieEnCours);
+                recompensesMonstre("", 50, partieEnCours);
                 printf("Vous pouvez prendre l'epee de Cousin Hubert qui est encore mort.\n");
                 getch();
-                printf("Le faire ou ne pas le faire ?\n1)Le faire\n2)Ne pas le faire");
-                choix = menu(2)
+                printf("Le faire ou ne pas le faire ?\n1)Le faire\n2)Ne pas le faire\n");
+                choix = menu(2);
                 if (choix == 1)
                 {
                     printf("En fait cette epee est completement eclatee au sol.\n");
                     getch();
-                    printf("Vous perdez 30 points d'attaque");
+                    printf("Vous perdez 30 points d'attaque\n");
                     partieEnCours->pdA -= 30;
+                    affichageStats(*partieEnCours);
                 }
-                else (choix == 2)
+                else if (choix == 2)
                 {
-                    printf("Bravo, le pillage c'est mal.");
+                    printf("Bravo, le pillage c'est mal.\n");
                     getch();
-                    printf("Vous gagnez 30 experience car le pillage, c'est mal.");
+                    printf("Vous gagnez 50 points d'experience car le pillage, c'est mal.\n");
                     getch();
-                    experiencePlus(partieEnCours, 30);
-
+                    experiencePlus(partieEnCours, 50);
                 }
                 getch();
 
@@ -668,6 +684,8 @@ CarrefourForet :
             getch();
             printf("Vous vous reveillez le lendemain, pret a casser des gueules !\n");
             getch();
+            printf("Que faire ?\n");
+            goto Campement;
         }
     }
     else if (choix == 2)
@@ -702,8 +720,8 @@ CarrefourForet :
             getch();
             printf("Ce goumage efficace vous a beaucoup appris. \n");
             getch();
-            printf("Vous gagnez 15 points d'experience.\n");
-            partieEnCours->XP+=15;
+            printf("Vous gagnez 50 points d'experience.\n");
+            experiencePlus(partieEnCours, 50);
         }
         else
         {
