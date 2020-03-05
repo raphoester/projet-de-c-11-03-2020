@@ -72,10 +72,11 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
             printf("Vous avez vaincu %s !\n", monstre.nom);
             getch();
             printf("Vous remportez %d points d'experience.\n", monstre.xp);
+            experiencePlus(partieEnCours, monstre.xp);
             return 0;
         }
         getch();
-        printf("Points de vie de %s : %d\nVous avez %d PV et %d Points d'attaque.\n", monstre.nom, monstre.pdV, partieEnCours->pdV, partieEnCours->pdA);
+        printf("%s a %d points de vie.\nVous avez %d PV et %d Points d'attaque.\n", monstre.nom, monstre.pdV, partieEnCours->pdV, partieEnCours->pdA);
         getch();
         printf("%s attaque !\n", monstre.nom);
         getch();

@@ -4,26 +4,6 @@
 #include <time.h>
 #include <windows.h>
 
-void XPMaximum(Partie* partieEnCours) //fonction qui met à jour le niveau du joueur en fonction de son xp actuelle.
-{
-    int jauge = 0;
-    int augmentation = 0;
-    if (partieEnCours->XP >= 50)
-    {
-
-        while (jauge <= partieEnCours->XP)
-        {
-            augmentation += 50;
-            jauge += augmentation;
-        }
-        partieEnCours->XPMax = jauge;
-    }
-    else
-    {
-        partieEnCours->XPMax = 50;
-    }
-}
-
 void experiencePlus(Partie* partieEnCours, int experienceBonus)
 {
     partieEnCours->XP += experienceBonus ;
@@ -35,6 +15,8 @@ void experiencePlus(Partie* partieEnCours, int experienceBonus)
         printf("Vous etes desormais niveau %d\n", partieEnCours->niveau);
         partieEnCours->pdV *= 2;
         partieEnCours->pdA *= 2;
+        partieEnCours->XP = 0;
+        partieEnCours->XPMax = partieEnCours->niveau*100;
     }
 }
 

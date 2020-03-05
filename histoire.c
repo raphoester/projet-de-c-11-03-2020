@@ -10,15 +10,14 @@ void initJeu(Partie* partieEnCours)
 {
     int secMax = 0;
     int appuyages = 0;
-    printf("Bienvenue chevalier !\nChoisis un niveau de difficulte\n");
-    printf("1)Francois Hollande\n2)Bernard Tapie\n3)Louis VI le gros\n4)Saddam Hussein\n");
-    partieEnCours->difficulte = menu(4);
-
+    printf("Bienvenue dans cette croisade, chevalier !\n");
+    getch();
     system("cls");
     printf("En l'an de grace 1096, Godefroy de Bouillon, duc de Basse-Lotharingie, prend les armes aux cotes de son frere ");
-    printf("Baudouin de Bourgogne, Hugues de Vermandois, Robert II de Normandie et Etienne de Blois.\nCes valeureux chevaliers ");
-    printf("partent a Jerusalem suivant l'appel du pape Urbain II pour delivrer le Saint Sepulcre, tombe aux mains ");
-    printf("des perfides Sarrasins. \n");
+    printf("Baudouin de Bourgogne, Hugues de Vermandois, Robert II de Normandie et Etienne de Blois.\n");
+    getch();
+    printf("Ces valeureux chevaliers partent a Jerusalem suivant l'appel du pape Urbain II pour");
+    printf("delivrer le Saint Sepulcre, tombe aux mains des perfides Sarrasins. \n");
     getch();
     system("cls");
     printf("Avant de partir, Godefroy se rend chez un enchanteur pour qu'il lui confere bonne fortune lors de ses guerroyages.\n");
@@ -68,7 +67,7 @@ void initJeu(Partie* partieEnCours)
     printf("Vous obtenez %d points d'attaque !\n", partieEnCours->pdA);
     getch();
 
-    printf("Maintenant, voyons voir si tu as de la chance... (c'est fait au hasard, tu n'as rien a faire)\n");
+    printf("Maintenant, voyons voir si vous avez de la chance... (c'est fait au hasard, vous n'avez rien a faire)\n");
     //compteTouche(ENTREE, 2);
     srand(time(NULL));
     partieEnCours->chance = (rand() % (MAX - MIN + 1)) + MIN;
@@ -76,7 +75,7 @@ void initJeu(Partie* partieEnCours)
     getch();
 
     printf("Chevalier, tu es fin pret. Equipe toi, Jerusalem t'attend.\n");
-    XPMaximum(partieEnCours);
+    partieEnCours->XPMax = 100;
     affichageStats(*partieEnCours);
     getch();
     system("cls");
@@ -631,9 +630,30 @@ CarrefourForet :
                 getch();
                 printf("Vous lui tendez une epee.\n");
                 getch();
-                printf("En GAAAAARDE !!!");
-                //combat(cousin hubert etc
+                printf("En GAAAAARDE !!!\n");
+                combat("Cousin hubert", 19, partieEnCours);
+                printf("Vous pouvez prendre l'epee de Cousin Hubert qui est encore mort.\n");
                 getch();
+                printf("Le faire ou ne pas le faire ?\n1)Le faire\n2)Ne pas le faire");
+                choix = menu(2)
+                if (choix == 1)
+                {
+                    printf("En fait cette epee est completement eclatee au sol.\n");
+                    getch();
+                    printf("Vous perdez 30 points d'attaque");
+                    partieEnCours->pdA -= 30;
+                }
+                else (choix == 2)
+                {
+                    printf("Bravo, le pillage c'est mal.");
+                    getch();
+                    printf("Vous gagnez 30 experience car le pillage, c'est mal.");
+                    getch();
+                    experiencePlus(partieEnCours, 30);
+
+                }
+                getch();
+
 
             }
             printf("Vous rentrez dans votre tente, et vous vous affalez dans votre lit.\n");
