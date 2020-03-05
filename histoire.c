@@ -127,7 +127,7 @@ CarrefourForet :
             {
                 printf("Vous prenez la direction du Nord avec vos serviteurs.\n");
                 getch();
-                printf("Apres quelque cheminement, vous tombez nez a nez sur avec un sanglier sauvage !\n");
+                printf("Apres quelque cheminement, vous tombez nez a nez avec un sanglier sauvage !\n");
                 getch();
                 printf("Il a l'air agressif et ne vous laisse pas le choix : il faut combattre !\n");
                 getch();
@@ -229,9 +229,12 @@ CarrefourForet :
                     getch();
                     printf("Votre appetit surdimensionne vous vaut d'etre craint et respecte.\n");
                     getch();
-                    printf("Personne n'ose parler apres votre effrayant repas et vos multiples eructations.");
+                    printf("Personne n'ose parler apres votre effrayant repas et vos multiples eructations.\n");
                     getch();
                     bouffe +=1;
+                    printf("Il n'y a plus rien a faire ici. Vous retournez au carrefour precedent.\n");
+                    getch();
+                    goto CarrefourForet;
                 }
                 else
                 {
@@ -240,7 +243,7 @@ CarrefourForet :
             }
             else if (choix == 2)
             {
-                printf("Apres avoir suivi un petit sentier pendant quelques minutes, vous parvenez dans un champ de l'autre cote\n");
+                printf("Apres avoir suivi un petit sentier pendant quelques minutes, vous parvenez dans un champ de l'autre cote.\n");
                 getch();
                 printf("Non loin de la, un barrage de castors s'est installe sur un petit cours d'eau.\n");
                 getch();
@@ -583,7 +586,6 @@ CarrefourForet :
                     printf("Renvoi de la fonction menu() invalide");
                 }
             }
-        }
         else if (choix == 2)
         {
             printf("Vous ordonnez a vos serviteur d'aller chasser le gibier\n");
@@ -606,7 +608,11 @@ CarrefourForet :
             partieEnCours->pdV += 70;
             partieEnCours->pdA += 15;
             affichageStats(*partieEnCours);
+            bouffe +=1;
             getch();
+            printf("Que faire en attendant la nuit ?\n");
+            getch();
+            goto Campement;
         }
         else if (choix == 3)
         {
@@ -643,6 +649,7 @@ CarrefourForet :
             printf("Vous vous reveillez le lendemain, pret a casser des gueules !\n");
             getch();
         }
+    }
     else if (choix == 2)
     {
         printf("Vous continuez vers le sud jusqu'au lendemain matin.\n");
