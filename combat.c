@@ -11,7 +11,7 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
     monstre.pdV = ((goumage*goumage)/5)+100;
     monstre.critique = 3;
     monstre.pdA = goumage*4 + 30;
-    monstre.xp = 50*goumage;
+    monstre.XP = 50*goumage;
     int reduction = 1;
     for (int i=0;i<100;i++)
     {
@@ -24,7 +24,9 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
     {
         reduction = 1;
         printf("Vous avez %d points de vie et %d points d'attaque.\n", partieEnCours->pdV, partieEnCours->pdA);
-        printf("%s a %d points de vie et %d points d'attaque\n", monstre.nom, monstre.pdV, monstre.pdA);
+        printf("%s a %d points de vie et %d points d'attaque.\n", monstre.nom, monstre.pdV, monstre.pdA);
+        getch();
+        printf("Que faire ?\n");
         printf("1)Attaquer\n2)Position defensive\n3)Boire une lampee de vinasse\n4)Fuir\n");
         scanf("%d", &choix);
         switch(choix)
@@ -34,19 +36,19 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
             crit = (rand() % (MAX - MIN + 1)) + MIN;
             if (crit > partieEnCours->chance) // pas critique
             {
-                printf("Vous brandissez votre epee et infligez %d points de degats\n", partieEnCours->pdA);
+                printf("Vous brandissez votre epee et infligez %d points de degats.\n", partieEnCours->pdA);
                 monstre.pdV -= partieEnCours->pdA;
             }
             else //  critique
             {
-                printf("Bouyah, coup critique ! Vous goumez violemment les grands morts de %s\n", monstre.nom);
+                printf("Bouyah, coup critique ! Vous goumez violemment les grands morts de %s.\n", monstre.nom);
                 getch();
-                printf("Vous infligez %d degats\n", (partieEnCours->pdA)*2);
+                printf("Vous infligez %d degats.\n", (partieEnCours->pdA)*2);
                 monstre.pdV -= (partieEnCours->pdA)*2;
             }
             break;
         case 2:
-            printf("Apeure vous vous mettez en PLS \n");
+            printf("Apeure, vous vous mettez en PLS.\n");
             reduction = 2;
             break;
         case 3:
@@ -60,7 +62,7 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
             partieEnCours->pdV *= 0.9;
             return 1;
         default:
-            printf("Vous restez immobile a vous faire peter la rondelle \n");
+            printf("Vous restez immobile a vous faire peter la rondelle.\n");
             break;
         }
         if (monstre.pdV <= 0)
@@ -68,31 +70,35 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
             getch();
             printf("Vous avez vaincu %s !\n", monstre.nom);
             getch();
-            printf("Vous remportez %d points d'experience.\n", monstre.xp);
+            printf("Vous remportez %d points d'experience.\n", monstre.XP);
             return 0;
         }
-        printf("Monstre : %s\nPoints de vie : %d\nVous avez %d PV et %d Points d'attaque.\n", monstre.nom, monstre.pdV, partieEnCours->pdV, partieEnCours->pdA);
+        getch();
+        printf("Points de vie de %s : %d\nVous avez %d PV et %d Points d'attaque.\n", monstre.nom, monstre.pdV, partieEnCours->pdV, partieEnCours->pdA);
         getch();
         printf("%s attaque !\n", monstre.nom);
+        getch();
         srand(time(NULL));
         crit = (rand() % (MAX - MIN + 1)) + MIN;
         if (crit > partieEnCours->chance) // pas crit
         {
-            printf("Il vous inflige %d degats\n", (monstre.pdA)/reduction);
+            printf("Il vous inflige %d degats.\n", (monstre.pdA)/reduction);
             partieEnCours->pdV -= monstre.pdA;
+            getch();
         }
         else //  crit
         {
-            printf("BIG OOF, %s vous a mis une patate de forain sous steroide\n", monstre.nom);
+            printf("BIG OOF, %s vous a mis une patate de forain sous steroide.\n", monstre.nom);
             getch();
-            printf("Vous perdez %d points de vie\n", ((monstre.pdA)*2)/reduction);
+            printf("Vous perdez %d points de vie.\n", ((monstre.pdA)*2)/reduction);
             partieEnCours->pdV -= ((monstre.pdA)*2)/reduction;
+            getch;
         }
         // mort
         if (partieEnCours->pdV <= 0)
         {
             getch();
-            printf("Oh, on dirait bien que vous vous etes fait rouler dessus par %s\n", monstre.nom);
+            printf("Oh, on dirait bien que vous vous etes fait rouler dessus par %s.\n", monstre.nom);
             getch();
             printf("FIN DU JEU\n");
             getch();
