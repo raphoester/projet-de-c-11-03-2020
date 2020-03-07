@@ -18,6 +18,8 @@ int main()
         initJeu(& partieEnCours);
 MarqueP1:
         bouillonJerusalem(&partieEnCours);
+MarqueP2:
+        Paris(&partieEnCours);
     }
     else if (choixMenuPrincipal == 2)
     {
@@ -35,6 +37,10 @@ MarqueP1:
             if (partieEnCours.marquePage == 1)
             {
                 goto MarqueP1;
+            }
+            else if (partieEnCours.marquePage == 2)
+            {
+                goto MarqueP2;
             }
             else
             {

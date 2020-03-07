@@ -81,7 +81,7 @@ void initJeu(Partie* partieEnCours)
     system("cls");
     partieEnCours->marquePage = 1;
     sauvegarde(*partieEnCours);
-    return 0 ;
+    return 0;
 }
 
 void bouillonJerusalem(Partie *partieEnCours)
@@ -338,7 +338,11 @@ CarrefourForet :
                             if (choix == 1)
                             {
                                 printf("Vous genocidez la population de castors dans la joie et la bonne humeur.\n");
-                                combat("La clique des castors pacifistes", 5, partieEnCours);
+                                if (combat("La clique des castors pacifistes", 5, partieEnCours) == 1)
+                                {
+                                    printf("De retour au carrefour de la foret.\n");
+                                    goto CarrefourForet;
+                                }
                                 getch();
                                 printf("Il n'y a plus rien a faire ici. Appuyez sur une touche pour rebrousser chemin.\n");
                                 getch();
@@ -657,7 +661,7 @@ CarrefourForet :
         }
         else if (choix == 2)
         {
-            printf("Vous ordonnez a vos serviteur d'aller chasser le gibier\n");
+            printf("Vous ordonnez a vos serviteurs d'aller chasser le gibier\n");
             getch();
             printf("Pendant ce temps, vous vous asseyez contre un arbre..\n");
             getch();
@@ -691,7 +695,7 @@ CarrefourForet :
             getch();
             printf("Que faire ?\n1)Le provoquer en duel car ses bottes sont plus brillantes que les votres\n");
             printf("2)Aller dormir comme c'etait initialement prevu\n");
-            choix = menu(1);
+            choix = menu(2);
             if (choix == 1)
             {
                 printf("D'un pas decide, vous avancez vers Cousin Hubert.\n");
@@ -732,8 +736,6 @@ CarrefourForet :
                     experiencePlus(partieEnCours, 50);
                 }
                 getch();
-
-
             }
             printf("Vous rentrez dans votre tente, et vous vous affalez dans votre lit.\n");
             getch();
@@ -790,9 +792,32 @@ CarrefourForet :
         {
             printf("Renvoi de la fonction menu() invalide.");
         }
+        goto Jerusalem;
     }
     else
     {
         printf("Renvoi de la fonction menu() invalide.");
     }
+Jerusalem:
+    printf("Quelques jours de marche plus tard.\n");
+    getch();
+    printf(".\n");
+    getch();
+    printf(".\n");
+    getch();
+    printf("Vous atteignez enfin la Terre Sainte.\n");
+    getch();
+    printf("Lorsqu'une tempete de sable approche.\n");
+    getch();
+    printf("Vous...\n");
+    partieEnCours->marquePage = 2;
+    sauvegarde(*partieEnCours);
+    return 0;
+}
+
+void Paris(Partie *partieEnCours)
+{
+    printf("TEST");
+    getch();
+    printf("Test");
 }
