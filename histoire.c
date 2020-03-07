@@ -108,7 +108,7 @@ void bouillonJerusalem(Partie *partieEnCours)
         printf("Que faire ?\n");
 Campement:
         printf("1)Partir chasser\n2)Ordonner qu'on apporte des vivres pour se restaurer\n");
-        if (bouffe <= 1)
+        if (bouffe >= 1)
         {
             printf("3)Dormir\n");
         }
@@ -133,8 +133,10 @@ CarrefourForet :
                 affichageStats(*partieEnCours);
                 getch();
                 printf("\n");
-                combat("le sanglier sauvage", 10, partieEnCours);
-                recompensesMonstre("Cadavre de sanglier", 30, partieEnCours);
+                if (combat("le sanglier sauvage", 10, partieEnCours) == 1) // si il a fui
+                {
+                    goto CarrefourForet;
+                }
                 printf("Que voulez vous faire maintenant ?\n1)Rentrer au campement\n2)Tout manger tout seul\n");
                 choix = menu(2);
                 if (choix == 1)
@@ -165,8 +167,12 @@ CarrefourForet :
                     else if (choix == 3)
                     {
                         printf("Vous provoquez cousin Hubert en duel pour sa mauvaise grace\n");
-                        combat("Cousin Hubert", 17, partieEnCours);
-                        recompensesMonstre("Epee de fragile", 50, partieEnCours);
+                        if (combat("Cousin Hubert", 17, partieEnCours) == 1)
+                        {
+                            printf("Votre couardise encourage cousin Hubert et il vous vole votre sanglier.\n");
+                            printf("CHEH petit fragile.\n");
+                            goto Campement;
+                        }
                         affichageStats(*partieEnCours);
                     }
                     else
@@ -255,11 +261,51 @@ CarrefourForet :
                 choix = menu(3);
                 if (choix == 1)
                 {
-                    printf("Vous vous approchez du barrage");
+                    printf("Vous vous approchez de la rivière vous baignez sans enlever votre armure.\n");
+                    getch();
+                    printf("On est jamais trop mefiant avec les sarrasins.\n");
+                    getch();
+                    printf("Tandis que vous nagez avec aisance la brasse papillon dans l'eau fraiche et ravigotante, ");
+                    printf("vous constatez que vos mouvements sont de plus en plus difficiles.");
+                    getch();
+                    printf("Votre armure est en train de rouiller !\n");
+                    getch();
+                    printf("Vous luttez a toute force contre la gravite qui vous entraine.\n");
+                    getch();
+                    printf("Allez vous vous en sortir ? Telle est la question...\n");
+                    getch();
+                    printf("Apppuyez sur une touche pour lancer le de.\n");
+                    getch();
+                    printf("Lancer de de en cours...\n");
+                    compteTouche(ENTREE, 3);
+                    if (lancerDeDes(partieEnCours) == 0)
+                    {
+                        printf("Vous reussissez a vous extraire de la riviere, chouette !\n");
+                        getch();
+                        printf("Par contre, cette aventure vous a epuise.\n");
+                        getch();
+                        printf("Vous perdez 70 points de vie et 15 points d'attaque.\n");
+                        getch();
+                        partieEnCours->pdV-=70;
+                        partieEnCours->pdA-=15;
+                        affichageStats(partieEnCours);
+                        getch();
+                        printf("Vous rentrez au campement pour vous reposer.\n");
+                        goto Campement;
+                   }
+                    else
+                    {
+                        printf("Oopsi doo, spaghetti ooo... On dirait bien que vous etes mort noye.\n");
+                        getch();
+                        printf("Coup dur pour Godefroy de Bouillon.\n");
+                        getch();
+                        exit(EXIT_SUCCESS);
+
+                    }
                 }
                 else if (choix == 2)
                 {
-                    printf("Vous vous approchez de la riviere et les castors rentrent tous se cacher dans leur barrage.\n");
+                    printf("Vous vous approchez du barrage et les castors rentrent tous se cacher a l'interieur.\n");
                     getch();
                     printf("Que faire ?\n1)Demolir le barrage\n2)Renoncer\n");
                     choix = menu(2);
@@ -270,8 +316,12 @@ CarrefourForet :
                         printf("Immediatement, une bande de dix castors d'elite en sort pour defendre leur foyer.\n");
                         getch();
                         printf("Ces castors sont vraiment feroces et il vous faut les combattre !\n");
-                        combat("Castors d'elite", 20, partieEnCours);
-                        recompensesMonstre("10 cadavres de castor", 50, partieEnCours);
+                        if (combat("La bande de castors d'elite", 30, partieEnCours) == 1)
+                        {
+                            printf("Vous etes de retour au carrefour de la foret.\n");
+                            goto CarrefourForet;
+                        }
+
                         printf("Que faire maintenant ?\n1)Demolir le reste du barrage\n2)Manger les castors\n");
                         printf("3)Retourner au carrefour precedent\n");
                         choix = menu(4);
@@ -288,8 +338,7 @@ CarrefourForet :
                             if (choix == 1)
                             {
                                 printf("Vous genocidez la population de castors dans la joie et la bonne humeur.\n");
-                                combat("Castors pacifistes", 5, partieEnCours);
-                                recompensesMonstre("10 cadavres de castor", 30, partieEnCours);
+                                combat("La clique des castors pacifistes", 5, partieEnCours);
                                 getch();
                                 printf("Il n'y a plus rien a faire ici. Appuyez sur une touche pour rebrousser chemin.\n");
                                 getch();
@@ -409,26 +458,32 @@ CarrefourForet :
                     printf("Allez vous vous en sortir ?\n");
                     getch();
                     printf("lancer de des...");
-                    //compteTouche(ENTREE, 3);
-                    de = lancerDeDes();
-                    printf("Vous obtenez %d.\n", de);
-                    getch();
-                    if (de * partieEnCours->chance > 130)
+                    compteTouche(ENTREE, 3);
+                    if(lancerDeDes(partieEnCours) == 0)
                     {
                         printf("Victoire ! vous reussisez a vous extraire de la riviere.\n");
                         printf("Que faire ?\n1)Botter le cul a ces inutiles serviteurs\n2)Rebrousser chemin\n");
                         choix = menu(2);
                         if (choix == 1)
                         {
-                            printf("Vous fixez ces gredins et l'un d'entre eux-vous devisage avec son air hautain.\n");
+                            printf("Vous devisagez ces gredins et l'un d'entre eux-vous devisage avec son air hautain.\n");
                             getch();
                             printf("Il ne vous reste plus qu'a lui donner une lecon de vie.\n");
                             getch();
                             printf("Vous engagez le duel !\n");
                             getch();
                             affichageStats(*partieEnCours);
-                            combat("Le gueux", 10, partieEnCours);
-                            recompensesMonstre("1 pièce d'or", 50, partieEnCours);
+                            if (combat("Le gueux insubordonne", 15, partieEnCours) == 1);
+                            {
+                                printf("QUELLE FIOTTE !\n");
+                                getch();
+                                printf("Le gueux insubordonne prend la conf et vous derobe tout votre stock de poisson tandis que vous fuyez.\n");
+                                getch();
+                                printf("Vous n'avez plus de poisson, par contre, vous avez le seum...\n");
+                                getch();
+                                printf("Vous retournez, seul et triste, au carrefour de la forêt pour vous refaire un peu a la chasse.\n");
+                                goto CarrefourForet;
+                            }
                             printf("Vous faites maintenant demi-tour. Vous etes de retour au carrefour.\n");
                             getch();
                             goto CarrefourForet;
@@ -646,8 +701,16 @@ CarrefourForet :
                 printf("Vous lui tendez une epee.\n");
                 getch();
                 printf("En GAAAAARDE !!!\n");
-                combat("Cousin hubert", 19, partieEnCours);
-                recompensesMonstre("", 50, partieEnCours);
+                if (combat("Cousin hubert", 19, partieEnCours) == 1)
+                {
+                    printf("Bah alors on a peur de cousin Hubert?!\n");
+                    getch();
+                    printf("Pour la peine vous n'avez plus le droit de dormir.\n");
+                    getch();
+                    printf("Vous etes de retour au campement.\n");
+                    bouffe = 0;
+                    goto Campement;
+                }
                 printf("Vous pouvez prendre l'epee de Cousin Hubert qui est encore mort.\n");
                 getch();
                 printf("Le faire ou ne pas le faire ?\n1)Le faire\n2)Ne pas le faire\n");

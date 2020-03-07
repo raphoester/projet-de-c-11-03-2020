@@ -104,10 +104,17 @@ void chargementSauvegarde(FILE* sauvegarde, Partie* partieEnCours)
     fscanf(sauvegarde, "%d %d %d %d %d %d %d %d", &partieEnCours->pdV, &partieEnCours->pdA, &partieEnCours->chance, &partieEnCours->difficulte, &partieEnCours->XP, &partieEnCours->XPMax, &partieEnCours->marquePage, &partieEnCours->niveau);
 }
 
-int lancerDeDes()
+int lancerDeDes(Partie* partieEnCours)
 {
     const int MAXI = 6;
     const int MINI = 1;
     srand(time(NULL));
-    return (rand() % (MAXI - MINI + 1)) + MINI ;
+    if (((rand() % (MAXI - MINI + 1)) + MINI )*partieEnCours->chance > 130)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
 }
