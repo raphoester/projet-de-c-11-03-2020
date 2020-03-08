@@ -123,22 +123,28 @@ void deplacementPlateau(int choix, Partie* partieEnCours) //choix 1=nord, 2=sud,
 {
     if (choix == 1)
     {
-        partieEnCours->y-=1;
+        (partieEnCours->y)-=1;
     }
     else if (choix == 2)
     {
-        partieEnCours->y+=1;
+        (partieEnCours->y)+=1;
     }
     else if (choix == 3)
     {
-        partieEnCours->x+=1;
+        (partieEnCours->x)+=1;
     }
     else if (choix == 4)
     {
-        partieEnCours->x-=1;
+        (partieEnCours->x)-=1;
     }
     else
     {
         printf("Entree choix de la fonction deplacementJoueur invalide");
     }
+}
+
+void recit(char ecrit[300])
+{
+    printf("%s\n", ecrit);
+    getch();
 }

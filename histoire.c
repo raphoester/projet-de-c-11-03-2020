@@ -832,6 +832,7 @@ void paris(Partie* partieEnCours)
 {
     //au debut du niveau, il est en haut à gauche (nord ouest). il commencera par courir vers l'est.
     //Plus il ira vers le sud, plus les mobs seront forts.
+    int maurice = 0;
     partieEnCours->x = 0;
     partieEnCours->y = 0;
     int choix = 0;
@@ -840,7 +841,7 @@ void paris(Partie* partieEnCours)
     printf("Appuyez sur une touche pour ouvrir les yeux.\n");
     getch();
     printf("...\n");
-    compteTouche(ENTREE, 2);
+//compteTouche(ENTREE, 2);
     printf("Vous etes dans une rue tres animee, couche devant une devanture.\n");
     getch();
     printf("Les locaux parlent une langue tres etrange qui ressemble au francois mais qui n'est point du francois.\n");
@@ -864,23 +865,58 @@ void paris(Partie* partieEnCours)
     {
         choix = 3;
     }
+    printf("pdA = %d", partieEnCours->pdA);
     deplacementPlateau(choix, partieEnCours);
+    printf("x %d y %d\n", partieEnCours->x, partieEnCours->y);
     while (1)
     {
-
-        if (partieEnCours->x == 1 && partieEnCours->y == 0;
+        if (partieEnCours->x == 1 && partieEnCours->y == 0);
         {
-            printf("Vous arrivez a un nouveau croisement de deux routes.\n");
             getch();
-            printf("Sur le bord du trottoir, un vieillard est assis par terre devant un gobelet.\n");
-            getch();
-            printf("Il n'a pas l'air presse.\nQue faire ?\n1)Lui demander ce que c'est que ce foutoir\n");
-            printf("2)Le menacer pour obtenir ces informations\n");
-            printf("3)Poursuivre sa route");
-            choix = menu(3);
-
+            if (maurice == 0)
+            {
+                printf("Vous arrivez a un nouveau croisement de deux routes.\n");
+                getch();
+                printf("Le lieu est toujours rempli a ras bord de sarrasins.");
+                getch();
+                printf("Vous decidez de jouer la ruse pour ne pas vous faire reperer en territoire hostile et decidez de n'en decapiter aucun.");
+                getch();
+                printf("Sur le bord du trottoir, un vieillard est assis par terre devant un gobelet.\n");
+                getch();
+                printf("Il n'a pas l'air presse.\nQue faire ?\n1)Lui demander ce que c'est que ce foutoir\n");
+                printf("2)Poursuivre sa route\n");
+                choix = menu(2);
+                if (choix == 1)
+                {
+                    recit("GODEFROY : Hola, vieillard, quel est cet etrange endroit infeste de sarrasins ?");
+                    recit("MAURICE : Eh beh c'est le quartier du marais mon pote...");
+                    recit("GODEFROY : Ce marais ne m'inspire pas confiance.");
+                    recit("GODEFROY : Et dis moi, dans quelle ville sommes nous ? Dans quel pays ?");
+                    recit("MAURICE : T'es maboule ou quoi ? On est en France, a Paris.");
+                    recit("Le Paris que vous connaissez n'a rien a voir avec le spectacle qui s'offre a vous.");
+                    recit("GODEFROY : Et en quelle annee ? Parle !");
+                    recit("MAURICE : Ben, on est en 2020, mon pote... T'as un peu force sur la villageoise, toi.");
+                    recit("MAURICE : Au fait, t'as pas une ptite piece ?");
+                    recit("Vous sortez un gros tas de pieces de votre poche et en aspergez Maurice.");
+                    recit("GODEFROY : Tiens, mon brave ! voici des ecus sonnants et trebuchants pour ta peine.");
+                    recit("Maurice est absolument abasourdi de la pluie de dorure qui vient de s'abattre devant lui.");
+                    recit("Il vous promet qu'il n'oubliera pas ce geste noble et ouvre une 8:6 en votre honneur.");
+                    recit("Cela vous rend tout joyeux et le fait de vous etre fait un pote vous revigore.");
+                    recit("Vous remportez 30 points d'experience en l'honneur de Maurice.");
+                    experiencePlus(partieEnCours, 30);
+                    affichageStats(*partieEnCours);
+                    recit("Il mentionne au passage son nom : Maurice.");
+                    printf("Mefiant, vous continuez votre route, abasourdi que la capitale de la France");
+                    recit(" soit a ce point envahie de sarrasins en 2020.");
+                    maurice = 1;
+                }
+                else if (choix == 2)
+                {
+                    recit("Vous faites une pause pour faire le point.");
+                    recit("Tout le monde vous devisage sans que vous ne compreniez pourquoi.");
+                    recit("Vous grimpez neanmoins a un lampadaire pour comprendre un peu mieux la geographie du lieu.");
+                }
+            }
         }
-
     }
-
 }

@@ -15,7 +15,7 @@ int main()
 
     if (choixMenuPrincipal == 1)
     {
-        initJeu(& partieEnCours);
+        initJeu(&partieEnCours);
 MarqueP1:
         bouillonJerusalem(&partieEnCours);
 MarqueP2:
