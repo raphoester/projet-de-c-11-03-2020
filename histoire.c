@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "combat.h"
+#define TAILLE_PLATEAU 9
+#include <conio.h>
 
 void initJeu(Partie* partieEnCours)
 {
@@ -81,7 +83,7 @@ void initJeu(Partie* partieEnCours)
     system("cls");
     partieEnCours->marquePage = 1;
     sauvegarde(*partieEnCours);
-    return 0;
+    return 0 ;
 }
 
 void bouillonJerusalem(Partie *partieEnCours)
@@ -338,9 +340,14 @@ CarrefourForet :
                             if (choix == 1)
                             {
                                 printf("Vous genocidez la population de castors dans la joie et la bonne humeur.\n");
-                                if (combat("La clique des castors pacifistes", 5, partieEnCours) == 1)
+                                if (combat("La clique des castors pacifistes", 5, partieEnCours) == 1);
                                 {
-                                    printf("De retour au carrefour de la foret.\n");
+                                    printf("Quel genre de fiotte fuit face a des castors pacifiques ?\n");
+                                    getch();
+                                    printf("Cette couardise insupportable vous fait perdre 15 points d'attaque en prime.\n");
+                                    getch();
+                                    printf("Vous etes de retour au carrefour dans la foret.");
+                                    getch();
                                     goto CarrefourForet;
                                 }
                                 getch();
@@ -736,6 +743,8 @@ CarrefourForet :
                     experiencePlus(partieEnCours, 50);
                 }
                 getch();
+
+
             }
             printf("Vous rentrez dans votre tente, et vous vous affalez dans votre lit.\n");
             getch();
@@ -792,7 +801,6 @@ CarrefourForet :
         {
             printf("Renvoi de la fonction menu() invalide.");
         }
-        goto Jerusalem;
     }
     else
     {
@@ -817,7 +825,62 @@ Jerusalem:
 
 void Paris(Partie *partieEnCours)
 {
-    printf("TEST");
+}
+
+
+void paris(Partie* partieEnCours)
+{
+    //au debut du niveau, il est en haut à gauche (nord ouest). il commencera par courir vers l'est.
+    //Plus il ira vers le sud, plus les mobs seront forts.
+    partieEnCours->x = 0;
+    partieEnCours->y = 0;
+    int choix = 0;
+    printf("Vous vous reveillez sur un sol dur et froid, il y a beaucoup de bruit autour de vous.\n\n");
     getch();
-    printf("Test");
+    printf("Appuyez sur une touche pour ouvrir les yeux.\n");
+    getch();
+    printf("...\n");
+    compteTouche(ENTREE, 2);
+    printf("Vous etes dans une rue tres animee, couche devant une devanture.\n");
+    getch();
+    printf("Les locaux parlent une langue tres etrange qui ressemble au francois mais qui n'est point du francois.\n");
+    getch();
+    printf("De nombreux sarrasins affluent de toute part, et vous vous sentez en danger !\n");
+    getch();
+    printf("Vous vous relevez et vous mettez a courir.\n");
+    getch();
+    printf("Les sarrasins sont toujours aussi nombreux a mesure que vous avancez.\n");
+    getch();
+    printf("Vous remarquez partout autour de vous d'etranges chariottes colorees ");
+    printf("qui avancent a balle sur des grandes pistes noires.\n");
+    getch();
+    printf("Peu apres, vous vous retrouvez face a un carrefour entre deux routes.\n");
+    getch();
+    printf("Le chemin a gauche semble bloque.\n");
+    getch();
+    printf("Ou aller ?\n1)Devant vous\n2)A droite\n");
+    choix = menu(2);
+    if (choix == 1)
+    {
+        choix = 3;
+    }
+    deplacementPlateau(choix, partieEnCours);
+    while (1)
+    {
+
+        if (partieEnCours->x == 1 && partieEnCours->y == 0;
+        {
+            printf("Vous arrivez a un nouveau croisement de deux routes.\n");
+            getch();
+            printf("Sur le bord du trottoir, un vieillard est assis par terre devant un gobelet.\n");
+            getch();
+            printf("Il n'a pas l'air presse.\nQue faire ?\n1)Lui demander ce que c'est que ce foutoir\n");
+            printf("2)Le menacer pour obtenir ces informations\n");
+            printf("3)Poursuivre sa route");
+            choix = menu(3);
+
+        }
+
+    }
+
 }

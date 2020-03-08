@@ -19,7 +19,7 @@ int main()
 MarqueP1:
         bouillonJerusalem(&partieEnCours);
 MarqueP2:
-        Paris(&partieEnCours);
+        paris(&partieEnCours);
     }
     else if (choixMenuPrincipal == 2)
     {

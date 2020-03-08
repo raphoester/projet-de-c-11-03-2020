@@ -6,3 +6,4 @@ int compteTouche(int touche, int secondesMax);
 void chargementSauvegarde(FILE* sauvegarde, Partie* partieEnCours);
 void sauvegarde(Partie partieEnCours);
 int lancerDeDes(Partie* partieEnCours);
+void deplacementPlateau(int choix, Partie* partieEnCours);
