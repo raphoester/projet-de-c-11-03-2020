@@ -16,7 +16,6 @@ struct Partie
     int chance;
     int difficulte;
     int marquePage;
-    int niveau;
     int x;
     int y;
 };

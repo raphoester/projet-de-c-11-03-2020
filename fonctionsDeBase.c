@@ -121,25 +121,29 @@ int lancerDeDes(Partie* partieEnCours)
 
 void deplacementPlateau(int choix, Partie* partieEnCours) //choix 1=nord, 2=sud, 3=est, 4=ouest.
 {
-    if (choix == 1)
+    printf("Choix = %d\n", choix);
+    int choixLocal = choix;
+    if (choixLocal == 1)
     {
         (partieEnCours->y)-=1;
+        printf("Condition 1 validee\n");
     }
-    else if (choix == 2)
+
+    else if (choixLocal == 2)
     {
         (partieEnCours->y)+=1;
+        printf("Condition 2 validee\n");
     }
-    else if (choix == 3)
+
+    else if (choixLocal == 3)
     {
         (partieEnCours->x)+=1;
+        printf("Condition 3 validee\n");
     }
-    else if (choix == 4)
+
+    else if (choixLocal == 4)
     {
         (partieEnCours->x)-=1;
-    }
-    else
-    {
-        printf("Entree choix de la fonction deplacementJoueur invalide");
     }
 }
 

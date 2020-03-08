@@ -7,4 +7,3 @@ int lancerDeDes(Partie* partieEnCours);
 void deplacementPlateau(int choix, Partie* partieEnCours);
 void recit(char ecrit[300]);
 void experiencePlus(Partie* partieEnCours, int experienceBonus);
-void proute(int choix);

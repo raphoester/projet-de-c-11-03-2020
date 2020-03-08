@@ -865,11 +865,44 @@ void paris(Partie* partieEnCours)
     {
         choix = 3;
     }
-    printf("pdA = %d", partieEnCours->pdA);
     deplacementPlateau(choix, partieEnCours);
-    printf("x %d y %d\n", partieEnCours->x, partieEnCours->y);
+
     while (1)
     {
+        if (((partieEnCours->x) == 0) && ((partieEnCours->y) == 0))
+        {
+            recit("Vous arrivez a une grande place circulaire.");
+            recit("Au centre, une statue monumentale representant un monsieur sur son cheval.");
+            recit("Un petit homme aux yeux minuscules se colle a vous en tenant un objet rectangulaire devant lui.");
+            printf("Que faire ?\n1)Un sourire\n2)Goumer cette raclure cosmopolite\n");
+            choix = menu(2);
+            if (choix == 1)
+            {
+                recit("Votre sourire devoile la verite sur votre hygiene dentaire et effraie le pauvre chinois.");
+                recit("Felicitationns ! Vous avez degoute un touriste de Paris.");
+                recit("Il ne reviendra plus, vous pouvez etre fier de vous !");
+                recit("Vous remportez 30 points d'experience.");
+                experiencePlus(partieEnCours, 30);
+                affichageStats(*partieEnCours);
+            }
+            else
+            {
+                if (combat("Le chinois asthmatique", 2, partieEnCours) == 1)
+                {
+                    recit("Vous avez fui devant le chinois asthmatique.");
+                    recit("Vous mourrez instantanement a cause d'une surcharge de fragilite.");
+                    recit("FIN DU JEU");
+                    exit(EXIT_SUCCESS);
+                }
+            }
+            printf("Ou aller maintenant ?\n1)Est\n2)Sud\n");
+            choix = menu(2);
+            if (choix = 1)
+            {
+                choix = 3;
+            }
+            deplacementPlateau(choix, partieEnCours);
+        }
         if (partieEnCours->x == 1 && partieEnCours->y == 0);
         {
             getch();
@@ -877,9 +910,9 @@ void paris(Partie* partieEnCours)
             {
                 printf("Vous arrivez a un nouveau croisement de deux routes.\n");
                 getch();
-                printf("Le lieu est toujours rempli a ras bord de sarrasins.");
+                printf("Le lieu est toujours rempli a ras bord de sarrasins.\n");
                 getch();
-                printf("Vous decidez de jouer la ruse pour ne pas vous faire reperer en territoire hostile et decidez de n'en decapiter aucun.");
+                printf("Vous decidez de jouer la ruse pour ne pas vous faire reperer en territoire hostile et decidez de n'en decapiter aucun.\n");
                 getch();
                 printf("Sur le bord du trottoir, un vieillard est assis par terre devant un gobelet.\n");
                 getch();
@@ -915,8 +948,35 @@ void paris(Partie* partieEnCours)
                     recit("Vous faites une pause pour faire le point.");
                     recit("Tout le monde vous devisage sans que vous ne compreniez pourquoi.");
                     recit("Vous grimpez neanmoins a un lampadaire pour comprendre un peu mieux la geographie du lieu.");
+                    recit("Le clochard par terre vous regarde avec un air etonne.\n");
+                    recit("Un monsieur habille en bleu s'approche de vous et vous crie dessus.\n");
+                    recit("Apparemment, il veut que vous descendiez de la.");
+                    recit("Cette demande imperieuse vous enerve au plus haut point.");
+                    recit("Vous descendez effectivement de votre lampadaire, mais vous tirez votre epee et engagez un duel avec lui !");
+                    recit("Immediatement, tout le monde se met a hurler et a courir dans tous les sens.");
+                    recit("\"Quelle epoque de tarlouzes...\" - pensez-vous en attaquant le policier.");
+                    combat("Le policier", 20, partieEnCours);
+                    recit("Tandis que le monsieur en bleu git a vos pieds et que la rue est deserte, vous reprenez votre chemin.");
                 }
             }
+            else
+            {
+                recit("Vous etes de retour a l'endroit ou vous avez rencontre Maurice.");
+                recit("Il semblerait que Maurice en a eu marre de faire la manche et est parti profiter de votre argent.");
+                recit("Brave Maurice.");
+            }
+            recit("Vers ou aller ensuite ?\n1)Est\n2)Sud\n3)Ouest\n");
+            choix = menu(3);
+            if (choix == 1)
+            {
+                choix = 3 ;
+            }
+            else if (choix == 3)
+            {
+                choix = 4 ;
+            }
+            deplacementPlateau(choix, partieEnCours);
+
         }
     }
 }
