@@ -263,7 +263,7 @@ CarrefourForet :
                 choix = menu(3);
                 if (choix == 1)
                 {
-                    printf("Vous vous approchez de la rivière vous baignez sans enlever votre armure.\n");
+                    printf("Vous vous approchez de la riviere vous baignez sans enlever votre armure.\n");
                     getch();
                     printf("On est jamais trop mefiant avec les sarrasins.\n");
                     getch();
@@ -492,7 +492,7 @@ CarrefourForet :
                                 getch();
                                 printf("Vous n'avez plus de poisson, par contre, vous avez le seum...\n");
                                 getch();
-                                printf("Vous retournez, seul et triste, au carrefour de la forêt pour vous refaire un peu a la chasse.\n");
+                                printf("Vous retournez, seul et triste, au carrefour de la foret pour vous refaire un peu a la chasse.\n");
                                 goto CarrefourForet;
                             }
                             printf("Vous faites maintenant demi-tour. Vous etes de retour au carrefour.\n");
@@ -535,11 +535,11 @@ CarrefourForet :
                         getch();
                         printf("Vous repartez bredouille, la queue entre les jambes.\n");
                         getch();
-                        printf("De retour sur la rive, vos serviteurs vous attendent, feu allumé, estomac vide, pret a ingurgiter la peche du jour !\n");
+                        printf("De retour sur la rive, vos serviteurs vous attendent, feu allume, estomac vide, pret a ingurgiter la peche du jour !\n");
                         getch();
-                        printf("Ce n'est quand vous approchant d'eux qu'ils comprennent, qu'ils n'auront rien a becquetter..\n");
+                        printf("C'est seulement lorsque vous vous approchez qu'ils comprennent qu'ils n'auront rien a becquetter.\n");
                         getch();
-                        printf("Cette action vous affaiblit : vous perdez 20 points de vie.\n");
+                        printf("Cette nullite vous fait perdre confiance en vous : vous perdez 20 points de vie.\n");
                         getch();
                         partieEnCours->pdV-=20;
                         printf("Vous et vos compagnons vous sentez faible, vous faites demi-tour.\n");
@@ -549,7 +549,7 @@ CarrefourForet :
                     }
                     else if (choix == 2)
                     {
-                        printf("Sans perdre de temps vous ramer progressivement vers le manger.\n");
+                        printf("Sans perdre de temps vous ramez progressivement vers le manger.\n");
                         getch();
                         printf("Arrive a proximite, vous vous appretez a lancer le filet.\n");
                         getch();
@@ -609,13 +609,13 @@ CarrefourForet :
                             getch();
                             partieEnCours->pdV += 70;
                             partieEnCours->pdA += 15;
-                            printf("Quand, un pouilleux vient vers vous quemander du poisson\n");
+                            printf("Quand tout a coup, un pouilleux vient vers vous quemander du poisson\n");
                             getch();
                             printf("Que faire ?\n1)Partager son casse croute\n2)L'inviter a prendre la porte\n");
                             choix = menu(2);
                             if (choix == 1)
                             {
-                                printf("Votre generosite à pris le dessus.\n");
+                                printf("Votre generosite a pris le dessus.\n");
                                 getch();
                                 printf("Votre bonne action vous rapporte 50 points d'XP\n");
                                 getch();
@@ -825,7 +825,7 @@ Jerusalem:
 
 void paris(Partie* partieEnCours)
 {
-    //au debut du niveau, il est en haut à gauche (nord ouest). il commencera par courir vers l'est.
+    //au debut du niveau, il est en haut a gauche (nord ouest). il commencera par courir vers l'est.
     //Plus il ira vers le sud, plus les mobs seront forts.
     int maurice = 0;
     partieEnCours->x = 1;
@@ -900,7 +900,7 @@ void paris(Partie* partieEnCours)
             }
             deplacementPlateau(choix, partieEnCours);
         }
-        if (partieEnCours->x == 1 && partieEnCours->y == 0);
+        else if (partieEnCours->x == 1 && partieEnCours->y == 0)
         {
             recit("Vous arrivez a un carrefour absolument nul avec rien au milieu.");
             recit("Il n'y a rien a faire, a part quelques gourgandines fort peu vetues.");
@@ -913,7 +913,7 @@ void paris(Partie* partieEnCours)
             }
             deplacementPlateau(choix, partieEnCours);
         }
-        if (partieEnCours->x == 2 && partieEnCours->y == 0)
+        else if (partieEnCours->x == 2 && partieEnCours->y == 0)
         {
             getch();
             if (maurice == 0)
@@ -987,6 +987,77 @@ void paris(Partie* partieEnCours)
             }
             deplacementPlateau(choix, partieEnCours);
         }
-
+        else if (partieEnCours->x == 3 && partieEnCours->y == 0)
+        {
+            recit("Vous arrivez a un nouveau carrefour.");
+            recit("Devant vous, la grande rue continue mais a votre droite il y a un petit passage d'ou sort un splendide rayon de soleil.");
+            recit("Soudain, surgissent devant vous des enfants montes sur des diaboliques appareils a roulettes !");
+            recit("Vous tentez mutuellement de vous esquiver mais sans succes.");
+            recit("L'un d'eux vous percute de plein fouet tandis que l'autre finit sa course en zigzaguant dans un lampadaire.");
+            printf("Que faire ?\n1)Se battre\n2)Les aider a se relever \n3)S'en aller");
+            choix = menu(3);
+            if (choix == 1)
+            {
+                if (combat("Le gang des caids en trottinette", 8, partieEnCours)==1)
+                {
+                    recit("OOF, vous etes un gros fragile.");
+                    printf("Ou fuir ?\n1)Ouest\n2)Sud\n3)Est");
+                    choix = menu(3);
+                    if (choix == 1)
+                    {
+                        choix = 4;
+                    }
+                    deplacementPlateau(choix, partieEnCours);
+                }
+                recit("Vous gagnez une trottinette ! dorenavant, vous vous deplacez en trottinette.");
+                recit("Cela vous permet de vous fondre beaucoup mieux dans la masse.");
+                int trottinette = 1;
+                printf("Ou aller ensuite ?\n1)Ouest\n2)Sud\n3)Est");
+                choix = menu(3);
+                if (choix == 1)
+                {
+                    choix = 4;
+                }
+                deplacementPlateau(choix, partieEnCours);
+            }
+            else if (choix == 2)
+            {
+                recit("Vous contemplez les trotinetteurs prepuberes pleurer sur le parterre et votre coeur s'etreint.");
+                recit("Vous les saisissez chacun par un bras et les remettez sur pied avec une tape dans le dos.");
+                recit("L'un d'eux s'ecroule sous l'effet de cette frappe pourtant amicale.");
+                recit("Ca lui apprendra a etre un fragile.");
+                recit("Cette bonne action vous rapporte 50 points d'experience.");
+                experiencePlus(partieEnCours, 50);
+                printf("Ou aller ensuite ?\n1)Ouest\n2)Sud\n3)Est");
+                choix = menu(3);
+                if (choix == 1)
+                {
+                    choix = 4;
+                }
+                deplacementPlateau(choix, partieEnCours);
+            }
+            else if (choix == 3)
+            {
+                recit("Avec un gros rire de chevalier rempli de testosterone, vous tracez votre chemin.");
+                printf("Ou aller ensuite ?\n1)Ouest\n2)Sud\n3)Est");
+                choix = menu(3);
+                if (choix == 1)
+                {
+                    choix = 4;
+                }
+                deplacementPlateau(choix, partieEnCours);
+            }
+        }
+        else
+        {
+            recit("Cette partie du jeu n'est pas encore construite, revenez plus tard !");
+            recit("Vous pouvez cependant entrer des coordonnees pour vous teleporter ou vous voulez en attendant.");
+            printf("Entrez une valeur pour x : ");
+            scanf("%d", &(partieEnCours->x));
+            printf("Entrez une valeur pour y : ");
+            scanf("%d", &(partieEnCours->y));
+            recit("Teleportation...");
+            recit("Fait !");
+        }
     }
 }

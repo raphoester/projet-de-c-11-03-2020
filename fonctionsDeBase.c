@@ -21,7 +21,7 @@ void experiencePlus(Partie* partieEnCours, int experienceBonus)
 }
 
 void affichageStats(Partie partieEnCours)
-//fonction qui affiche (dans l'ordre) les points de vie, les points d'attaque, l'expérience obtenie / l'expérience requise,
+//fonction qui affiche (dans l'ordre) les points de vie, les points d'attaque, l'expï¿½rience obtenie / l'expï¿½rience requise,
 //le niveau du joueur.
 {
     printf("Points de vie : %d\nPoints d'attaque : %d\n", partieEnCours.pdV, partieEnCours.pdA);
@@ -50,8 +50,8 @@ int menu(int nbreChoix)
 
 
 int compteTouche(int touche, int secondesMax)
-//Fonction qui compte le nombre de fois où l'utilisateur appuie sur la touche (ENTREE normalement)
-//dans le temps secondesMax donné
+//Fonction qui compte le nombre de fois oï¿½ l'utilisateur appuie sur la touche (ENTREE normalement)
+//dans le temps secondesMax donnï¿½
 {
     time_t tempsDeFin=time(NULL)+ secondesMax;
     int compteur=0;
