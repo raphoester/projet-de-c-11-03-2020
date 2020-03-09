@@ -1048,6 +1048,13 @@ void paris(Partie* partieEnCours)
                 deplacementPlateau(choix, partieEnCours);
             }
         }
+        if (partieEnCours->x == 0 && partieEnCours->y == 1)
+        {
+            system("cls");
+            recit("Vous atteignez la nouvelle intersection. Et la route vers l'Ouest semble ferme, ca commence bien.");
+            printf("Ou aller maintenant ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest");
+            menu(4);
+        }
         if (partieEnCours->x == 1 && partieEnCours->y == 1)
         {
             system("cls");
@@ -1078,8 +1085,8 @@ void paris(Partie* partieEnCours)
                 {
                     recit("Vous en avez trop entendu, vous continuer votre route sans comprendre.");
                 }
-                recit("Ou aller maintenant ?\n1)Nord\n2)Sud\n3)Est\n");
-                choix = menu(3);
+                recit("Ou aller maintenant ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest");
+                choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
             /*else
@@ -1170,7 +1177,7 @@ void paris(Partie* partieEnCours)
             if (choix == 1)
             {
                 recit("Vous vous approchez de l'agresseur et sans attendre vous le goumer");
-                combat("Agresseur", 40, partieEnCours);
+                combat("Agresseur", 20, partieEnCours);
                 recit("La jeune femme s'approche de vous, sous le choque elle vous prend dans ses bras.");
                 recit("Ce geste heroique vous rapport 30 points d'experience");
                 experiencePlus(partieEnCours, 30);
@@ -1256,6 +1263,64 @@ void paris(Partie* partieEnCours)
                 choix = 4;
             }
             deplacementPlateau(choix, partieEnCours);
+        }
+        else if (partieEnCours->x == 0 && partieEnCours->y == 3)
+        {
+            system("cls");
+            recit("Sur votre route vous apercevez la Banque de France");
+            printf("Que faire ?\n1)Y rentrer\n2)Continuer sa route\n");
+            choix = menu(2);
+            if (choix == 1)
+            {
+                recit("Vous rentrer dans la banque");
+                recit("Et vous vous appreter a passer les portiques de securite");
+                recit("Lorsque..");
+                recit("*BIP BIP* le portail se met a sonner et deux hommes de la securite vous oppresse.");
+                recit("En panique, vous engager le combat.");
+                combat("Securite", 30, partieEnCours);
+                recit("Vous vous enfuyez le plus vite possible !");
+                recit("Une fois a l'air libre vers ou s'echapper ?");
+                printf("1)Nord\n2)Sud\n3)Est\n");
+                choix = menu(3);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            if (choix == 2)
+            {
+                recit("Aller vers:");
+                printf("1)Nord\n2)Sud\n3)Est\n");
+                choix = menu(3);
+                deplacementPlateau(choix, partieEnCours);
+            }
+        }
+        else if (partieEnCours->x == 1 && partieEnCours->y == 3)
+        {
+            system("cls");
+            recit("Vous vous retrouvez sur une place.");
+            printf("Que faire ?\n1)Aller boire a la fontaine\n2)Continuer sa route\n");
+            choix = menu(2);
+            if (choix == 1)
+            {
+                recit("Vous vous approchez de la fontaine et buvez un bon coup.");
+                recit("Cela fait du bien, vous etiez deshydrate !");
+                recit("Vous gagnez 20 points de vie.");
+                partieEnCours->pdV += 20;
+                recit("Vous continuer votre chemin.");
+                printf("Mais vers ou aller ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            if (choix == 2)
+            {
+                recit("Aller vers:");
+                printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+        }
+        else if (partieEnCours->x == 2 && partieEnCours->y == 3)
+        {
+            system("cls");
+            recit("Vous");
         }
         else
         {
