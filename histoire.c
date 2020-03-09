@@ -1048,6 +1048,162 @@ void paris(Partie* partieEnCours)
                 deplacementPlateau(choix, partieEnCours);
             }
         }
+        if (partieEnCours->x == 1 && partieEnCours->y == 1)
+        {
+            //if (petiteFille == 0)
+            {
+                recit("Vous continuer votre chemin abasourdit par les evenements.");
+                recit("Lorsqu'une petite fille surgit.");
+                recit("Petite fille : Il est beau ton deguisement !");
+                recit("GODEFROY : Qu'est ce que tu racontes ?! On est ou ?");
+                recit("Petite fille : Vous le faites exprès ? On est a Paris, capitale de la France !");
+                recit("Paris ressemble a ca maintenant ?");
+                recit("GODEFROY : Le paris que je connaissais n'etait pas aussi moche que ca ! En quelle annee est-on ?");
+                recit("Petite fille : On est en 2020 ! Nan mais allo quoi ?!");
+                recit("Je peux prendre une prendre un 'selfie' avec vous ?");
+                printf("Que faire ?\n1)Accepter sans comprendre sa requete\n2)L'ignorer et continuer sa route\n");
+                choix = menu(2);
+                if (choix == 1)
+                {
+                    recit("Elle s'approche de vous et sort un un appareil de sa poche.");
+                    recit("Elle pointe l'appareil vers vous puis une lumiere qui y sort vous ebloui.");
+                    recit("Elle se retourne vers vous et vous remercie.");
+                    recit("Vous avez rendu une jeune fille heureuse.");
+                    recit("Vous remportez 50 points d'experience !");
+                    experiencePlus(partieEnCours, 50);
+                    affichageStats(*partieEnCours);
+                }
+                if (choix == 2)
+                {
+                    recit("Vous en avez trop entendu, vous continuer votre route sans comprendre.");
+                }
+                recit("Ou aller maintenant ?\n1)Nord\n2)Sud\n3)Est\n");
+                choix = menu(3);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            /*else
+            {
+                recit("La ");
+            }*/
+        }
+        else if (partieEnCours->x == 2 && partieEnCours->y == 1)
+        {
+            recit("Vous continuez de galoper vers l'inconnu.");
+            recit("Vous arrivez a une intersection.");
+            printf("Ou aller ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
+            choix = menu(4);
+            deplacementPlateau(choix, partieEnCours);
+        }
+        else if (partieEnCours->x == 3 && partieEnCours->y == 1)
+//Eglise St Eustache
+        {
+            recit("Vous apercevez au loin la premiere chose qui vous est familiere : une Eglise !");
+            recit("Vous vous empressez d'y aller.");
+            printf("Une fois devant que voulez vous faire ?\n1)Rentrer dans l'eglise\n2)Continuer son chemin\n");
+            choix = menu(2);
+            if (choix == 1)
+            {
+                recit("Vous poussez la porte d'entree et penetrer dans une piece silencieuse.\n");
+                recit("Un homme d'Eglise vous approche.");
+                recit("Homme d'Eglise : Veillez deposer votre arme, aucune arme n'est autorise dans l'Eglise.");
+                recit("Qui est c'est homme pour me dire quoi faire ?");
+                recit("Vous oter votre epee, non pour lui donner mais pour le provoquer en duel !");
+                combat("Homme d'Eglise", 30, partieEnCours);
+                recit("Apres avoir vaincu ce religieux, vous allez prier");
+                recit("Jesus vous recompense de 50 points d'experience pour ce geste !");
+                recit("L'esprit soulage, vous sortez de l'eglise.");
+                printf("Ou aller maintenant ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            if (choix == 2)
+            {
+                printf("Ou aller ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+        }
+        else if (partieEnCours->x == 4 && partieEnCours->y == 1)
+        {
+            recit("Vous arrivez a un endroit bonde de terrasses.");
+            recit("Regarder tous ces gens manger vous ouvre l'appetit.");
+            recit("Que faire\n1)Aller se peter le bide\n2)Continuer sa route?");
+            choix = menu(2);
+            if (choix == 1);
+            {
+                recit("Vous rentrez dans un restaurant en bousculant tout le monde");
+                recit("Et criez : 'Un gibier pour bibi !'");
+                recit("'Aucune viande n'est servi dans cet etablissement' réplique le serveur");
+                recit("Qu'est ce que c'est que ce foutoir ?");
+                recit("Vous entrez dans une rage, le prenant en tete a tete");
+                combat("Serveur anorexique", 30, partieEnCours);
+                recit("Vous sortez de la, encore plus affame.");
+                printf("Ou aller ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            if (choix == 2)
+            {
+                printf("Ou aller ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+        }
+        else if (partieEnCours->x == 5 && partieEnCours->y == 1)
+        {
+            recit("Vous debarquez a une nouvelle intersection, rien de special a faire.");
+            recit("Vous decidez de continuer votre chemin vers :");
+            printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
+            choix = menu(4);
+            deplacementPlateau(choix, partieEnCours);
+        }
+        else if (partieEnCours->x == 6 && partieEnCours->y == 1)
+        {
+            recit("Vous voyez une jeune femme se faire agresser");
+            printf("Que faire ?1)Jouer l'hero\n2)L'agresser\n3)Continuer sa route");
+            choix = menu(3);
+            if (choix == 1)
+            {
+                recit("Vous vous approchez de l'agresseur et sans attendre vous le goumer");
+                combat("Agresseur", 40, partieEnCours);
+                recit("La jeune femme s'approche de vous, sous le choque elle vous prend dans ses bras.");
+                recit("Ce geste heroique vous rapport 30 points d'experience");
+                experiencePlus(partieEnCours, 30);
+                printf("Ou aller ensuite ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            if (choix == 2)
+            {
+                recit("C'est MA victime, viens pas ici que je t'eclate, crie l'agresseur !");
+                combat("Agresseur", 40, partieEnCours);
+                recit("Lors de l'altercation la jeune femme sort de son sac une bombe lacrymo");
+                recit("Elle vous asperge de gaz, juste avant de s'enfuir");
+                recit("Vous hurlez de douleur et perdez 30 points de vie");
+                partieEnCours->pdV -= 30;
+                recit("Vous continuer votre route en essayant de voir ou vous allez :");
+                printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            if (choix == 3)
+            {
+                recit("Vous decidez de continuer votre chemin vers :");
+                printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+        }
+        else if (partieEnCours->x == 7 && partieEnCours->y == 1)
+        {
+            recit("");
+        }
+        else if (partieEnCours->x == 8 && partieEnCours->y == 1)
+        {
+        }
+        else if (partieEnCours->x == 9 && partieEnCours->y == 1)
+        {
+        }
         else
         {
             recit("Cette partie du jeu n'est pas encore construite, revenez plus tard !");
