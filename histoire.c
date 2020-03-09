@@ -823,17 +823,12 @@ Jerusalem:
     return 0;
 }
 
-void Paris(Partie *partieEnCours)
-{
-}
-
-
 void paris(Partie* partieEnCours)
 {
     //au debut du niveau, il est en haut à gauche (nord ouest). il commencera par courir vers l'est.
     //Plus il ira vers le sud, plus les mobs seront forts.
     int maurice = 0;
-    partieEnCours->x = 0;
+    partieEnCours->x = 1;
     partieEnCours->y = 0;
     int choix = 0;
     printf("Vous vous reveillez sur un sol dur et froid, il y a beaucoup de bruit autour de vous.\n\n");
@@ -869,7 +864,8 @@ void paris(Partie* partieEnCours)
 
     while (1)
     {
-        if (((partieEnCours->x) == 0) && ((partieEnCours->y) == 0))
+        printf("coordonnees au debut de la grosse boucle while : x %d y %d \n", partieEnCours->x, partieEnCours->y);
+        if (partieEnCours->x == 0 && partieEnCours->y == 0)
         {
             recit("Vous arrivez a une grande place circulaire.");
             recit("Au centre, une statue monumentale representant un monsieur sur son cheval.");
@@ -889,7 +885,8 @@ void paris(Partie* partieEnCours)
             {
                 if (combat("Le chinois asthmatique", 2, partieEnCours) == 1)
                 {
-                    recit("Vous avez fui devant le chinois asthmatique.");
+                    getch();
+                    recit("\nVous avez fui devant le chinois asthmatique.");
                     recit("Vous mourrez instantanement a cause d'une surcharge de fragilite.");
                     recit("FIN DU JEU");
                     exit(EXIT_SUCCESS);
@@ -904,6 +901,19 @@ void paris(Partie* partieEnCours)
             deplacementPlateau(choix, partieEnCours);
         }
         if (partieEnCours->x == 1 && partieEnCours->y == 0);
+        {
+            recit("Vous arrivez a un carrefour absolument nul avec rien au milieu.");
+            recit("Il n'y a rien a faire, a part quelques gourgandines fort peu vetues.");
+            recit("Mais vous n'avez pas le coeur a besogner la gourgandine pour le moment.");
+            printf("Vers ou continuer votre route ?\n1)Ouest\n2)Sud\n3)Est\n");
+            choix = menu(3);
+            if (choix == 1)
+            {
+                choix = 4;
+            }
+            deplacementPlateau(choix, partieEnCours);
+        }
+        if (partieEnCours->x == 2 && partieEnCours->y == 0)
         {
             getch();
             if (maurice == 0)
@@ -976,7 +986,7 @@ void paris(Partie* partieEnCours)
                 choix = 4 ;
             }
             deplacementPlateau(choix, partieEnCours);
-
         }
+
     }
 }

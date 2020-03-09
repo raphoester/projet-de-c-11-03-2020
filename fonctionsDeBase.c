@@ -82,7 +82,7 @@ void sauvegarde(Partie partieEnCours)
         else
         {
             printf("Sauvegarde en cours...\n");
-            fprintf(sauvegarde, "%d %d %d %d %d %d %d %d", partieEnCours.pdV, partieEnCours.pdA, partieEnCours.chance, partieEnCours.difficulte, partieEnCours.XP, partieEnCours.XPMax, partieEnCours.marquePage, partieEnCours.niveau);
+            fprintf(sauvegarde, "%d %d %d %d %d %d %d %d", partieEnCours.pdV, partieEnCours.pdA, partieEnCours.chance, partieEnCours.XP, partieEnCours.XPMax, partieEnCours.marquePage, partieEnCours.niveau);
             printf("Fait !\n");
             getch();
         }
@@ -101,7 +101,7 @@ void sauvegarde(Partie partieEnCours)
 
 void chargementSauvegarde(FILE* sauvegarde, Partie* partieEnCours)
 {
-    fscanf(sauvegarde, "%d %d %d %d %d %d %d %d", &partieEnCours->pdV, &partieEnCours->pdA, &partieEnCours->chance, &partieEnCours->difficulte, &partieEnCours->XP, &partieEnCours->XPMax, &partieEnCours->marquePage, &partieEnCours->niveau);
+    fscanf(sauvegarde, "%d %d %d %d %d %d %d", &partieEnCours->pdV, &partieEnCours->pdA, &partieEnCours->chance, &partieEnCours->XP, &partieEnCours->XPMax, &partieEnCours->marquePage, &partieEnCours->niveau);
 }
 
 int lancerDeDes(Partie* partieEnCours)
@@ -121,29 +121,33 @@ int lancerDeDes(Partie* partieEnCours)
 
 void deplacementPlateau(int choix, Partie* partieEnCours) //choix 1=nord, 2=sud, 3=est, 4=ouest.
 {
-    printf("Choix = %d\n", choix);
     int choixLocal = choix;
     if (choixLocal == 1)
     {
         (partieEnCours->y)-=1;
         printf("Condition 1 validee\n");
+        printf("\nCoordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 
     else if (choixLocal == 2)
     {
         (partieEnCours->y)+=1;
         printf("Condition 2 validee\n");
+        printf("\nCoordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 
     else if (choixLocal == 3)
     {
         (partieEnCours->x)+=1;
         printf("Condition 3 validee\n");
+        printf("Coordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 
     else if (choixLocal == 4)
     {
         (partieEnCours->x)-=1;
+        printf("Condition 4 validee");
+        printf("\nCoordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 }
 

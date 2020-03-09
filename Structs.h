@@ -14,7 +14,7 @@ struct Partie
     int XP;
     int XPMax;
     int chance;
-    int difficulte;
+    int niveau;
     int marquePage;
     int x;
     int y;
