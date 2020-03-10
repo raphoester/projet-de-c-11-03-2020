@@ -1,7 +1,6 @@
 #include "Structs.h"
-#include <stdio.h>
 #include <stdlib.h>
-
+#include <stdio.h>
 void sauvegarde(Partie partieEnCours)
 {
     int choix = 0 ;
@@ -31,10 +30,11 @@ void sauvegarde(Partie partieEnCours)
     {
         printf("Renvoi de la fonction menu() incorrect.\nLa partie continue sans sauvegarder.\n");
     }
-
 }
 
 void chargementSauvegarde(FILE* sauvegarde, Partie* partieEnCours)
 {
-    fscanf(sauvegarde, "%d %d %d %d %d %d %d", &partieEnCours->pdV, &partieEnCours->pdA, &partieEnCours->chance, &partieEnCours->XP, &partieEnCours->XPMax, &partieEnCours->marquePage, &partieEnCours->niveau);
+    fscanf(sauvegarde, "%d %d %d %d %d %d %d %d", &partieEnCours->pdV, &partieEnCours->pdA, &partieEnCours->pdD, &partieEnCours->chance, &partieEnCours->XP, &partieEnCours->XPMax, &partieEnCours->marquePage, &partieEnCours->niveau);
 }
+
+

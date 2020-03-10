@@ -4,6 +4,7 @@
 #include <time.h>
 #include <windows.h>
 
+
 int menu(int nbreChoix)
 {
     int choix ;
@@ -62,29 +63,21 @@ void deplacementPlateau(int choix, Partie* partieEnCours) //choix 1=nord, 2=sud,
     if (choixLocal == 1)
     {
         (partieEnCours->y)-=1;
-        printf("Condition 1 validee\n");
-        printf("\nCoordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 
     else if (choixLocal == 2)
     {
         (partieEnCours->y)+=1;
-        printf("Condition 2 validee\n");
-        printf("\nCoordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 
     else if (choixLocal == 3)
     {
         (partieEnCours->x)+=1;
-        printf("Condition 3 validee\n");
-        printf("Coordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 
     else if (choixLocal == 4)
     {
         (partieEnCours->x)-=1;
-        printf("Condition 4 validee");
-        printf("\nCoordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 }
 
