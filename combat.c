@@ -2,6 +2,7 @@
 #define MAX 100
 #include "Structs.h"
 #include <stdlib.h>
+#include "stats.h"
 
 int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
 //fonction combat qui retourne 0 quand le mob meurt, 1 quand le joueur prend la fuite ou qui interrompt le programme en cas de mort
@@ -12,17 +13,18 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
     monstre.pdV = ((goumage*goumage)/5)+100;
     monstre.critique = 3;
     monstre.pdA = goumage*4 + 30;
-    monstre.xp = 4*goumage;
-    int defense = 0;
+    monstre.xp = 50*goumage;
+    int reduction = 1;
     for (int i=0;i<100;i++)
     {
         monstre.nom[i] = nomMonstre[i];
     }
     printf("Le combat avec %s commence ! En garde !\n", monstre.nom);
     getch();
-    while (1)
+    int affrontement = 1;
+    while (affrontement = 1)
     {
-        defense = 0;
+        reduction = 1;
         printf("Vous avez %d points de vie et %d points d'attaque.\n", partieEnCours->pdV, partieEnCours->pdA);
         printf("%s a %d points de vie et %d points d'attaque.\n", monstre.nom, monstre.pdV, monstre.pdA);
         getch();
@@ -48,8 +50,8 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
             }
             break;
         case 2:
-            printf("Vous vous mettez en position defensive.\n");
-            defense = 1;
+            printf("Apeure, vous vous mettez en PLS.\n");
+            reduction = 2;
             break;
         case 3:
             printf("GlouGlou, vous recuperez %d points de vie !\n", monstre.pdA + 100);
@@ -83,27 +85,16 @@ int combat(char nomMonstre[100], int goumage, Partie *partieEnCours)
         crit = (rand() % (MAX - MIN + 1)) + MIN;
         if (crit > partieEnCours->chance) // pas crit
         {
-            if (defense)
-            {
-                printf("Grace a votre position defensive, %s vous inflige seulement %d degats.\n", monstre.nom, (monstre.pdA)/2);
-                getch();
-                printf("Vous parvenez a riposter et infligez %d degats !\n", partieEnCours->pdD + (lancerDeDes(partieEnCours)*(partieEnCours->pdA/2)));
-                getch();
-            }
-            else
-            {
-                printf("%s vous inflige %d degats.\n", monstre.nom, monstre.pdA);
-                partieEnCours->pdV -= monstre.pdA;
-                getch();
-            }
-
+            printf("Il vous inflige %d degats.\n", (monstre.pdA)/reduction);
+            partieEnCours->pdV -= monstre.pdA;
+            getch();
         }
         else //  crit
         {
             printf("BIG OOF, %s vous a mis une patate de forain sous steroide.\n", monstre.nom);
             getch();
-            printf("Vous perdez %d points de vie.\n", ((monstre.pdA)*2));
-            partieEnCours->pdV -= ((monstre.pdA)*2);
+            printf("Vous perdez %d points de vie.\n", ((monstre.pdA)*2)/reduction);
+            partieEnCours->pdV -= ((monstre.pdA)*2)/reduction;
             getch;
         }
         // mort

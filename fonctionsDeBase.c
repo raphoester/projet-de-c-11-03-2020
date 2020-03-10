@@ -4,34 +4,6 @@
 #include <time.h>
 #include <windows.h>
 
-void experiencePlus(Partie* partieEnCours, int experienceBonus)
-{
-    partieEnCours->XP += experienceBonus ;
-    if (partieEnCours->XP >= partieEnCours->XPMax)
-    {
-        printf("Felicitations, vous gagnez un niveau !\n");
-        getch();
-        partieEnCours->niveau += 1;
-        printf("Vous etes desormais niveau %d\n", partieEnCours->niveau);
-        partieEnCours->pdV *= 2;
-        partieEnCours->pdA *= 2;
-        partieEnCours->pdD *= 2;
-        partieEnCours->XP = 0;
-        partieEnCours->XPMax = partieEnCours->niveau*100;
-        affichageStats(*partieEnCours);
-    }
-}
-
-void affichageStats(Partie partieEnCours)
-//fonction qui affiche (dans l'ordre) les points de vie, les points d'attaque, l'exp�rience obtenie / l'exp�rience requise,
-//le niveau du joueur.
-{
-    printf("Points de vie : %d\nPoints d'attaque : %d\nPoints de defense : %d\n", partieEnCours.pdV, partieEnCours.pdA, partieEnCours.pdD);
-    printf("Experience : %d/%d\nNiveau %d\n", partieEnCours.XP, partieEnCours.XPMax, partieEnCours.niveau);
-    //Afficher ici le niveau en fonction de l'XP actuelle obtenue.
-}
-
-
 int menu(int nbreChoix)
 {
     int choix ;
@@ -69,43 +41,6 @@ int compteTouche(int touche, int secondesMax)
     return compteur ;
 }
 
-void sauvegarde(Partie partieEnCours)
-{
-    int choix = 0 ;
-    printf("Voulez vous sauvegarder votre partie ?\n1)oui\n2)non\n");
-    choix = menu(2);
-    if (choix == 1)
-    {
-        FILE* sauvegarde = fopen("sauvegarde.txt", "w");
-        if (sauvegarde == NULL)
-        {
-            printf("Erreur d'ouverture du fichier de sauvegarde. Vous continuez sans sauvegarder.");
-        }
-        else
-        {
-            printf("Sauvegarde en cours...\n");
-            fprintf(sauvegarde, "%d %d %d %d %d %d %d %d", partieEnCours.pdV, partieEnCours.pdA, partieEnCours.chance, partieEnCours.XP, partieEnCours.XPMax, partieEnCours.marquePage, partieEnCours.niveau);
-            printf("Fait !\n");
-            getch();
-        }
-    }
-    else if (choix == 2)
-    {
-        printf("A vos risques et perils.\n");
-        getch();
-    }
-    else
-    {
-        printf("Renvoi de la fonction menu() incorrect.\nLa partie continue sans sauvegarder.\n");
-    }
-
-}
-
-void chargementSauvegarde(FILE* sauvegarde, Partie* partieEnCours)
-{
-    fscanf(sauvegarde, "%d %d %d %d %d %d %d %d", &partieEnCours->pdV, &partieEnCours->pdA, &partieEnCours->pdD, &partieEnCours->chance, &partieEnCours->XP, &partieEnCours->XPMax, &partieEnCours->marquePage, &partieEnCours->niveau);
-}
-
 int lancerDeDes(Partie* partieEnCours)
 {
     const int MAXI = 6;
@@ -127,21 +62,29 @@ void deplacementPlateau(int choix, Partie* partieEnCours) //choix 1=nord, 2=sud,
     if (choixLocal == 1)
     {
         (partieEnCours->y)-=1;
+        printf("Condition 1 validee\n");
+        printf("\nCoordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 
     else if (choixLocal == 2)
     {
         (partieEnCours->y)+=1;
+        printf("Condition 2 validee\n");
+        printf("\nCoordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 
     else if (choixLocal == 3)
     {
         (partieEnCours->x)+=1;
+        printf("Condition 3 validee\n");
+        printf("Coordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 
     else if (choixLocal == 4)
     {
         (partieEnCours->x)-=1;
+        printf("Condition 4 validee");
+        printf("\nCoordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 }
 
