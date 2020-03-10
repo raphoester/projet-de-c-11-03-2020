@@ -1358,7 +1358,7 @@ void paris(Partie* partieEnCours)
                 choix = menu(2);
                 if (menu == 1)
                 {
-                    menu = 4;
+                    choix = 4;
                 }
                 deplacementPlateau(choix, partieEnCours);
             }
@@ -1367,7 +1367,7 @@ void paris(Partie* partieEnCours)
                 recit("Vous faites un tour parmi les echoppes.");
                 recit("Il y a un poissonnier, un boucher et un maraicher.");
                 printf("Qu'acheter ?\n1)Du poisson\n2)Du boeuf\n3)Des courgettes");
-                choix = menu(3)
+                choix = menu(3);
                 if (choix == 1)
                 {
                     recit("Vous troquez six pieces d'or contre une carpe tres bien membree.");
@@ -1377,7 +1377,7 @@ void paris(Partie* partieEnCours)
                     choix = menu(2);
                     if (menu == 1)
                     {
-                        menu = 4;
+                        choix = 4;
                     }
                     deplacementPlateau(choix, partieEnCours);
                 }
@@ -1390,7 +1390,7 @@ void paris(Partie* partieEnCours)
                     choix = menu(2);
                     if (menu == 1)
                     {
-                        menu = 4;
+                        choix = 4;
                     }
                     deplacementPlateau(choix, partieEnCours);
                 }
@@ -1398,7 +1398,7 @@ void paris(Partie* partieEnCours)
                 {
                     recit("GROSSIERE ERREUR !");
                     recit("Le marchand de courgettes est en fait un djihadiste en embuscade.");
-                    printf("A la vue de la croix de croisade qui orne votre pourpoint
+                    printf("A la vue de la croix de croisade qui orne votre pourpoint");
                     recit("il vous jette des melons dessus et profite de la confusion pour sortir la kalash.");
                     if (combat("Le vendeur de legumes terroriste", 70, partieEnCours) == 1)
                     {
@@ -1410,7 +1410,7 @@ void paris(Partie* partieEnCours)
                         choix = menu(2);
                         if (menu == 1)
                         {
-                            menu = 4;
+                            choix = 4;
                         }
                         else if (choix == 0)
                         {
@@ -1697,6 +1697,60 @@ void paris(Partie* partieEnCours)
         {
             system("cls");
             recit("Vous");
+        }
+        else if (partieEnCours->x == 0 && partieEnCours->y == 3)
+        {
+            recit("Vous arrivez devant la grille d'un immense et tres beau chatieau");
+            recit("Celui qui le possede est certainement bien fortune.");
+            recit("Vous demandez a un passant de quoi il s'agit.");
+            recit("GODEFROY : Hola, manant, quel noble seigneur siege en cet edifice ?");
+            recit("CHARLES-HENRI : Manant toi-meme, d'abord, et c'est le Louvre, triple buse, tout le monde sait ca enfin-han.");
+            recit("Ce petit cassos blondinet qui vous a prodigieusement irrite par ses manieres.");
+            printf("Que faire ?\n1)Lui apprendre comment parler au seigneur de Bouillon\n2)Le laisser partir\n");
+            choix = menu(2);
+            if (choix == 1)
+            {
+                recit("GODEFROY : Je vais t'apprendre, moi, sale gueux !");
+                if (combat("Charles-Henri", 5, partieEnCours) == 1)
+                {
+                    recit("C'est chaud quand meme d'etre mis en deroute par un gars avec 14 d'IMC");
+                    printf("Vers ou fuir ?\n1)Nord\n2)Est\n");
+                    choix = menu(2);
+                    if (choix == 2)
+                    {
+                        choix =  3 ;
+                    }
+                    deplacementPlateau(choix, partieEnCours);
+                }
+                printf("Vers ou aller ?\n1)Nord\n2)Est\n");
+                choix = menu(2);
+                if (choix == 2)
+                {
+                    choix =  3 ;
+                }
+                deplacementPlateau(choix, partieEnCours);
+            }
+            else if (choix == 2)
+            {
+                recit("Vous laissez partir Charles-Henri le blondinet.");
+                printf("Vers ou aller ?\n1)Nord\n2)Est\n");
+                choix = menu(2);
+                if (choix == 2)
+                {
+                    choix =  3 ;
+                }
+                deplacementPlateau(choix, partieEnCours);
+            }
+        }
+        else if (partieEnCours->x == 1 && partieEnCours->y == 3)
+        {
+            recit("Vous arrivez apres quelque cheminement a un tres grand carrefour.");
+            recit("Les avenues sont ici tres larges. Au sud-est, il y a le Louvre.");
+            recit("Vous restez pantois un moment devant tant de majeste.");
+            recit("Cette epoque est bien curieuse, mais l'architecture n'est quand meme pas si mal.");
+            printf("Ou desirez vous vous rendre ensuite ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest");
+            choix = menu(4);
+            deplacementPlateau(choix, partieEnCours);
         }
         else
         {
