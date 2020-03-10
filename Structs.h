@@ -11,6 +11,7 @@ struct Partie
 {
     int pdV;
     int pdA;
+    int pdD;
     int XP;
     int XPMax;
     int chance;

@@ -15,8 +15,10 @@ void experiencePlus(Partie* partieEnCours, int experienceBonus)
         printf("Vous etes desormais niveau %d\n", partieEnCours->niveau);
         partieEnCours->pdV *= 2;
         partieEnCours->pdA *= 2;
+        partieEnCours->pdD *= 2;
         partieEnCours->XP = 0;
         partieEnCours->XPMax = partieEnCours->niveau*100;
+        affichageStats(*partieEnCours);
     }
 }
 
@@ -24,7 +26,7 @@ void affichageStats(Partie partieEnCours)
 //fonction qui affiche (dans l'ordre) les points de vie, les points d'attaque, l'exp�rience obtenie / l'exp�rience requise,
 //le niveau du joueur.
 {
-    printf("Points de vie : %d\nPoints d'attaque : %d\n", partieEnCours.pdV, partieEnCours.pdA);
+    printf("Points de vie : %d\nPoints d'attaque : %d\nPoints de defense : %d\n", partieEnCours.pdV, partieEnCours.pdA, partieEnCours.pdD);
     printf("Experience : %d/%d\nNiveau %d\n", partieEnCours.XP, partieEnCours.XPMax, partieEnCours.niveau);
     //Afficher ici le niveau en fonction de l'XP actuelle obtenue.
 }
@@ -101,7 +103,7 @@ void sauvegarde(Partie partieEnCours)
 
 void chargementSauvegarde(FILE* sauvegarde, Partie* partieEnCours)
 {
-    fscanf(sauvegarde, "%d %d %d %d %d %d %d", &partieEnCours->pdV, &partieEnCours->pdA, &partieEnCours->chance, &partieEnCours->XP, &partieEnCours->XPMax, &partieEnCours->marquePage, &partieEnCours->niveau);
+    fscanf(sauvegarde, "%d %d %d %d %d %d %d %d", &partieEnCours->pdV, &partieEnCours->pdA, &partieEnCours->pdD, &partieEnCours->chance, &partieEnCours->XP, &partieEnCours->XPMax, &partieEnCours->marquePage, &partieEnCours->niveau);
 }
 
 int lancerDeDes(Partie* partieEnCours)
@@ -125,29 +127,21 @@ void deplacementPlateau(int choix, Partie* partieEnCours) //choix 1=nord, 2=sud,
     if (choixLocal == 1)
     {
         (partieEnCours->y)-=1;
-        printf("Condition 1 validee\n");
-        printf("\nCoordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 
     else if (choixLocal == 2)
     {
         (partieEnCours->y)+=1;
-        printf("Condition 2 validee\n");
-        printf("\nCoordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 
     else if (choixLocal == 3)
     {
         (partieEnCours->x)+=1;
-        printf("Condition 3 validee\n");
-        printf("Coordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 
     else if (choixLocal == 4)
     {
         (partieEnCours->x)-=1;
-        printf("Condition 4 validee");
-        printf("\nCoordonnes \nx:%d, y:%d\n", partieEnCours->x, partieEnCours->y);
     }
 }
 
