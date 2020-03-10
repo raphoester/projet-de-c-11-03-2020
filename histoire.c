@@ -1331,7 +1331,98 @@ void paris(Partie* partieEnCours)
         }
         else if (partieEnCours->x == 9 && partieEnCours->y == 0)
         {
-
+            recit("Vous arrivez a un croisement.");
+            recit("Dans un coin, il y a un charmant petit marche ainsi qu'une fontaine.");
+            printf("Que faire ?\n1)Se desalterer dans la fontaine\n2)Faire un tour dans le marche\n");
+            choix = menu(2);
+            if (choix == 1)
+            {
+                recit("Vous vous desalterez dans la fontaines a grandes lampees.");
+                recit("Mais immediatement, vous avez mal au ventre comme jamais !");
+                recit("Au loin vous avez tout juste le temps de voir une romano s'enfuir en rigolant.");
+                recit("Elle a ensorcele l'eau !");
+                recit("Vous tombez dans les pommes.");
+                recit(".");
+                recit(".");
+                recit(".");
+                recit("Vous vous reveillez quelques temps plus tard mais on vous a vole votre bouclier !");
+                recit("Vous vous sentez aussi tres faible.");
+                printf("Toutes vos statistiques ont ete divisees par 2.");
+                partieEnCours->chance/=2;
+                partieEnCours->pdV/=2;
+                partieEnCours->pdA/=2;
+                partieEnCours->pdD/=2;
+                affichageStats(*partieEnCours);
+                recit("Coup dur...");
+                printf("Ne vous laissez pas abattre ! Vers ou poursuivre l'aventure ?\n1)Ouest\n2)Sud\n");
+                choix = menu(2);
+                if (menu == 1)
+                {
+                    menu = 4;
+                }
+                deplacementPlateau(choix, partieEnCours);
+            }
+            else if (choix = 2)
+            {
+                recit("Vous faites un tour parmi les echoppes.");
+                recit("Il y a un poissonnier, un boucher et un maraicher.");
+                printf("Qu'acheter ?\n1)Du poisson\n2)Du boeuf\n3)Des courgettes");
+                choix = menu(3)
+                if (choix == 1)
+                {
+                    recit("Vous troquez six pieces d'or contre une carpe tres bien membree.");
+                    recit("Sa consommation vous rapporte 90 points de vie.");
+                    partieEnCours->pdV += 90;
+                    printf("Vers ou aller ensuite ?\n1)Ouest\n2)Sud");
+                    choix = menu(2);
+                    if (menu == 1)
+                    {
+                        menu = 4;
+                    }
+                    deplacementPlateau(choix, partieEnCours);
+                }
+                else if (choix == 2)
+                {
+                    recit("Vous obtenez un magnifique filet-mignon bien dore a la broche pour 10 pieces d'or.");
+                    recit("Vous l'engloutissez et cela vous rapporte 120 points de vie.");
+                    partieEnCours->pdV += 120;
+                    printf("Vers ou aller ensuite ?\n1)Ouest\n2)Sud");
+                    choix = menu(2);
+                    if (menu == 1)
+                    {
+                        menu = 4;
+                    }
+                    deplacementPlateau(choix, partieEnCours);
+                }
+                else if (choix == 3)
+                {
+                    recit("GROSSIERE ERREUR !");
+                    recit("Le marchand de courgettes est en fait un djihadiste en embuscade.");
+                    printf("A la vue de la croix de croisade qui orne votre pourpoint
+                    recit("il vous jette des melons dessus et profite de la confusion pour sortir la kalash.");
+                    if (combat("Le vendeur de legumes terroriste", 70, partieEnCours) == 1)
+                    {
+                        choix = 0;
+                        recit("Les balles sifflent a vos oreilles ! Il vous faut choisir vite ou vous enfuir !");
+                        printf("1)Ouest\n2)Sud\n");
+                        printf("Vous n'avez que trois secondes !");
+                        Sleep(3000);
+                        choix = menu(2);
+                        if (menu == 1)
+                        {
+                            menu = 4;
+                        }
+                        else if (choix == 0)
+                        {
+                            recit("Le terroriste vous occit d'une balle dans le dos.");
+                            recit("C'est triste mais c'est la vie.");
+                            recit("FIN DU JEU");
+                            exit(EXIT_SUCCESS);
+                        }
+                        deplacementPlateau(choix, partieEnCours);
+                    }
+                }
+            }
         }
         else if (partieEnCours->x == 0 && partieEnCours->y == 1)
         {
