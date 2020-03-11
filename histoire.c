@@ -1442,7 +1442,7 @@ void paris(Partie* partieEnCours)
                         deplacementPlateau(choix, partieEnCours);
                     }
                     printf("Ou poursuivre votre route ?\n1)Ouest\n2)Sud\n");
-                    choix = menu(2)
+                    choix = menu(2);
                     if (choix == 1)
                     {
                         choix = 4;

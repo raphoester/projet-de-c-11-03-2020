@@ -16,7 +16,7 @@ void sauvegarde(Partie partieEnCours)
         else
         {
             printf("Sauvegarde en cours...\n");
-            fprintf(sauvegarde, "%d %d %d %d %d %d %d %d", partieEnCours.pdV, partieEnCours.pdA, partieEnCours.chance, partieEnCours.XP, partieEnCours.XPMax, partieEnCours.marquePage, partieEnCours.niveau);
+            fprintf(sauvegarde, "%d %d %d %d %d %d %d %d", partieEnCours.pdV, partieEnCours.pdA, partieEnCours.pdD, partieEnCours.chance, partieEnCours.XP, partieEnCours.XPMax, partieEnCours.marquePage, partieEnCours.niveau);
             printf("Fait !\n");
             getch();
         }
