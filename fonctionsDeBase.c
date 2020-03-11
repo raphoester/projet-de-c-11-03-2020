@@ -8,6 +8,7 @@
 int menu(int nbreChoix)
 {
     int choix ;
+    int choix2 ;
     while(1)
     {
         scanf("%d", &choix);
@@ -18,6 +19,11 @@ int menu(int nbreChoix)
         else
         {
             printf("Valeur incorrecte\nReessayez svp\n");
+            scanf("%d", &choix2);
+            if (choix2 > 0 && choix2 <= nbreChoix)
+            {
+                return choix ;
+            }
         }
     }
     return EXIT_FAILURE ;

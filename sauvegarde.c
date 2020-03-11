@@ -16,7 +16,7 @@ void sauvegarde(Partie partieEnCours)
         else
         {
             printf("Sauvegarde en cours...\n");
-            fprintf(sauvegarde, "%d %d %d %d %d %d %d %d", partieEnCours.pdV, partieEnCours.pdA, partieEnCours.pdD, partieEnCours.chance, partieEnCours.XP, partieEnCours.XPMax, partieEnCours.marquePage, partieEnCours.niveau);
+            fprintf(sauvegarde, "%d %d %d %d %d %d %d %d %d %d", partieEnCours.pdV, partieEnCours.pdA, partieEnCours.pdD, partieEnCours.chance, partieEnCours.XP, partieEnCours.XPMax, partieEnCours.marquePage, partieEnCours.niveau, partieEnCours.x, partieEnCours.y);
             printf("Fait !\n");
             getch();
         }
@@ -34,7 +34,7 @@ void sauvegarde(Partie partieEnCours)
 
 void chargementSauvegarde(FILE* sauvegarde, Partie* partieEnCours)
 {
-    fscanf(sauvegarde, "%d %d %d %d %d %d %d %d", &partieEnCours->pdV, &partieEnCours->pdA, &partieEnCours->pdD, &partieEnCours->chance, &partieEnCours->XP, &partieEnCours->XPMax, &partieEnCours->marquePage, &partieEnCours->niveau);
+    fscanf(sauvegarde, "%d %d %d %d %d %d %d %d %d %d", &partieEnCours->pdV, &partieEnCours->pdA, &partieEnCours->pdD, &partieEnCours->chance, &partieEnCours->XP, &partieEnCours->XPMax, &partieEnCours->marquePage, &partieEnCours->niveau, &partieEnCours->x, &partieEnCours->y);
 }
 
 

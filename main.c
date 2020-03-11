@@ -10,7 +10,7 @@ int main()
     int choixMenuPrincipal = 1 ;
     Menu1:
     printf("Menu principal\n1)Nouvelle croisade\n2)Continuer une croisade\n3)A propos\n4)Quitter\n");
-    Partie partieEnCours = {0,0,0,0,0,0,0,1};
+    Partie partieEnCours = {0,0,0,0,0,0,0,1,0,0};
     choixMenuPrincipal = menu(4);
 
     if (choixMenuPrincipal == 1)
