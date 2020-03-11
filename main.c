@@ -10,6 +10,26 @@ int main()
     int choixMenuPrincipal = 1 ;
     Menu1:
     printf("Menu principal\n1)Nouvelle croisade\n2)Continuer une croisade\n3)A propos\n4)Quitter\n");
+printf("          _,.\n");
+printf("    ,` -.)\n");
+printf("   ( _/-\\\\-._\n");
+printf("  /,|`--._,-^|            ,\n");
+printf("  \\_| |`-._/||          ,'|\n");
+printf("    |  `-, / |         /  /\n");
+printf("    |     || |        /  /\n");
+printf("     `r-._||/   __   /  /   \n");
+printf(" __,-<_     )`-/  `./  /   \n");
+printf("'  \\   `---'   \\   /  /   \n");
+printf("    |           |./  /   \n");
+printf("    /           //  /      \n");
+printf("\\_/' \\         |/  /       \n");
+printf(" |    |   _,^-'/  /     \n");
+printf(" |    , ``  (\\/  /_\n");
+printf("  \\,.->._    \X-=/^\n");
+printf("  (  /   `-._//^`  \n");
+printf("   `Y-.____(__}\n");
+printf("    |     {__)\n");
+printf("          ()\n");
     Partie partieEnCours = {0,0,0,0,0,0,0,1,0,0};
     choixMenuPrincipal = menu(4);
 

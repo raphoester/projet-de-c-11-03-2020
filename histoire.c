@@ -36,58 +36,58 @@ void initJeu(Partie* partieEnCours)
     printf("ostende.\nO Clemens, o Pia, o Dulcis Virgo Maria !\"\n\n");
     getch();
 
-    //secMax = 7;
+    secMax = 7;
     printf("Quand je dis \"C'est parti\", appuyez frenetiquement et le plus vite possible sur la touche entree : \n");
-    //compteTouche(ENTREE, 2);
+    compteTouche(ENTREE, 2);
     printf("3... \n");
-    //compteTouche(ENTREE, 1);
+    compteTouche(ENTREE, 1);
     printf("2...\n");
-    //compteTouche(ENTREE, 1);
+    compteTouche(ENTREE, 1);
     printf("1...\n");
-    //compteTouche(ENTREE, 1);
+    compteTouche(ENTREE, 1);
     printf("C'EST PARTI ! \n");
-    //appuyages = compteTouche(ENTREE, secMax);
+    appuyages = compteTouche(ENTREE, secMax);
     printf("\nSTOOOOP ! Vous avez appuye %d fois en %d secondes\n", appuyages, secMax);
-    //compteTouche(ENTREE, 3);
+    compteTouche(ENTREE, 3);
     partieEnCours->pdV = (appuyages*27)+100;
     printf("Vous avez donc %d points de vie !", partieEnCours->pdV);
 
     printf("\n\nRebelote pour les points d'attaque :\n");
     secMax = 5;
-    //compteTouche(ENTREE, 1);
+    compteTouche(ENTREE, 1);
     printf("3... \n");
-    //compteTouche(ENTREE, 1);
+    compteTouche(ENTREE, 1);
     printf("2...\n");
-    //compteTouche(ENTREE, 1);
+    compteTouche(ENTREE, 1);
     printf("1...\n");
-    //compteTouche(ENTREE, 1);
+    compteTouche(ENTREE, 1);
     printf("C'EST PARTI ! \n");
-    //appuyages = compteTouche(ENTREE, secMax);
+    appuyages = compteTouche(ENTREE, secMax);
     printf("\nSTOOOOP ! Vous avez appuye %d fois en %d secondes\n", appuyages, secMax);
-    //compteTouche(ENTREE, 3);
+    compteTouche(ENTREE, 3);
     partieEnCours->pdA = appuyages + 15;
     printf("Vous obtenez %d points d'attaque !\n", partieEnCours->pdA);
     getch();
 
     printf("Encore la meme chose pour les points de defense :");
     secMax = 4;
-    //compteTouche(ENTREE, 1);
+    compteTouche(ENTREE, 1);
     printf("3... \n");
-    //compteTouche(ENTREE, 1);
+    compteTouche(ENTREE, 1);
     printf("2...\n");
-    //compteTouche(ENTREE, 1);
+    compteTouche(ENTREE, 1);
     printf("1...\n");
-    //compteTouche(ENTREE, 1);
+    compteTouche(ENTREE, 1);
     printf("C'EST PARTI ! \n");
-    //appuyages = compteTouche(ENTREE, secMax);
+    appuyages = compteTouche(ENTREE, secMax);
     printf("\nSTOOOOP ! Vous avez appuye %d fois en %d secondes\n", appuyages, secMax);
-    //compteTouche(ENTREE, 3);
+    compteTouche(ENTREE, 3);
     partieEnCours->pdD = appuyages + 15;
     printf("Vous obtenez %d points d'attaque !\n", partieEnCours->pdD);
     getch();
 
     printf("Maintenant, voyons voir si vous avez de la chance... (c'est fait au hasard, vous n'avez rien a faire)\n");
-    //compteTouche(ENTREE, 2);
+    compteTouche(ENTREE, 2);
     srand(time(NULL));
     partieEnCours->chance = (rand() % (MAX - MIN + 1)) + MIN;
     printf("Votre indice de chance est de  %d !\n\n", partieEnCours->chance);
@@ -785,7 +785,7 @@ CarrefourForet :
         getch();
         printf("Vos hommes sont fourbus et affames, mais obeissent a vos ordres dans l'espoir d'obtenir le salut.\n");
         getch();
-        //compteTouche(ENTREE, 3);
+        compteTouche(ENTREE, 3);
         printf("Vers 9 heures du matin, Schiappard la Fiotte finit par s'endormir sur son ane.\n");
         getch();
         printf("Que faire ?\n1)Le laisser dormir car de toute facon c'est une fiotte\n");
@@ -855,7 +855,7 @@ void paris(Partie* partieEnCours)
     printf("Appuyez sur une touche pour ouvrir les yeux.\n");
     getch();
     printf("...\n");
-//compteTouche(ENTREE, 2);
+    compteTouche(ENTREE, 2);
     printf("Vous etes dans une rue tres animee, couche devant une devanture.\n");
     getch();
     printf("Les locaux parlent une langue tres etrange qui ressemble au francois mais qui n'est point du francois.\n");
@@ -1266,6 +1266,7 @@ void paris(Partie* partieEnCours)
             {
                 printf("Victoire ! Voulez-vous prendre le couvercle de la poubelle en guise de blouclier ?\n1)Oui\n2)Non");
                 choix = menu(2);
+
                 if (choix == 1)
                 {
                     recit("Ce couvercle de poubelle magique vous rapporte %d points de defense.", 15*(partieEnCours->niveau));
@@ -1461,41 +1462,34 @@ void paris(Partie* partieEnCours)
         else if (partieEnCours->x == 1 && partieEnCours->y == 1)
         {
             system("cls");
-            //if (petiteFille == 0)
+            recit("Vous continuez votre chemin abasourdi par les evenements.");
+            recit("Lorsqu'une petite fille surgit.");
+            recit("Petite fille : Il est beau ton deguisement !");
+            recit("GODEFROY : Qu'est ce que tu racontes ?! On est ou ?");
+            recit("Petite fille : Vous le faites exprès ? On est a Paris, capitale de la France !");
+            recit("Paris ressemble a ca maintenant ?");
+            recit("GODEFROY : Le paris que je connaissois n'etait pas aussi moche que ca ! En quelle annee est-on ?");
+            recit("Petite fille : On est en 2020 ! Nan mais allo quoi ?!");
+            recit("Je peux prendre une prendre un 'selfie' avec vous ?");
+            printf("Que faire ?\n1)Accepter sans comprendre sa requete\n2)L'ignorer et continuer sa route\n");
+            choix = menu(2);
+            if (choix == 1)
             {
-                recit("Vous continuez votre chemin abasourdi par les evenements.");
-                recit("Lorsqu'une petite fille surgit.");
-                recit("Petite fille : Il est beau ton deguisement !");
-                recit("GODEFROY : Qu'est ce que tu racontes ?! On est ou ?");
-                recit("Petite fille : Vous le faites exprès ? On est a Paris, capitale de la France !");
-                recit("Paris ressemble a ca maintenant ?");
-                recit("GODEFROY : Le paris que je connaissois n'etait pas aussi moche que ca ! En quelle annee est-on ?");
-                recit("Petite fille : On est en 2020 ! Nan mais allo quoi ?!");
-                recit("Je peux prendre une prendre un 'selfie' avec vous ?");
-                printf("Que faire ?\n1)Accepter sans comprendre sa requete\n2)L'ignorer et continuer sa route\n");
-                choix = menu(2);
-                if (choix == 1)
-                {
-                    recit("Elle s'approche de vous et sort un un appareil de sa poche.");
-                    recit("Elle pointe l'appareil vers vous puis une lumiere qui y sort vous ebloui.");
-                    recit("Elle se retourne vers vous et vous remercie.");
-                    recit("Vous avez rendu une jeune fille heureuse.");
-                    recit("Vous remportez 50 points d'experience !");
-                    experiencePlus(partieEnCours, 50);
-                    affichageStats(*partieEnCours);
-                }
-                if (choix == 2)
-                {
-                    recit("Vous en avez trop entendu, vous continuer votre route sans comprendre.");
-                }
-                recit("Ou aller maintenant ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest");
-                choix = menu(4);
-                deplacementPlateau(choix, partieEnCours);
+                recit("Elle s'approche de vous et sort un un appareil de sa poche.");
+                recit("Elle pointe l'appareil vers vous puis une lumiere qui y sort vous ebloui.");
+                recit("Elle se retourne vers vous et vous remercie.");
+                recit("Vous avez rendu une jeune fille heureuse.");
+                recit("Vous remportez 50 points d'experience !");
+                experiencePlus(partieEnCours, 50);
+                affichageStats(*partieEnCours);
             }
-            /*else
+            else if (choix == 2)
             {
-                recit("La ");
-            }*/
+                recit("Vous en avez trop entendu, vous continuer votre route sans comprendre.");
+            }
+            recit("Ou aller maintenant ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest");
+            choix = menu(4);
+            deplacementPlateau(choix, partieEnCours);
         }
         else if (partieEnCours->x == 2 && partieEnCours->y == 1)
         {
@@ -1528,7 +1522,7 @@ void paris(Partie* partieEnCours)
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
-            if (choix == 2)
+            else if (choix == 2)
             {
                 printf("Ou aller ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                 choix = menu(4);
@@ -1555,7 +1549,7 @@ void paris(Partie* partieEnCours)
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
-            if (choix == 2)
+            else if (choix == 2)
             {
                 printf("Ou aller ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                 choix = menu(4);
@@ -1588,7 +1582,7 @@ void paris(Partie* partieEnCours)
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
-            if (choix == 2)
+            else if (choix == 2)
             {
                 recit("Vous decidez de continuer votre chemin vers :");
                 printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
@@ -1623,7 +1617,7 @@ void paris(Partie* partieEnCours)
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
-            if (choix == 2)
+            else if (choix == 2)
             {
                 printf("Ou aller ensuite ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                 choix = menu(4);
@@ -1645,7 +1639,7 @@ void paris(Partie* partieEnCours)
                 partieEnCours->pdV -=50;
                 partieEnCours->pdA -=10;
             }
-            if (choix == 2)
+            else if (choix == 2)
             {
                 recit("Vous lui dites d'en avoir aucune idee.\n");
                 recit("Sans dire un mot, elle continue son chemin a la recherche de son petit-fils.");
@@ -1687,7 +1681,7 @@ void paris(Partie* partieEnCours)
                 choix = menu(3);
                 deplacementPlateau(choix, partieEnCours);
             }
-            if (choix == 2)
+            else if (choix == 2)
             {
                 recit("Aller vers:");
                 printf("1)Nord\n2)Sud\n3)Est\n");
@@ -1712,7 +1706,7 @@ void paris(Partie* partieEnCours)
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
-            if (choix == 2)
+            else if (choix == 2)
             {
                 recit("Aller vers:");
                 printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
@@ -1847,7 +1841,7 @@ void paris(Partie* partieEnCours)
                     deplacementPlateau(choix, partieEnCours);
                 }
             }
-            if (choix == 2)
+            else if (choix == 2)
             {
                 recit("Sans plus attendre, vous leur fonce dessus.");
                 if (combat("Le gang de kaira", 40, partieEnCours) == 1);
@@ -1879,7 +1873,7 @@ void paris(Partie* partieEnCours)
                     deplacementPlateau(choix, partieEnCours);
                 }
             }
-            if (choix == 2)
+            else if (choix == 2)
             {
                 recit("Sans plus attendre, vous leur fonce dessus.");
                 if (combat("Le gang de kaira", 40, partieEnCours) == 1);
@@ -2318,7 +2312,7 @@ void paris(Partie* partieEnCours)
                     deplacementPlateau(choix, partieEnCours);
                 }
             }
-            if (choix == 2)
+            else if (choix == 2)
             {
                 printf("Ou aller ?\n1)Nord\n2)Ouest\n3)Est\n");
                 choix = menu(3);
@@ -2338,7 +2332,7 @@ void paris(Partie* partieEnCours)
             choix = menu(4);
             deplacementPlateau(choix, partieEnCours);
         }
-        else if (partieEnCours->x == 4 && partieEnCours->y == 4)
+        /*else if (partieEnCours->x == 4 && partieEnCours->y == 4)
         {
             recit("Vous debarquez a une nouvelle intersection.");
             recit("Vous remarquez des escaliers qui descendent sur les quais de seine.");
@@ -2349,7 +2343,7 @@ void paris(Partie* partieEnCours)
         else if (partieEnCours->x == 5 && partieEnCours->y == 4)
         {
 
-        }
+        }*/
         else if (partieEnCours->x == 6 && partieEnCours->y == 4)
         {
             recit("*Sirene de police*");
@@ -2372,7 +2366,7 @@ void paris(Partie* partieEnCours)
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
-            if (choix == 2)
+            else if (choix == 2)
             {
                 recit("Un des policiers commence a vous palper.");
                 recit("Il place ses mains a un endroit qu'il ne vous plait pas.");
@@ -2389,7 +2383,7 @@ void paris(Partie* partieEnCours)
                 deplacementPlateau(choix, partieEnCours);
             }
         }
-        else if (partieEnCours->x == 7 && partieEnCours->y == 4)
+        /*else if (partieEnCours->x == 7 && partieEnCours->y == 4)
         {
             recit("");
         }
@@ -2400,7 +2394,7 @@ void paris(Partie* partieEnCours)
         else if (partieEnCours->x == 9 && partieEnCours->y == 4)
         {
 
-        }
+        }*/
         else
         {
             recit("Cet endroit du jeu n'est pas encore construit, revenez plus tard !");
