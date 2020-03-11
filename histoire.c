@@ -2332,22 +2332,71 @@ void paris(Partie* partieEnCours)
             choix = menu(4);
             deplacementPlateau(choix, partieEnCours);
         }
-        /*else if (partieEnCours->x == 4 && partieEnCours->y == 4)
+        else if (partieEnCours->x == 4 && partieEnCours->y == 4)
         {
             recit("Vous debarquez a une nouvelle intersection.");
             recit("Vous remarquez des escaliers qui descendent sur les quais de seine.");
             printf("Que faire ?\n1)Descendre sur les quais\n2)Continuer sa route\n");
             choix = menu(2);
-
+            if (choix == 1)
+            {
+                recit("Vous descendez les marches pour vous rendre sur le quai.");
+                recit("De l'herbe se trouve tout le long du quai.");
+                recit("Vous vous appreter a vous allonger pour vous reposer un peu.");
+                recit("Quand vous apercevez un couple l'un sur l'autre comme s'il copuler en public !");
+                recit("Vous ne pouvez par rester les bras croises !");
+                recit("Il faut bien que quelqu'un leur apprenne les bonnes manieres.");
+                if (combat("Le couple etrange", 50, partieEnCours) == 1)
+                {
+                    printf("Ou aller ?\n1)Nord\n2)Ouest\n3)Est\n");
+                    choix = menu(3);
+                    if (choix == 2)
+                    {
+                        choix = 4;
+                    }
+                    deplacementPlateau(choix, partieEnCours);
+                }
+                else
+                {
+                    recit("Vous n'avez plus la tete a vous reposer.");
+                    recit("Vous revenez au carrefour.");
+                    printf("Ou aller ?\n1)Nord\n2)Ouest\n3)Est\n");
+                    choix = menu(3);
+                    if (choix == 2)
+                    {
+                        choix = 4;
+                    }
+                    deplacementPlateau(choix, partieEnCours);
+                }
+            }
+            if (choix == 2)
+            {
+                printf("Ou aller ?\n1)Nord\n2)Ouest\n3)Est\n");
+                choix = menu(3);
+                if (choix == 2)
+                {
+                    choix = 4;
+                }
+                deplacementPlateau(choix, partieEnCours);
+            }
         }
         else if (partieEnCours->x == 5 && partieEnCours->y == 4)
         {
-
-        }*/
+            recit("Un homme apparait devant.");
+            recit("Il vous souffle quelque mots a l'oreille.");
+            recit("Et disparait par magie !");
+            recit("Vous avez vaguement compris ce qu'il avait a vous dire.");
+            recit("Il parlait de vaincre le 'boss' qui se trouvait au Sud Est.");
+            recit("Vous savez ou vous rendre pour en savoir plus.");
+            recit("Vers ou aller ?");
+            printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
+            choix = menu(4);
+            deplacementPlateau(choix, partieEnCours);
+        }
         else if (partieEnCours->x == 6 && partieEnCours->y == 4)
         {
             recit("*Sirene de police*");
-            recit("Deux personnes en uniforme bleu descendent d'une voiture et vous demande vos papiers.");
+            recit("Deux personnes en uniforme bleu s'approchent et vous demandent vos papiers.");
             recit("Vous ne comprenez pas la situation.");
             recit("Ils s'avancent vers vous et vous plaque contre un mur.");
             recit("Que faire ?\n1)Se defendre\n2)Se laisser faire.");
@@ -2357,14 +2406,17 @@ void paris(Partie* partieEnCours)
                 recit("Vous ne vous laissez pas faire !");
                 if (combat("Les policiers", 50, partieEnCours) == 1)
                 {
-                    printf("Ou aller ?\n1)Nord\n2)Est\n3)Ouest\n");
+                    printf("Ou aller ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                     choix = menu(4);
                     deplacementPlateau(choix, partieEnCours);
                 }
-                recit("Une fois cette embrouille fini, vers ou aller ?");
-                printf("1)Nord\n2Sud\n3)Est\n4)Ouest\n");
-                choix = menu(4);
-                deplacementPlateau(choix, partieEnCours);
+                else
+                {
+                    recit("Une fois cette embrouille fini, vers ou aller ?");
+                    printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
+                    choix = menu(4);
+                    deplacementPlateau(choix, partieEnCours);
+                }
             }
             else if (choix == 2)
             {
@@ -2373,28 +2425,99 @@ void paris(Partie* partieEnCours)
                 recit("Pensant qu'il vous agresse sexuellement, vous vous retourner pour le gifler.");
                 if (combat("Les policiers", 50, partieEnCours) == 1)
                 {
-                    printf("Ou aller ?\n1)Nord\n2Sud\n3)Est\n4)Ouest\n");
+                    printf("Ou aller ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                     choix = menu(4);
                     deplacementPlateau(choix, partieEnCours);
                 }
-                recit("Une fois cette embrouille fini, vers ou aller ?");
-                printf("1)Nord\n2Sud\n3)Est\n4)Ouest\n");
-                choix = menu(4);
+                else
+                {
+                    recit("Une fois cette embrouille fini, vers ou aller ?");
+                    printf("1)Nord\n2Sud\n3)Est\n4)Ouest\n");
+                    choix = menu(4);
+                    deplacementPlateau(choix, partieEnCours);
+                }
+            }
+        }
+        else if (partieEnCours->x == 7 && partieEnCours->y == 4)
+        {
+            recit("*Pst Pst*");
+            recit("Vous vous retourner et apercevait un jeune homme, en tenue de sport moulante, et une chevelure doree.");
+            recit("Interesse, vous vous avance vers lui.");
+            recit("Il vous propose de lui acheter quelque chose qui ressemble a des champignons.");
+            recit("Il insiste et vous dit : 'Prend ca, tu vas t'envoler tu verras'");
+            recit("Vous lui en achete sans hesite, et en manqer quelques uns immediatement !");
+            recit("Quelques minutes apres vous vous assoupissez de fatigue.");
+            recit("Et vous vous relever un peu de temps apres avoir distingue un elephant volant s'approcher de vous !");
+            recit("Vous ne revez pas ! Un elephant volant fonce a toute vitesse sur vous, il faut se battre !");
+            if (combat("L'elephant volant", 60, partieEnCours) == 1)
+                {
+                    printf("Ou aller ?\n1)Nord\n2)Ouest\n3)Est\n");
+                    choix = menu(3);
+                    if (choix == 2)
+                    {
+                        choix = 4;
+                    }
+                    deplacementPlateau(choix, partieEnCours);
+                }
+            else
+            {
+                recit("Vous vous en remettez pas de ce que vous venez de voir !");
+                recit("Vous reprenez vous esprit et continuer votre quete.");
+                printf("Ou aller ?\n1)Nord\n2)Ouest\n3)Est\n");
+                choix = menu(3);
+                if (choix == 2)
+                {
+                    choix = 4;
+                }
                 deplacementPlateau(choix, partieEnCours);
             }
         }
-        /*else if (partieEnCours->x == 7 && partieEnCours->y == 4)
-        {
-            recit("");
-        }
         else if (partieEnCours->x == 8 && partieEnCours->y == 4)
         {
-            recit("");
+            recit("Il n'y a que que des vendeurs de marrons par ici.");
+            recit("Rien d'interessant a faire.");
+            recit("Vers ou se deplacer ?");
+            printf("Ou aller ?\n1)Nord\n2)Ouest\n3)Est\n");
+            choix = menu(3);
+            if (choix == 2)
+            {
+                choix = 4;
+            }
+            deplacementPlateau(choix, partieEnCours);
         }
         else if (partieEnCours->x == 9 && partieEnCours->y == 4)
         {
-
-        }*/
+            recit("Vous arrivez dans une avenue avec de la tres forte musique.");
+            recit("Un pochtron s'approche de vous.");
+            recit("Ce queux pu l'alcool a des kilometres et en plus de cela, il parle en criant !");
+            recit("Il vous baffouille quelques mots tout en vous postillonnant dessus.");
+            recit("Vous continuez votre chemin, mais cette homme ne semble pas vouloir vous laisser partir.");
+            recit("Et commence a hausser le ton");
+            recit("Serait-ce l'alcool qui le rend viril ?");
+            recit("Il serait temps de le faire redescendre un peu.");
+            if (combat("Le bourre relou", 50, partieEnCours) == 1)
+                {
+                    printf("Ou aller ?\n1)Nord\n2)Ouest\n");
+                    choix = menu(2);
+                    if (choix == 2)
+                    {
+                        choix = 4;
+                    }
+                    deplacementPlateau(choix, partieEnCours);
+                }
+            else
+            {
+                recit("Vous buvez dans sa bouteille de 'Jack miel' qu'il avait laisse par terre.");
+                recit("Ca vous redonne des forces pret a goumer tout le monde !");
+                printf("Mais avant ca, ou aller ?\n1)Nord\n2)Ouest\n");
+                choix = menu(2);
+                if (choix == 2)
+                {
+                    choix = 4;
+                }
+                deplacementPlateau(choix, partieEnCours);
+            }
+        }
         else if (partieEnCours->x == 3 && partieEnCours->y == 5)
         {
             recit("Vous arrivez a l'extremite de l'ile de la cite.");
@@ -2483,7 +2606,7 @@ void paris(Partie* partieEnCours)
             }
             deplacementPlateau(choix, partieEnCours);
         }
-        else if (partieEnCours->x == 7 && partieEnCours->y == 4)
+        else if (partieEnCours->x == 7 && partieEnCours->y == 5)
         {
             recit("Diantre ! une magnifique eglise !");
             recit("Vous n'en avez jamais vu de si belle.");
