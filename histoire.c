@@ -1980,7 +1980,7 @@ void paris(Partie* partieEnCours)
             recit("Les avenues sont ici tres larges. Au sud-est, il y a le Louvre.");
             recit("Vous restez pantois un moment devant tant de majeste.");
             recit("Cette epoque est bien curieuse, mais l'architecture n'est quand meme pas si mal.");
-            printf("Ou desirez vous vous rendre ensuite ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest");
+            printf("Ou desirez vous vous rendre ensuite ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
             choix = menu(4);
             deplacementPlateau(choix, partieEnCours);
         }
@@ -2002,7 +2002,7 @@ void paris(Partie* partieEnCours)
             }
             else
             {
-                printf("Vers ou aller ensuite ?\n1)Nord\n2)Sud\nEst\nOuest");
+                printf("Vers ou aller ensuite ?\n1)Nord\n2)Sud\nEst\n4)Ouest\n");
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
@@ -2034,7 +2034,7 @@ void paris(Partie* partieEnCours)
                 recit("Irrite, vous collez un soufflet a cet insolent desagreable.");
                 recit("Il tombe immediatement a terre et se met a chouiner.");
                 recit("Amuse, vous continuez votre croisade.");
-                printf("Ou se rendre ensuite ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest");
+                printf("Ou se rendre ensuite ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
@@ -2049,14 +2049,14 @@ void paris(Partie* partieEnCours)
             if (combat("Le monsieur licorne", 60, partieEnCours) == 1)
             {
                 recit("Votre coeur chretien en a assez vu ! Vers ou s'enfuir ?");
-                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
             else
             {
                 recit("Vers ou poursuivre la route ?");
-                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
@@ -2110,7 +2110,7 @@ void paris(Partie* partieEnCours)
                 recit("Vous sortez du parc et retournez dans la rue.");
                 recit("Votre determination a arreter cette degenerescence est plus forte que jamais.");
                 printf("Ou aller ensuite ?\n");
-                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
@@ -2118,7 +2118,7 @@ void paris(Partie* partieEnCours)
             {
                 recit("Vous passez votre route. La lutte pour Dieu n'attend pas.");
                 printf("Ou aller ensuite ?\n");
-                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
@@ -2142,14 +2142,14 @@ void paris(Partie* partieEnCours)
             if (combat("l'equipe de securite de la gay pride", 120, partieEnCours) == 1)
             {
                 recit("Votre coeur chretien en a assez vu ! Vers ou s'enfuir ?");
-                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                printf("1)Nord\n2)Sud\n3)Est\n4)Ouest");
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
             else
             {
                 printf("Ou se diriger ensuite ?\n");
-                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
@@ -2164,7 +2164,7 @@ void paris(Partie* partieEnCours)
             {
                 recit("Il vous faut fuir la parade.");
                 printf("Vers ou aller ?\n");
-                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
@@ -2173,7 +2173,7 @@ void paris(Partie* partieEnCours)
                 recit("Vous avez mis en deroute l'elite de la defense des LGBT.");
                 recit("Vous pouvez etre fier de vous ! La gay pride est deja beaucoup moins dense, la musique est moins forte et la peur regne dans le quartier.");
                 printf("Vers ou continuer le voyage ?\n");
-                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
@@ -2194,7 +2194,7 @@ void paris(Partie* partieEnCours)
             if (combat("Le regiment de CRS", 170, partieEnCours) == 1)
             {
                 printf("Vers ou fuir ?\n");
-                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
                 recit("Ce combat est difficile. Gagnez de l'experience et revenez quand vous serez pret.");
@@ -2206,7 +2206,7 @@ void paris(Partie* partieEnCours)
                 if (combat("Nick Conrad", 190, partieEnCours) == 1)
                 {
                     printf("Vers ou fuir ?\n");
-                    printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                    printf("1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                     choix = menu(4);
                     deplacementPlateau(choix, partieEnCours);
                     recit("Nick Conrad est tres difficile a battre. Revenez plus tard quand vous serez plus fort.");
@@ -2306,7 +2306,7 @@ void paris(Partie* partieEnCours)
                 recit("Une passante vous dit que ces personnes sont en greve et qu'aucun metro n'est en circulation aujourd'hui.");
                 recit("Ces personnes ont gache votre excitation.");
                 recit("Ils ne resteront pas impunis !");
-                if (combat("La bande de grevistes", 50, partieEnCours) == 1)
+                if (combat("La bande de grevistes", 70, partieEnCours) == 1)
                 {
                     printf("Ou aller ?\n1)Nord\n2)Ouest\n3)Est\n");
                     choix = menu(3);
@@ -2362,7 +2362,7 @@ void paris(Partie* partieEnCours)
                 recit("Quand vous apercevez un couple l'un sur l'autre comme s'il copuler en public !");
                 recit("Vous ne pouvez par rester les bras croises !");
                 recit("Il faut bien que quelqu'un leur apprenne les bonnes manieres.");
-                if (combat("Le couple etrange", 50, partieEnCours) == 1)
+                if (combat("Le couple etrange", 80, partieEnCours) == 1)
                 {
                     printf("Ou aller ?\n1)Nord\n2)Ouest\n3)Est\n");
                     choix = menu(3);
@@ -2420,7 +2420,7 @@ void paris(Partie* partieEnCours)
             if (choix == 1)
             {
                 recit("Vous ne vous laissez pas faire !");
-                if (combat("Les policiers", 50, partieEnCours) == 1)
+                if (combat("Les policiers", 80, partieEnCours) == 1)
                 {
                     printf("Ou aller ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                     choix = menu(4);
@@ -2439,7 +2439,7 @@ void paris(Partie* partieEnCours)
                 recit("Un des policiers commence a vous palper.");
                 recit("Il place ses mains a un endroit qu'il ne vous plait pas.");
                 recit("Pensant qu'il vous agresse sexuellement, vous vous retourner pour le gifler.");
-                if (combat("Les policiers", 50, partieEnCours) == 1)
+                if (combat("Les policiers", 80, partieEnCours) == 1)
                 {
                     printf("Ou aller ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest\n");
                     choix = menu(4);
@@ -2465,7 +2465,7 @@ void paris(Partie* partieEnCours)
             recit("Quelques minutes apres vous vous assoupissez de fatigue.");
             recit("Et vous vous relever un peu de temps apres avoir distingue un elephant volant s'approcher de vous !");
             recit("Vous ne revez pas ! Un elephant volant fonce a toute vitesse sur vous, il faut se battre !");
-            if (combat("L'elephant volant", 60, partieEnCours) == 1)
+            if (combat("L'elephant volant", 90, partieEnCours) == 1)
                 {
                     printf("Ou aller ?\n1)Nord\n2)Ouest\n3)Est\n");
                     choix = menu(3);
@@ -2511,7 +2511,7 @@ void paris(Partie* partieEnCours)
             recit("Et commence a hausser le ton");
             recit("Serait-ce l'alcool qui le rend viril ?");
             recit("Il serait temps de le faire redescendre un peu.");
-            if (combat("Le bourre relou", 50, partieEnCours) == 1)
+            if (combat("Le bourre relou", 60, partieEnCours) == 1)
                 {
                     printf("Ou aller ?\n1)Nord\n2)Ouest\n");
                     choix = menu(2);
