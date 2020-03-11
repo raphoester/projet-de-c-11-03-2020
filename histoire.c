@@ -846,6 +846,7 @@ void paris(Partie* partieEnCours)
     //Plus il ira vers le sud, plus les mobs seront forts.
     int trottinette;
     int maurice = 0;
+    int introGayPride = 0;
     partieEnCours->x = 1;
     partieEnCours->y = 0;
     int choix = 0;
@@ -883,6 +884,25 @@ void paris(Partie* partieEnCours)
     while (1)
     {
         printf("coordonnees au debut de la grosse boucle while : x %d y %d \n", partieEnCours->x, partieEnCours->y);
+        if (introGayPride == 0 && partieEnCours->x >= 2 && partieEnCours->x <= 8 && partieEnCours->y == 3)
+        {
+            introGayPride = 1;
+            recit("Vous arrivez bientot dans une rue qui semble envahie de toutes parts de jeunes gens tres dissipes.");
+            recit("Vous alpaguez un garcon vetu d'une combinaison en latex rose et lui demandez ce qui se passe.");
+            recit("Vous prenant pour un comique, il vous explique que c'est la gay pride et ce que ca veut dire.");
+            recit("Vous n'en croyez pas vos oreilles, etant donne que chez vous on a pour habitude de bruler les homosexuels");
+            recit("Vous vous isolez quelques minutes pour reflechir un peu et mediter sur le triste sort du Royaume de France.");
+            recit("La conclusion de cette introspection est que le temps est on ne peut mieux choisi pour faire ce pour quoi vous etes parti de votre chateau.");
+            recit(".");
+            recit(".");
+            recit(".");
+            recit("C'EST L'HEURE DE LA SEPTIEME CROISADE.");
+            recit(".");
+            recit(".");
+            recit(".");
+            recit("La manifestation est un cortege qui s'etend sur plusieurs centaines de coudees, du Louvre a l'hotel de ville.");
+            recit("Toute la rue de Rivoli est envahie.");
+        }
         if (partieEnCours->x == 0 && partieEnCours->y == 0)
         {
             recit("Vous arrivez a une grande place circulaire.");
@@ -1631,7 +1651,7 @@ void paris(Partie* partieEnCours)
         else if (partieEnCours->x == 9 && partieEnCours->y == 1)
         {
             system("cls");
-            recit("Vous arrivez a une nouvelle intersection, une route semble barre.");
+            recit("Vous arrivez a une nouvelle intersection, une route semble barree.");
             printf("Vers ou souhaitez vous aller ?\n1)Nord\n2)Sud\n3)Ouest\n");
             choix = menu(3);
             if (choix = 3)
@@ -1959,6 +1979,286 @@ void paris(Partie* partieEnCours)
             printf("Ou desirez vous vous rendre ensuite ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest");
             choix = menu(4);
             deplacementPlateau(choix, partieEnCours);
+        }
+        else if (partieEnCours->x == 2 && partieEnCours->y == 3)
+        {
+            recit("Vous plongez dans le chaos de la manifestation arc-en-ciel.");
+            recit("Juche sur un grand char, un monsieur presque tout nu danse devant tout le monde.");
+            recit("Vos valeurs chretiennes sont heurtees au plus haut point. Il faut combattre !");
+            recit("Vous vous frayez un chemin dans la foule a grands coups de bouclier.");
+            recit("Vous sautez sur le char, l'escaladez, tirez votre epee d'un metre cinquante et provoquez le danseur en duel.");
+            recit("GODEFROY : Que cesse cette diablerie !");
+            recit("Le monsieur en face degaine une cravache et la fait claquer. Il semble tres confiant et pret a en decoudre !");
+            if (combat("la mascotte LGBTQXTERYOFAZF+", 75, partieEnCours) == 1)
+            {
+                recit("La foule pense que c'etait un spectacle ideologique et vous applaudit alors que vous descendez de la scene.");
+                printf("Vers ou aller ensuite ?\n1)Nord\n2)Sud\nEst\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            printf("Vers ou aller ensuite ?\n1)Nord\n2)Sud\nEst\nOuest");
+            choix = menu(4);
+            deplacementPlateau(choix, partieEnCours);
+        }
+        else if (partieEnCours->x == 3 && partieEnCours->y == 3)
+        {
+            recit("Vous progressez avec peine dans la gay pride qui encombre la rue.");
+            recit("Finalement, vous arrivez a un nouveau carrefour.");
+            recit("Un journaliste de kombini vient vers vous.");
+            recit("Il porte une grosse boite noire et vous tend un objet cylindrique en vous posant des questions incomprehensibles.");
+            printf("Que faire ?\n1)Vous n'avez pas le temps pour ces simagrees, vous etes en croisade\n");
+            printf("2)Acceptez son cadeau avec bonne grace\n");
+            choix = menu(2);
+            if (choix == 1)
+            {
+                recit("Avec force et vigueur, vous sigifiez a cet homme-soja que vous n'avez pas son temps.");
+                recit("Victoire ! Il prend peur, devient bleme et disparait dans la foule.");
+                recit("Vous remportez 50 points d'experience pour la peine.");
+                experiencePlus(partieEnCours, 50);
+            }
+            else if (choix == 2)
+            {
+                recit("Vous essayez de vous emparer de l'objet cylindrique que le petit homme vous tend.");
+                recit("Celui-ci le lache et vous vous en allez.");
+                recit("Mais le petit homme se met a vous poursuivre et criant de maniere si aigue que vous l'entendez malgre la musique.");
+                recit("Il continue de vous parler et vous ne comprenez toujours rien.");
+                recit("Irrite, vous collez un soufflet a cet insolent desagreable.");
+                recit("Il tombe immediatement a terre et se met a chouiner.");
+                recit("Amuse, vous continuez votre croisade.");
+                printf("Ou se rendre ensuite ?\n1)Nord\n2)Sud\n3)Est\nOuest");
+            }
+
+        }
+        else if (partieEnCours->x == 4 && partieEnCours->y == 3)
+        {
+            recit("Apres quelque cheminement, vous reoncontrez dans la parade un monsieur deguise en licorne.");
+            recit("Sur son ventre, une inscription dans une langue inconnue : \"Free hugs\".");
+            recit("Sitot qu'il vous voit, il s'approche de vous en ecartant les bras.");
+            recit("C'est une posture agressive sans doute ! En garde !");
+            if (combat("Le monsieur licorne", 60, partieEnCours) == 1)
+            {
+                recit("Votre coeur chretien en a assez vu ! Vers ou s'enfuir ?");
+                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            recit("Vers ou poursuivre la route ?");
+            printf("1)Nord\n2)Sud\n3)Est\nOuest");
+            choix = menu(4);
+            deplacementPlateau(choix, partieEnCours);
+        }
+        else if (partieEnCours->x == 5 && partieEnCours->y == 3)
+        {
+            recit("Vous arrivez devant l'entree du parc de la tour Saint Jacques, noyee dans la fete du progressisme.");
+            printf("Que faire ?\n1)Reprendre des forces et se recueillir dans ce lieu de spiritualite\n");
+            printf("2)Continuer sa route\n");
+            choix = menu(2);
+            if (choix == 1)
+            {
+                recit("Vous entrez dans le parc et suivez le petit chemin qui va vers la tour.");
+                recit("Vous rencontrez des jeunes degeneres sur un banc en train de planer a l'heroine !");
+                printf("Les chatier ?\n1)Oui\n2)Non\n");
+                choix = menu(2);
+                if (choix == 1)
+                {
+                    recit("Vous vous approchez, degainez votre epee et ils ne reagissent pas.");
+                    recit("Ces fiottes sont bien trop occupes a avoir le cerveau casse.");
+                    recit("Alors vous attrapez tout leur matos et le flanquez a la poubelle.");
+                    recit("C'est alors seulement que l'un d'entre eux tente de s'en prendre a vous en titubant.");
+                    if (combat("Le toxicomane a moitie vegetatif", 1, partieEnCours) == 1)
+                    {
+                        recit("ERREUR CRITIQUE : SURCHARGE DE FRAGILITE DETECTEE");
+                        recit("Vous ne meritez pas de continuer a jouer.");
+                        recit("FIN DU JEU");
+                        exit(EXIT_SUCCESS);
+                    }
+                }
+                else if (choix == 2)
+                {
+                    recit("Vous passez votre chemin. Ces gueux ne meritent meme pas qu'on les aide.");
+                }
+                recit("Vous vous approchez de la tour et il n'y a pas de porte.");
+                recit("La statue de Blaise Pascal est la seule chose qui orne ce sanctuaire.");
+                recit("Vous vous mettez a prier devant cet apotre car vous ignorez que ce n'en est pas un.");
+                recit("Pater Noster, qui es in caelis : sanctificetur nomen tuum.");
+                recit("Adve­niat regnum tuum ; fiat voluntas tua, sicut in caelo, et in terra.");
+                recit("Panem nostrum quotidianum da nobis hodie.");
+                recit("Et dimitte nobis debita nostra, sicut et nos dimittimus debitoribus nostris.");
+                recit("Et ne nos inducas in tentationem ; sed libera nos a malo.");
+                recit("Gloria Patri, et Filio, et Spiritui Sancto.");
+                recit("Sicut erat in principio, et nunc et semper, et in saecula saeculorum. Amen.");
+                recit(".");
+                recit(".");
+                recit(".");
+                recit("Ce recueillement a renforce votre foi et vous a confere de la force.");
+                recit("Vous gagnez %d points d'experience.", (partieEnCours->niveau)*7);
+                experiencePlus(partieEnCours, (partieEnCours->niveau)*7);
+                recit("Vous sortez du parc et retournez dans la rue.");
+                recit("Votre determination a arreter cette degenerescence est plus forte que jamais.");
+                printf("Ou aller ensuite ?\n");
+                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            else if (choix == 2)
+            {
+                recit("Vous passez votre route. La lutte pour Dieu n'attend pas.");
+                printf("Ou aller ensuite ?\n");
+                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+        }
+        else if (partieEnCours->x == 6 && partieEnCours->y == 3)
+        {
+            recit("Vous arrivez rapidement a un nouveau carrefour.");
+            recit("La Tour Saint Jacques surplombe l'endroit.");
+            recit("Le style architectural tres travaille de la tour contraste avec la sauvagerie ambiante de la gay pride.");
+            recit("Vous vous demandez comment des gens capables de construire de si beaux batiments peuvent etre aussi corrompus.");
+            recit("Devant vous, une sarrasine aux cheveux bleus effectue une danse en faisant remuer son arriere train en agitant un drapeau multicolore.");
+            recit("Elle s'approche un peu trop et sans s'arreter de danser, colle son derriere a votre ceinturon.");
+            recit("L'attitude de cette coureuse de remparts vous revulse au plus haut point.");
+            recit("GODEFROY : TENEZ VOUS BIEN, MARGOTON !");
+            recit("Vous la poussez a terre.");
+            recit("Elle tombe et se met a pleurer.");
+            recit("Quatre gaillards avec plein de muscles sa defense ! Il faut se battre !");
+            recit("Ils sont habilles uniquement de harnais en cuir et de casquettes.");
+            recit("Vous etes tres destabilise par ce manque de pudeur.");
+            recit("Le combat en sera nettement plus ardu.");
+            if (combat("l'equipe de securite de la gay pride", 120, partieEnCours) == 1)
+            {
+                recit("Votre coeur chretien en a assez vu ! Vers ou s'enfuir ?");
+                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            printf("Ou se diriger ensuite ?\n");
+            printf("1)Nord\n2)Sud\n3)Est\nOuest");
+            choix = menu(4);
+            deplacementPlateau(choix, partieEnCours);
+        }
+        else if (partieEnCours->x == 7 && partieEnCours->y == 3)
+        {
+            recit("La parade cosmopolite se poursuit sur une distance qui vous etonne franchement.");
+            recit("Vous n'avez jamais vu de votre vie un tel attroupement ni un pareil ensauvagement humain.");
+            recit("Les choses se gatent : vos actions violentes ne sont pas passees inapercues.");
+            recit("Une dizaine de militants bodybuildes en slip vient a votre rencontre et vous encercle.");
+            if (combat("La police de la bien-pensance", 150, partieEnCours) == 1)
+            {
+                recit("Il vous faut fuir la parade.");
+                printf("Vers ou aller ?\n");
+                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            else
+            {
+                recit("Vous avez mis en deroute l'elite de la defense des LGBT.");
+                recit("Vous pouvez etre fier de vous ! La gay pride est deja beaucoup moins dense, la musique est moins forte et la peur regne dans le quartier.");
+                printf("Vers ou continuer le voyage ?\n");
+                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+        }
+        else if (partieEnCours->x == 8 && partieEnCours->y == 3)
+        {
+            recit("Au sud est, il y a un magnifique batiment : c'est l'Hotel de ville.");
+            recit("Il est recouvert par des banderolles multicolores et cela vous semble bien dommage.");
+            recit("Et en plus, devant il y a un sarrasin tres fonce qui crie tres fort.");
+            recit("Il s'agit de NICK CONRAD !");
+            recit("Une foule d'hysteriques se presse devant lui pour l'acclamer.");
+            recit("Il vous faut terrasser cette ordure cosmopolite le plus vite possible.");
+            recit("Vous vous avancez vers la scene en vous frayant un chemin a coups de coudes et de bouclier.");
+            recit("Quand vous arrivez enfin devant le chanteur, un rempart de CRS scelerats le protege !");
+            recit("Il vous faut tout d'abord les battre pour acceder a Nick Conrad.");
+            recit("Vous tirez votre epee et la bagarre s'engage !");
+            recit("En GARDE ! POUR LA FRANCE !");
+            if (combat("Le regiment de CRS", 170, partieEnCours) == 1)
+            {
+                printf("Vers ou fuir ?\n");
+                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+                recit("Ce combat est difficile. Gagnez de l'experience et revenez quand vous serez pret.");
+            }
+            else
+            {
+                recit("Vous sautez enfin sur la scene pour affronter Nick Conrad le scelerat ! ");
+                recit("Il se bat avec une perche de micro et a l'air tres agile ! Ca va etre difficile !");
+                if (combat("Nick Conrad", 190, partieEnCours) == 1)
+                {
+                    printf("Vers ou fuir ?\n");
+                    printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                    choix = menu(4);
+                    deplacementPlateau(choix, partieEnCours);
+                    recit("Nick Conrad est tres difficile a battre. Revenez plus tard quand vous serez plus fort.");
+                }
+                else
+                {
+                    recit("Vous avez vaincu un traitre au royaume de France, felicitations !");
+                    recit("Vous gagnez %d XP bonus.", (partieEnCours->niveau)*90);
+                    recit("Vos exploits ont ete retranscrits en temps reel a la tele dans toute la France.");
+                    recit("Les nationalistes de tout le pays se reveillent grace a cette inspiration exemplaire.");
+                    recit("Pour les memes raisons, la gay pride se dissipe instantanement.");
+                    recit("Vous pouvez etre fier de vous !");
+                    recit("Maintenant commence la quete pour rentrer dans votre epoque. Saurez vous y parvenir ?");
+                    recit(".");
+                    recit(".");
+                    recit(".");
+                    system("cls");
+                    printf("Ou aller ensuite ?\n1)Nord\n2)Sud\n3)Est\nOuest");
+                    deplacementPlateau(choix, partieEnCours);
+                }
+            }
+        }
+        else if (partieEnCours->x == 9 && partieEnCours->y == 3)
+        {
+            recit("Votre route vous mene derriere l'hotel de ville.");
+            recit("Vous admirez sans les capacites de construction de cette civilisation etonnante.");
+            recit("Soudain, un adepte de la religion de l'amour se met a hurler : ");
+            recit("CHARLES EDOUARD (les prenoms ont ete changes) : ALLAHU AKBAR !(pas d'amalgame)");
+            recit("Ca va peter ! Il vous faut l'occire avant qu'il n'appuie sur le bouton.");
+            printf("Lancer de des...");
+            compteTouche(ENTREE, 3);
+            if (lancerDeDes(partieEnCours) == 0)
+            {
+                recit("Victoire ! Le bouton s'est embraye et vous avez pu lui couper la tete.");
+                recit("Vous avez empeche un attentat ! Felicitations !");
+                printf("Vous gagnez %d points d'experience.\n", (partieEnCours->niveau)*50);
+                getch();
+                recit("Maintenant, il vous faut traiter avec la police qui veut vous mettre en prison parce que vous etes raciste.");
+                if (combat("l'escouade de la police municipale", 110, partieEnCours) == 1)
+                {
+                    printf("Vers ou fuir ?\n");
+                    printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                    choix = menu(4);
+                    deplacementPlateau(choix, partieEnCours);
+                }
+                printf("Vers ou aller ensuite ?\n");
+                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
+            else
+            {
+                recit("OOF, Charles Edouard vous a explose a la gueule.");
+                recit("Vos points de vie ont ete divises par 2, mais vous n'etes pas mort grace a votre excellemnt bouclier");
+                recit("Un antifa avec une IMC de flutiste debarque et essaye de vous faire avaler six comprimes de CEPALISLAM 500 !");
+                recit("Il vous faut l'affronter pour ne pas devenir gauchiste.");
+                if (combat("Antifa debile", 40, partieEnCours) == 1)
+                {
+                    recit("Quelle indignite...");
+                    printf("Vers ou fuir ?\n");
+                    printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                    choix = menu(4);
+                    deplacementPlateau(choix, partieEnCours);
+                }
+                printf("Vers ou aller ensuite ?\n");
+                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
         }
         else if (partieEnCours->x == 1 && partieEnCours->y == 4)
         {
