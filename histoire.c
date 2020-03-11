@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "combat.h"
-#define TAILLE_PLATEAU 9
 #include <conio.h>
 
 void initJeu(Partie* partieEnCours)
@@ -883,6 +882,7 @@ void paris(Partie* partieEnCours)
 
     while (1)
     {
+        GrosseBoucle:
         printf("coordonnees au debut de la grosse boucle while : x %d y %d \n", partieEnCours->x, partieEnCours->y);
         if (introGayPride == 0 && partieEnCours->x >= 2 && partieEnCours->x <= 8 && partieEnCours->y == 3)
         {
@@ -2395,6 +2395,212 @@ void paris(Partie* partieEnCours)
         {
 
         }*/
+        else if (partieEnCours->x == 3 && partieEnCours->y == 5)
+        {
+            recit("Vous arrivez a l'extremite de l'ile de la cite.");
+            recit("Plus loin vers le bout, il y a une statue d'un monsieur sur un cheval, ainsi qu'un parc.");
+            recit("Vous pouvez vous reposer au parc si vous le desirez.");
+            printf("1)Se reposer\n2)Ne pas se reposer\n");
+            choix = menu(2);
+            if (choix == 1)
+            {
+                recit("Vous piquez un petit somme sur un banc dans le square du Vert-Galant.");
+                printf("Vous remportez %d points d'experience.\n", (partieEnCours->niveau)*30);
+                getch();
+                experiencePlus(partieEnCours, (partieEnCours->niveau)*30);
+            }
+            printf("Ou aller ensuite ?\n1)Nord\n2)Est\n");
+            choix = menu(2);
+            if (choix == 2)
+            {
+                choix = 3;
+            }
+            deplacementPlateau(choix, partieEnCours);
+        }
+        else if (partieEnCours->x == 4 && partieEnCours->y == 5)
+        {
+            recit("Vous arrivez maintenant devant une fort belle eglise. C'est la sainte chapelle.");
+            recit("Une foule de petites personnes aux petits yeux se presse devant la porte.");
+            recit("Vous debarquez la dedans comme une boule de bowling et rentrez dans l'eglise sans payer l'entree, non mais sans blague.");
+            recit("Vous montez a l'etage et ne pouvez vous empecher de vous pamer devant la magnifiscence des vitreaux.");
+            recit("C'est beau comme tout !");
+            recit("Vous vous mettez en priere, a genoux devant l'autel.");
+            recit("Un grand silence se fait dans la salle. Personne ne comprend ce que vous fabriquez.");
+            recit("Une petite fille vient vers vous.");
+            recit("VIOLETTE : Qu'est ce que tu fais ?");
+            recit("GODEFROY : Je prie Dieu.");
+            recit("VIOLETTE : Mais ca existe pas, Dieu.");
+            recit("Vous etes sidere que les valeurs de la France se soient a ce point perdues.");
+            recit("Cela ne vous remonte pas vraiment le moral, mais renforce votre foi.");
+            printf("Vous remportez %d points d'experience.", (partieEnCours->niveau)*10);
+            experiencePlus(partieEnCours, (partieEnCours->niveau)*10);
+            printf("Vous sortez de l'eglise qui semble n'etre plus la que pour faire beau.\nOu aller ensuite ?\n1)Est\n2)Ouest\n");
+            choix = menu(2);
+            if (choix == 1)
+            {
+                choix = 3;
+            }
+            else if (choix == 2)
+            {
+                choix = 4;
+            }
+            deplacementPlateau(choix, partieEnCours);
+        }
+        else if (partieEnCours->x == 5 && partieEnCours->y == 5)
+        {
+            recit("Vous arrivez devant la grande grille de l'enceinte de l'eglise.");
+            recit("Vous etes vraiment etonne de constater a quel point les chinois sont presents.");
+            recit("Quand vous aurez le temps, vous bouterez tous ces estrangers hors du royaume.");
+            printf("En attendant, que faire ?\n1)En occire une petite demi douzaine pour montrer l'exemple\n2)passer son chemin");
+            choix = menu(2);
+            if (choix == 1)
+            {
+                recit("Vous prenez a parti un escadron de chinois et tirez votre epee.");
+                recit("Ils s'enfuient tous immediatement en poussant des cris incomprehensibles.");
+                recit("Vous en attrapez neanmoins un par le col, que vous occisez sans autre forme de proces.");
+                recit("Vous n'avez pas fait beaucoup de degats, mais en avez fait peur a plus d'un ! ");
+                recit("Felicitations pour cette action de lutte contre le tourisme de masse.");
+            }
+            printf("Vers ou se diriger ?\n1)Nord\n2)Ouest\n3)Est\n");
+            if (choix == 2)
+            {
+                choix = 4;
+            }
+            deplacementPlateau(choix, partieEnCours);
+        }
+        else if (partieEnCours->x == 6 && partieEnCours->y == 5)
+        {
+            recit("Vous arrivez a un drole de marche couvert, ou l'on dirait qu'on vend des fleurs.");
+            recit("\"Vendre des fleurs ? Quelle drole d'idee !\" pensez-vous.\"J'aurais pu y faire brouter mon cheval si j'avais pu l'emmener.\"");
+            recit("Soudain, un marchand vous arrete pour vous vendre des fleurs !");
+            recit("Il vous propose des jonquilles, des thuyas, des bleuets et meme des tournesols !");
+            recit("Vous vous fendez d'un \"de l'air, manant !\" simple et efficace et poursuivez votre route, laissant pantois le marchand.");
+            printf("Ou aller ensuite ?\n1)Nord\n2)Ouest\n3)Est\n");
+            choix = menu(3);
+            if (choix == 2)
+            {
+                choix = 4;
+            }
+            deplacementPlateau(choix, partieEnCours);
+        }
+        else if (partieEnCours->x == 7 && partieEnCours->y == 4)
+        {
+            recit("Diantre ! une magnifique eglise !");
+            recit("Vous n'en avez jamais vu de si belle.");
+            recit("Comment se fait il qu'il y ait tant de belles eglises s'il n'y a plus aucun fidele ? Mystere ...");
+            printf("Aller a l'interieur\n1)Oui\n2)Non\n");
+            choix = menu(2);
+            if (choix == 1)
+            {
+                recit("Vous voulez aller prier a l'interieur, mais elle semble fermee...");
+                recit("De nombreux CRS en gardent l'entree derriere de hautes palissades.");
+                printf("Vous demandez poliment a rentrer :\n");
+                recit("Oyez gent soldatesque ! Un croyant vient se recueillir, ouvrez !");
+                recit("Le CRS vous invite cordialement a aller vous faire voir. \"C'est ferme parce que ca a crame !\", qu'y dit.");
+                recit("Parbleu, cela ne vous arretera pas !");
+                recit("Vous escaladez promptement la palissade et atterrissez de l'autre cote.");
+                recit("Immediatement, maints CRS vous assaillent et tentent de vous arreter ! Il faut combattre !");
+                recit("C'est exactement comme si vous vouliez recuperer Jerusalem des mains des sarrasins en fait.");
+                if (combat("Le commando de CRS haut de gamme ", 150, partieEnCours) == 1)
+                {
+                    printf("Ou fuir ?\n1)Nord\n2)Ouest\n3)Est\n");
+                    choix = menu(3);
+                    if (choix == 2)
+                    {
+                        choix = 4;
+                    }
+                    deplacementPlateau(choix, partieEnCours);
+                    goto GrosseBoucle;
+                }
+                recit("Une autre vague arrive !");
+                recit("La ferveur du combat vous donne de la force.");
+                printf("Vous remportez %d points d'experience.", (partieEnCours->XP)*40);
+                experiencePlus(partieEnCours, (partieEnCours->XP)*40);
+                if (combat("La fine equipe de CRS", 190, partieEnCours) == 1)
+                {
+                    printf("Ou fuir ?\n1)Nord\n2)Ouest\n3)Est\n");
+                    choix = menu(3);
+                    if (choix == 2)
+                    {
+                        choix = 4;
+                    }
+                    deplacementPlateau(choix, partieEnCours);
+                    goto GrosseBoucle;
+                }
+                recit("Les CRS continuent d'affluer !!");
+                recit("Ce que vous essayez de faire semble decidement tres interdit.");
+                experiencePlus(partieEnCours, (partieEnCours->XP)*40);
+                if (combat("L'escadron de CRS d'elite", 190, partieEnCours) == 1)
+                {
+                    printf("Ou fuir ?\n1)Nord\n2)Ouest\n3)Est\n");
+                    choix = menu(3);
+                    if (choix == 2)
+                    {
+                        choix = 4;
+                    }
+                    deplacementPlateau(choix, partieEnCours);
+                    goto GrosseBoucle;
+                }
+                recit("Vous avez demonte les CRS, bravo ! Vous pouvez maintenant rentrer dans l'eglise.");
+                recit("C'est un batiment tres sombre, et effectivement tout le toit semble avoir disparu dans un incendie.");
+                recit("De grandes toiles sont tendues pour faire office de toit.");
+                recit("Vous vous agenouillez dans l'eglise et vous mettez a prier.");
+                recit("Dieu vous accorde sa force, sa grace et ses burnes pour vos guerroyages a venir");
+                printf("Vous recevez %d points d'experience.", (partieEnCours->niveau)*70);
+                getch();
+                printf("Vous recevez encore %d points d'experience parce que Dieu c'est vraiment QLF\n", (partieEnCours->niveau)*40);
+                getch();
+                recit("Enfin, vous sortez de la cathedrale, plein d'une force nouvelle et d'une foi chretienne qui n'est jamais partie.");
+                printf("Ou aller ensuite ?\n1)Nord\n2)Ouest\n3)Est\n");
+                choix = menu(3);
+                if (choix == 2)
+                {
+                    choix = 4;
+                }
+                deplacementPlateau(choix, partieEnCours);
+            }
+            else if (choix == 2)
+            {
+                recit("Vous continuez tranquillement votre route en admirant la cathedrale.");
+                printf("Ou aller ensuite ?\n1)Nord\n2)Ouest\n3)Est\n");
+                choix = menu(3);
+                if (choix == 2)
+                {
+                    choix = 4;
+                }
+                deplacementPlateau(choix, partieEnCours);
+            }
+        }
+        else if (partieEnCours->x == 8 && partieEnCours->y == 5)
+        {
+            recit("Vos pas vous menent dans le square Jean XXIII.");
+            recit("L'endroit semble calme.");
+            recit("Trop calme.");
+            recit("Vous aimez pas trop beaucoup ca.");
+            recit("Vous prefereriez si c'etait un peu trop plus moins calme. (ecris au developpeur si t'as capte la ref, jte paye un cafe.).");
+            recit("Il y a un homme tout seul, debout au milieu du square.");
+            recit("JEAN LASSALLE : GODEFROY ! Je t'attendais, mon ami.");
+            recit("GODEFROY : Qui es tu, etranger ?");
+            recit("JEAN LASSALLE : Je suis celui qui t'a amene ici.");
+            recit("GODEFROY : ...");
+            recit("JEAN LASSALLE : Je t'ai ensorcele avec ma houlette magique et je t'ai amene a Paris, loin de ton epoque.");
+            recit("GODEFROY : Pourquoi, sorcier ! Tout ici n'est que diablerie !");
+            recit("JEAN LASSALLE : Je sais, Godefroy. Et je t'ai amene ici pour purifier ce monde.");
+            recit("GODEFROY : C'est une noble tache, mais mon destin m'attend chez moi.");
+            recit("GODEFROY : Il faut que je retourne delivrer Jerusalem des mains des sarrasins.");
+            recit("GODEFROY : Sinon, nous connaitrons le destin tragique qu'a connu Paris !");
+            recit("JEAN LASSALLE : Je ne peux pas te laisser repartir.");
+            recit("JEAN LASSALLE : Ta tache ici n'est pas terminee, Godefroy !");
+            recit("JEAN LASSALLE : Ta croisade doit s'etendre au reste du royaume !");
+            recit("GODEFROY : Je ne peux m'y resoudre.");
+            recit("JEAN LASSALLE : Alors, tu dois mourir.");
+            combatJeanLassalle(partieEnCours);
+            recit("FELICITATIONS ! Vous avez reussi le combat final.");
+            recit("L'environnement se desagrege et vous vous retrouvez face aux remparts de Jerusalem.");
+            recit("Vous avez fini le jeu, bravo.");
+            recit("FIN DU JEU");
+            exit(EXIT_SUCCESS);
+        }
         else
         {
             recit("Cet endroit du jeu n'est pas encore construit, revenez plus tard !");
