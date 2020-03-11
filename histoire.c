@@ -1951,13 +1951,16 @@ void paris(Partie* partieEnCours)
                     }
                     deplacementPlateau(choix, partieEnCours);
                 }
-                printf("Vers ou aller ?\n1)Nord\n2)Est\n");
-                choix = menu(2);
-                if (choix == 2)
+                else
                 {
-                    choix =  3 ;
+                    printf("Vers ou aller ?\n1)Nord\n2)Est\n");
+                    choix = menu(2);
+                    if (choix == 2)
+                    {
+                        choix =  3 ;
+                    }
+                    deplacementPlateau(choix, partieEnCours);
                 }
-                deplacementPlateau(choix, partieEnCours);
             }
             else if (choix == 2)
             {
@@ -1997,9 +2000,12 @@ void paris(Partie* partieEnCours)
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
-            printf("Vers ou aller ensuite ?\n1)Nord\n2)Sud\nEst\nOuest");
-            choix = menu(4);
-            deplacementPlateau(choix, partieEnCours);
+            else
+            {
+                printf("Vers ou aller ensuite ?\n1)Nord\n2)Sud\nEst\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
         }
         else if (partieEnCours->x == 3 && partieEnCours->y == 3)
         {
@@ -2016,6 +2022,8 @@ void paris(Partie* partieEnCours)
                 recit("Victoire ! Il prend peur, devient bleme et disparait dans la foule.");
                 recit("Vous remportez 50 points d'experience pour la peine.");
                 experiencePlus(partieEnCours, 50);
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
             }
             else if (choix == 2)
             {
@@ -2026,7 +2034,9 @@ void paris(Partie* partieEnCours)
                 recit("Irrite, vous collez un soufflet a cet insolent desagreable.");
                 recit("Il tombe immediatement a terre et se met a chouiner.");
                 recit("Amuse, vous continuez votre croisade.");
-                printf("Ou se rendre ensuite ?\n1)Nord\n2)Sud\n3)Est\nOuest");
+                printf("Ou se rendre ensuite ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
             }
 
         }
@@ -2043,10 +2053,13 @@ void paris(Partie* partieEnCours)
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
-            recit("Vers ou poursuivre la route ?");
-            printf("1)Nord\n2)Sud\n3)Est\nOuest");
-            choix = menu(4);
-            deplacementPlateau(choix, partieEnCours);
+            else
+            {
+                recit("Vers ou poursuivre la route ?");
+                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
         }
         else if (partieEnCours->x == 5 && partieEnCours->y == 3)
         {
@@ -2133,10 +2146,13 @@ void paris(Partie* partieEnCours)
                 choix = menu(4);
                 deplacementPlateau(choix, partieEnCours);
             }
-            printf("Ou se diriger ensuite ?\n");
-            printf("1)Nord\n2)Sud\n3)Est\nOuest");
-            choix = menu(4);
-            deplacementPlateau(choix, partieEnCours);
+            else
+            {
+                printf("Ou se diriger ensuite ?\n");
+                printf("1)Nord\n2)Sud\n3)Est\nOuest");
+                choix = menu(4);
+                deplacementPlateau(choix, partieEnCours);
+            }
         }
         else if (partieEnCours->x == 7 && partieEnCours->y == 3)
         {
