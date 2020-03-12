@@ -124,9 +124,9 @@ void combatJeanLassalle(Partie *partieEnCours)
     int choix;
     int crit = 0;
     Monstre jeanLassalle;
-    jeanLassalle.pdV = 17000
+    jeanLassalle.pdV = 17000;
     jeanLassalle.critique = 3;
-    jeanLassalle.pdA = 700
+    jeanLassalle.pdA = 700;
     int defense = 0;
     int sort = 3;
     int changement = 0;
@@ -171,10 +171,10 @@ void combatJeanLassalle(Partie *partieEnCours)
             printf("Vous restez immobile a vous faire peter la rondelle par Jean Lassalle.\n");
             break;
         }
-        if (monstre.pdV <= 0)
+        if (jeanLassalle.pdV <= 0)
         {
             getch();
-            printf("Vous avez vaincu Jean Lassalle !\n", monstre.nom);
+            printf("Vous avez vaincu Jean Lassalle !\n", jeanLassalle.nom);
             getch();
             return 0;
         }
@@ -223,7 +223,7 @@ void combatJeanLassalle(Partie *partieEnCours)
             changement -= 1;
         }
         sort += changement ;
-        if (jeanLassalle.pdA >= 300 && )
+        if (jeanLassalle.pdA >= 300 && jeanLassalle.pdA <= 700)
         {
             jeanLassalle.pdA -= (lancerDeDes(partieEnCours)*500);
         }
@@ -237,7 +237,7 @@ void combatJeanLassalle(Partie *partieEnCours)
         {
             if (defense)
             {
-                printf("Grace a votre position defensive, %s vous inflige seulement %d degats.\n", monstre.nom, (monstre.pdA)/2);
+                printf("Grace a votre position defensive, Jean Lassalle vous inflige seulement %d degats.\n", (jeanLassalle.pdA)/2);
                 getch();
                 printf("Vous parvenez a riposter et infligez %d degats !\n", partieEnCours->pdD + (lancerDeDes(partieEnCours)*(partieEnCours->pdA/2)));
                 getch();
@@ -264,7 +264,7 @@ void combatJeanLassalle(Partie *partieEnCours)
             printf("Vous n'etiez pas de taille face a Jean Lassalle.\n");
             getch();
             recit("L'aventure s'arrete ici pour vous. ");
-            recit"Vous etes condamne a etre son esclave jusqu'a la fin de vos jours.");
+            recit("Vous etes condamne a etre son esclave jusqu'a la fin de vos jours.");
             printf("FIN DU JEU\n");
             getch();
             exit(EXIT_SUCCESS);
