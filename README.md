@@ -3,3 +3,4 @@ sauvegarde : pdV pdA chance XP XPMax marquePage niveau cooX cooY
 Mid Boss : Coordonnées x = 8 ; y = 3
 Boss Final : Coordonnées x = 8 ; y = 5
 Sauvegarde en fonction des coordonnées pas encore fonctionnelle
+Pour savoir ou vous en etes, les coordonnes s'affichent a chaque iteration de boucle de jeu (infinie)
