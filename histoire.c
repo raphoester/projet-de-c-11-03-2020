@@ -68,7 +68,7 @@ void initJeu(Partie* partieEnCours)
     printf("Vous obtenez %d points d'attaque !\n", partieEnCours->pdA);
     getch();
 
-    printf("Encore la meme chose pour les points de defense :");
+    printf("Encore la meme chose pour les points de defense :\n");
     secMax = 4;
     compteTouche(ENTREE, 1);
     printf("3... \n");
@@ -82,7 +82,7 @@ void initJeu(Partie* partieEnCours)
     printf("\nSTOOOOP ! Vous avez appuye %d fois en %d secondes\n", appuyages, secMax);
     compteTouche(ENTREE, 3);
     partieEnCours->pdD = appuyages + 15;
-    printf("Vous obtenez %d points d'attaque !\n", partieEnCours->pdD);
+    printf("Vous obtenez %d points de defense !\n", partieEnCours->pdD);
     getch();
 
     printf("Maintenant, voyons voir si vous avez de la chance... (c'est fait au hasard, vous n'avez rien a faire)\n");
@@ -284,7 +284,7 @@ CarrefourForet :
                     printf("On est jamais trop mefiant avec les sarrasins.\n");
                     getch();
                     printf("Tandis que vous nagez avec aisance la brasse papillon dans l'eau fraiche et ravigotante, ");
-                    printf("vous constatez que vos mouvements sont de plus en plus difficiles.");
+                    printf("vous constatez que vos mouvements sont de plus en plus difficiles.\n");
                     getch();
                     printf("Votre armure est en train de rouiller !\n");
                     getch();
