@@ -2655,7 +2655,7 @@ void paris(Partie* partieEnCours)
                 }
                 recit("Une autre vague arrive !");
                 recit("La ferveur du combat vous donne de la force.");
-                printf("Vous remportez %d points d'experience.", (partieEnCours->XP)*40);
+                printf("Vous remportez %d points d'experience.\n", partieEnCours->XP*40);
                 experiencePlus(partieEnCours, (partieEnCours->XP)*40);
                 if (combat("La fine equipe de CRS", 190, partieEnCours) == 1)
                 {
@@ -2687,7 +2687,7 @@ void paris(Partie* partieEnCours)
                 recit("De grandes toiles sont tendues pour faire office de toit.");
                 recit("Vous vous agenouillez dans l'eglise et vous mettez a prier.");
                 recit("Dieu vous accorde sa force, sa grace et ses burnes pour vos guerroyages a venir");
-                printf("Vous recevez %d points d'experience.", (partieEnCours->niveau)*70);
+                printf("Vous recevez %d points d'experience.\n", (partieEnCours->niveau)*70);
                 getch();
                 printf("Vous recevez encore %d points d'experience parce que Dieu c'est vraiment QLF\n", (partieEnCours->niveau)*40);
                 getch();
@@ -2718,7 +2718,7 @@ void paris(Partie* partieEnCours)
             recit("L'endroit semble calme.");
             recit("Trop calme.");
             recit("Vous aimez pas trop beaucoup ca.");
-            recit("Vous prefereriez si c'etait un peu trop plus moins calme. (ecris au developpeur si t'as capte la ref, jte paye un cafe.).");
+            recit("Vous prefereriez si c'etait un peu trop plus moins calme. (ecris au developpeur si t'as capte la ref, jte paye un cafe).");
             recit("Il y a un homme tout seul, debout au milieu du square.");
             recit("JEAN LASSALLE : GODEFROY ! Je t'attendais, mon ami.");
             recit("GODEFROY : Qui es tu, etranger ?");
