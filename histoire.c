@@ -64,7 +64,7 @@ void initJeu(Partie* partieEnCours)
     appuyages = compteTouche(ENTREE, secMax);
     printf("\nSTOOOOP ! Vous avez appuye %d fois en %d secondes\n", appuyages, secMax);
     compteTouche(ENTREE, 3);
-    partieEnCours->pdA = appuyages + 15;
+    partieEnCours->pdA = (appuyages*2) + 15;
     printf("Vous obtenez %d points d'attaque !\n", partieEnCours->pdA);
     getch();
 
@@ -1457,7 +1457,9 @@ void paris(Partie* partieEnCours)
             system("cls");
             recit("Vous atteignez la nouvelle intersection. Et la route vers l'Ouest semble fermee, ca commence bien.");
             printf("Ou aller maintenant ?\n1)Nord\n2)Sud\n3)Est\n4)Ouest");
-            menu(4);
+            choix = menu(4);
+            deplacementPlateau(choix, partieEnCours);
+
         }
         else if (partieEnCours->x == 1 && partieEnCours->y == 1)
         {

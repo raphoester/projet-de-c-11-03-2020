@@ -7,26 +7,25 @@
 
 int menu(int nbreChoix)
 {
-    int choix ;
-    int choix2 ;
-    while(1)
-    {
-        scanf("%d", &choix);
-        if (choix > 0 && choix <= nbreChoix)
+    char choix[10] = {0};
+    int choixEntier = 0;
+    while(1){
+        scanf("%s", &choix);
+        printf("\n");
+        choixEntier = atoi(choix);
+        if(choixEntier > 0 && choixEntier < nbreChoix+1)
         {
-            return choix ;
+            return choixEntier;
+        }
+        else if(choixEntier > nbreChoix)
+        {
+            printf("Vous ne pouvez pas choisir un nombre superieur a %d.\n", nbreChoix);
         }
         else
         {
-            printf("Valeur incorrecte\nReessayez svp\n");
-            scanf("%d", &choix2);
-            if (choix2 > 0 && choix2 <= nbreChoix)
-            {
-                return choix ;
-            }
+            printf("Ce n'est pas un choix disponible.\n");
         }
     }
-    return EXIT_FAILURE ;
 }
 
 
